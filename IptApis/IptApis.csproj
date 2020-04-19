@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\DbUtils.cs" />
+    <Compile Include="Shared\Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

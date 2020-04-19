@@ -24,8 +24,9 @@ namespace IptApis.Controllers.Cafeteria
             // string username = Thread.CurrentPrincipal.Identity.Name;
 
             var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Product));
+            //below are optional,just to check if we get anynull value it will chage to their defaults
             object ItemName;
-            test.TryGetValue("ItemName", out ItemName);
+            test.TryGetValue("ItemName", out ItemName);   //hover onto trygetvalue, to see the method signature
             string _ItemName = Convert.ToString(ItemName);
             object ItemStatus;
             test.TryGetValue("ItemStatus", out ItemStatus);
@@ -37,32 +38,24 @@ namespace IptApis.Controllers.Cafeteria
             object Price;
             test.TryGetValue("Price", out Price);
             int _Price = Convert.ToInt32(Price);
-          
 
-            var connection = DbUtils.GetDBConnection();
-            var compiler = new SqlServerCompiler();
-            var db = new QueryFactory(connection, compiler);
+
+            var db = DbUtils.GetDBConnection();
             db.Connection.Open();
-           // using (var scope = db.Connection.BeginTransaction())
-            using(TransactionScope scope = new TransactionScope())
+            // using (var scope = db.Connection.BeginTransaction())
+            using (TransactionScope scope = new TransactionScope())   
             {
                 try
                 {
-                    Dictionary<string, object> fooditemobj = new Dictionary<string, object>()
-                    {
-
-                        { "ItemName", _ItemName},
-                        { "ItemStatus",_ItemStatus  },
-                        { "IDescription",  _IDescription},
-                        { "Price", _Price }
-                    };
+                  
                 var res = db.Query("fooditem").InsertGetId<int>(new
                 {
                     ItemName = _ItemName,
                     ItemStatus = _ItemStatus,
                     IDescription = _IDescription,
                     Price = _Price
-                });
+                });   //specify each field in form of dictionary or object
+
                     #region 
 
                     //var query = db.Query("propertydetail").AsInsert(test);
@@ -83,13 +76,13 @@ namespace IptApis.Controllers.Cafeteria
                     //var res = db.Query()
                     //scope.Commit();
                     #endregion 
-                    scope.Complete();
+                scope.Complete();  // if record is entered successfully , transaction will be committed
                 db.Connection.Close();
-                    return Request.CreateResponse(HttpStatusCode.Created, new Dictionary<string, object>() { { "LastInsertedId", res } });
+                return Request.CreateResponse(HttpStatusCode.Created, new Dictionary<string, object>() { { "LastInsertedId", res } });
                 }
                 catch (Exception ex)
                 {
-                    scope.Dispose();
+                    scope.Dispose();   //if there are any error, rollback the transaction
                     return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
                 }
 

@@ -20,16 +20,15 @@ namespace IptApis.Controllers.Cafeteria
         [HttpGet]
         public string testconnection()
         {
-            var connection =DbUtils.GetDBConnection();
-
-            connection.Open();
-            if(connection.State== ConnectionState.Open)
+            var db = DbUtils.GetDBConnection();
+            
+            if (db.Connection.State == ConnectionState.Open)
             {
                 return ("connection success");
             }
             else
             {
-                connection.Open();
+                db.Connection.Open();
             }
             return ("test connection");
 

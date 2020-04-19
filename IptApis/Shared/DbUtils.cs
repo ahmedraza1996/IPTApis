@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SqlKata.Compilers;
+using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -10,11 +12,16 @@ namespace IptApis.Shared
     public class DbUtils
     {
 
-        public static SqlConnection GetDBConnection()
+        public static QueryFactory GetDBConnection()
         {
-            return (  new SqlConnection(
-                            ConfigurationManager.AppSettings["AWS"].ToString()) 
-                    );
+            var connection = new SqlConnection(
+                           ConfigurationManager.AppSettings["SqlDBConn"].ToString());
+             
+
+            var compiler = new SqlServerCompiler();
+            var db = new QueryFactory(connection, compiler);
+
+            return ( db  );
 
         }
 
