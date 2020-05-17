@@ -101,10 +101,18 @@
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
+    <Compile Include="Controllers\JobPortal\JobController.cs" />
+    <Compile Include="Controllers\JobPortal\StudentProfileController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\JobPortal\Experience.cs" />
+    <Compile Include="Models\JobPortal\Framework.cs" />
+    <Compile Include="Models\JobPortal\Job.cs" />
+    <Compile Include="Models\JobPortal\Organization.cs" />
+    <Compile Include="Models\JobPortal\Project.cs" />
+    <Compile Include="Models\JobPortal\Skill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\DbUtils.cs" />
     <Compile Include="Shared\Test.cs" />

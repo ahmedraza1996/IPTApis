@@ -1,0 +1,153 @@
+﻿using Dapper;
+using IptApis.Models.JobPortal;
+using IptApis.Shared;
+using Newtonsoft.Json;
+using SqlKata.Execution;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Transactions;
+using System.Web.Http;
+
+namespace IptApis.Controllers.JobPortal
+{
+    public class StudentProfileController : ApiController
+    {
+        public HttpResponseMessage GetProjectsByID(int id)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();//3870
+            IEnumerable<Project> response = db.Query("AllProjects").Where("StudentID", id).Get<Project>();//;.Cast<ProjectModel>();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+        public HttpResponseMessage GetSkillsByID(int id)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            IEnumerable<Skill> response = db.Query("AllSkills").Where("StudentID", id).Get<Skill>();//;.Cast<ProjectModel>();
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+        public HttpResponseMessage GetExperienceByID(int id)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            IEnumerable<Experience> response = db.Query("AllExperience").Where("StudentID", id).Get<Experience>();//;.Cast<ProjectModel>();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+        public HttpResponseMessage GetAllFrameworkName()
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            IEnumerable<Framework> response = db.Query("FrameworkLanguage").Get<Framework>();
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+        public HttpResponseMessage GetOrganizations()
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            IEnumerable<Organization> response = db.Query("AffiliatedOrganization").Get<Organization>();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage AddProject(Project test)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            int FID;
+            using (TransactionScope scope = new TransactionScope())
+            {
+                try
+                {
+                    if(test.FrameworkID == 0)
+                    {
+                        var frameworkID = db.Query("FrameworkLanguage").InsertGetId<int>(new
+                        {
+                            Fname = test.Fname
+                        });
+                        FID = frameworkID;
+                    }
+                    else
+                    {
+                        FID = test.FrameworkID;
+                    }
+                    
+                    var ProjID = db.Query("StudentProject").InsertGetId<int>(new
+                    {
+                        ProjectName = test.ProjectName,
+                        GitHubLink = test.GithubLink,
+                        StudentID = test.StudentID,
+                        CourseOfferedID = test.courseOfferedID
+                    });
+                    var _ = db.Query("ProjectFramework").Insert(
+                        new
+                        {
+                            projectID = ProjID,
+                            Status = test.ApproveStatus,
+                            FID = FID
+                        }) ;
+
+                    scope.Complete();  // if record is entered successfully , transaction will be committed
+                    db.Connection.Close();
+                    return Request.CreateResponse(HttpStatusCode.Created,ProjID);//, new Dictionary<string, object>() { { "LastInsertedId", res } });
+                }
+                catch (Exception ex)
+                {
+                    scope.Dispose();   //if there are any error, rollback the transaction
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+                }
+
+
+            }
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage AddExperience(Experience newExp)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            int OrganizationID;
+            using (TransactionScope scope = new TransactionScope())
+            {
+                try
+                {
+                    if (newExp.OrganizationID==0)
+                    {
+                        var OID = db.Query("AffiliatedOrganization").InsertGetId<int>(new
+                        {
+                            OrganizationName = newExp.OrganizationName
+                        });
+                        OrganizationID  = OID;
+                    }
+                    else
+                    {
+                        OrganizationID = newExp.OrganizationID;
+                    }
+                    var ExpID = db.Query("StudentExperience").InsertGetId<int>(new
+                    {
+                        startDate = newExp.StartDate,
+                        endDate = newExp.EndDate,
+                        designation = newExp.Designation,
+                        JDescription = newExp.JDescription,
+                        studentID = newExp.StudentID,
+                        OrganizationID = OrganizationID
+                    });
+                    scope.Complete();  // if record is entered successfully , transaction will be committed
+                    db.Connection.Close();
+                    return Request.CreateResponse(HttpStatusCode.Created);//, new Dictionary<string, object>() { { "LastInsertedId", res } });
+                }
+                catch (Exception ex)
+                {
+                    scope.Dispose();   //if there are any error, rollback the transaction
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+                }
+            }
+        }
+        
+    }
+}
