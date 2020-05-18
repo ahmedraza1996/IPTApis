@@ -14,9 +14,9 @@ namespace IptApis.Controllers.JobPortal
         public HttpResponseMessage GetAllJobs()
         {
             var db = DbUtils.GetDBConnection();
-            db.Connection.Open();//3870
+            db.Connection.Open();
             IEnumerable<Job> response = db.Query("Job").Get<Job>();//;.Cast<ProjectModel>();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
-    }
+     }
 }

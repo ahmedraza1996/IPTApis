@@ -15,5 +15,10 @@ namespace IptApis.Models.JobPortal
         public string ApproveStatus { get; set; }
         public string Fname { get; set; }
         public int FrameworkID { get; set; }
+
+        public int DomainID { get; set; }
+        public string DomainName { get; set; }
+
+        public string Skillvalue { get; set; }
     }
 }

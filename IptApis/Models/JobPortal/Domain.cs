@@ -5,9 +5,10 @@ using System.Web;
 
 namespace IptApis.Models.JobPortal
 {
-    public class Framework
+    public class Domain
     {
-        public int FID { get; set; }
-        public string FName { get; set; }
+
+        public int DomainID { get; set; }
+        public string DomainName { get; set; }
     }
 }

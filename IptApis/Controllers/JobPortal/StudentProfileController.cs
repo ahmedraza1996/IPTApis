@@ -52,49 +52,70 @@ namespace IptApis.Controllers.JobPortal
             IEnumerable<Organization> response = db.Query("AffiliatedOrganization").Get<Organization>();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
-
+        public HttpResponseMessage GetDomains()
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            IEnumerable<Domain> response = db.Query("Domain").Get<Domain>();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
         [HttpPost]
         [AllowAnonymous]
         public HttpResponseMessage AddProject(Project test)
         {
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
-            int FID;
+            int _frameworkID;
+            int _DomainID;
             using (TransactionScope scope = new TransactionScope())
             {
                 try
                 {
-                    if(test.FrameworkID == 0)
-                    {
-                        var frameworkID = db.Query("FrameworkLanguage").InsertGetId<int>(new
-                        {
+                    if(test.FrameworkID == 0){
+                        var frameworkID = db.Query("FrameworkLanguage").InsertGetId<int>(new{
                             Fname = test.Fname
                         });
-                        FID = frameworkID;
+                        _frameworkID = frameworkID;
                     }
                     else
+                        _frameworkID = test.FrameworkID;
+
+                    if (test.DomainID == 0)
                     {
-                        FID = test.FrameworkID;
+                        var DomainID = db.Query("Domain").InsertGetId<int>(new{
+                                DomainName = test.DomainName
+                            });
                     }
-                    
-                    var ProjID = db.Query("StudentProject").InsertGetId<int>(new
+                    else
+                        _DomainID = test.DomainID;
+                        
+                    var _ProjectID = db.Query("StudentProject").InsertGetId<int>(new
                     {
                         ProjectName = test.ProjectName,
                         GitHubLink = test.GithubLink,
                         StudentID = test.StudentID,
                         CourseOfferedID = test.courseOfferedID
                     });
-                    var _ = db.Query("ProjectFramework").Insert(
-                        new
+                     _ = db.Query("ProjectFramework").Insert(new
                         {
-                            projectID = ProjID,
+                            projectID = _ProjectID,
                             Status = test.ApproveStatus,
-                            FID = FID
+                            FID = _frameworkID
                         }) ;
-
+                    var SkillID = db.Query("Skill").InsertGetId<int>(new
+                    {
+                        SkillName = test.Skillvalue,
+                        DomainID = test.DomainID
+                    }) ;
+                    _ = db.Query("ProjectSkills").Insert(new
+                    {
+                        SkillID = SkillID,
+                        ProjectID = _ProjectID,
+                        ApproveStatus = test.ApproveStatus
+                    });
                     scope.Complete();  // if record is entered successfully , transaction will be committed
                     db.Connection.Close();
-                    return Request.CreateResponse(HttpStatusCode.Created,ProjID);//, new Dictionary<string, object>() { { "LastInsertedId", res } });
+                    return Request.CreateResponse(HttpStatusCode.Created,_ProjectID);//, new Dictionary<string, object>() { { "LastInsertedId", res } });
                 }
                 catch (Exception ex)
                 {
