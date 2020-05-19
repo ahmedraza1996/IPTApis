@@ -101,6 +101,9 @@
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
+    <Compile Include="Controllers\Room_Allocation\TimeTableController.cs" />
+    <Compile Include="Controllers\Room_Allocation\TimeTableData.cs" />
+    <Compile Include="Controllers\Room_Allocation\TimetableModel.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
