@@ -36,6 +36,8 @@ namespace IptApis.Controllers.JobPortal
             db.Connection.Open();
             IEnumerable<Experience> response = db.Query("AllExperience").Where("StudentID", id).Get<Experience>();//;.Cast<ProjectModel>();
             return Request.CreateResponse(HttpStatusCode.OK, response);
+            
+
         }
         public HttpResponseMessage GetAllFrameworkName()
         {
@@ -84,7 +86,8 @@ namespace IptApis.Controllers.JobPortal
                     {
                         var DomainID = db.Query("Domain").InsertGetId<int>(new{
                                 DomainName = test.DomainName
-                            });
+                         });
+                        _DomainID = DomainID;
                     }
                     else
                         _DomainID = test.DomainID;
@@ -169,6 +172,65 @@ namespace IptApis.Controllers.JobPortal
                 }
             }
         }
-        
+
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage DeleteExperience(int id)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            var query = db.Query("StudentExperience").Where("ExpID","=", id).AsDelete();
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        public HttpResponseMessage getProjectSkills() {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            IEnumerable<Object> response = db.Query("ProjectSkills").Get(); //.Cast<ProjectModel>();
+            return Request.CreateResponse(HttpStatusCode.OK,response);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage ApproveProject(int id)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            using (TransactionScope scope = new TransactionScope())
+            {
+                try
+                {
+                    int studentID = db.Query("StudentProject").Where("ProjectID", id).Select("StudentID").Get<int>().First();
+                    int skillID = db.Query("ProjectSkills").Where("ProjectID",id).Select("SkillID").Get<int>().First();
+
+                    int affected = db.Query("ProjectSkills").Where("ProjectID", id).Update(new
+                    {
+                        ApproveStatus = "Accepted"
+                    });
+                    int affected2 = db.Query("ProjectFramework").Where("ProjectID", id).Update(new
+                    {
+                        status = "Approved"
+                    });
+
+                    var RefID = db.Query("StudentSkills").InsertGetId<int>(new
+                    {
+                        StudentID = studentID,
+                        SkillID = skillID
+                    });
+
+                    IEnumerable<Skill> response = db.Query("AllSkills").Where("StudentID", studentID).Get<Skill>();//;.Cast<ProjectModel>();
+
+
+                    return Request.CreateResponse(HttpStatusCode.OK,response);
+
+                }
+                catch
+                {
+                    scope.Dispose();
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                }
+            }
+        }
+
     }
 }
