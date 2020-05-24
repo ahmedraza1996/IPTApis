@@ -61,6 +61,8 @@ namespace IptApis.Controllers.JobPortal
             IEnumerable<Domain> response = db.Query("Domain").Get<Domain>();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
+
+
         [HttpPost]
         [AllowAnonymous]
         public HttpResponseMessage AddProject(Project test)
@@ -129,6 +131,7 @@ namespace IptApis.Controllers.JobPortal
 
             }
         }
+
         [HttpPost]
         [AllowAnonymous]
         public HttpResponseMessage AddExperience(Experience newExp)
@@ -179,8 +182,34 @@ namespace IptApis.Controllers.JobPortal
         {
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
-            var query = db.Query("StudentExperience").Where("ExpID","=", id).AsDelete();
-            return Request.CreateResponse(HttpStatusCode.OK);
+            try
+            {
+                _ = db.Query("StudentExperience").Where("ExpID", "=", id).Delete();
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch(Exception e) { 
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e.Message);
+            }
+        }
+       
+        
+        //[HttpDelete]
+        //[AllowAnonymous]
+        public HttpResponseMessage DeleteProject(int id)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            try { 
+                _ = db.Query("ProjectSkills").Where("projectID", "=", id).Delete();
+                _ = db.Query("ProjectFramework").Where("projectID", "=", id).Delete();
+                _ = db.Query("StudentProject").Where("projectID", "=", id).Delete();
+
+
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }catch(Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e.Message);
+            }
         }
 
         public HttpResponseMessage getProjectSkills() {
