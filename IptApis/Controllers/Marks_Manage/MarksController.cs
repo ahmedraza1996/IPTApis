@@ -609,7 +609,7 @@ namespace IptApis.Controllers.Marks_Manage
         [HttpGet]
         //Given FSID
         public List<Student_Details> Student_Summary(int id)
-        {
+        {   
             //i did not put this in appsetting as this is a merged project and this function is only used by our project's win service
             String File_Output = "D:\\IPT\\Project";
             List<Student_Details> SDs = new List<Student_Details>();
@@ -642,9 +642,33 @@ namespace IptApis.Controllers.Marks_Manage
                     reader.Close();
                 }
             }
-            for(int i=0;i<SDs.Count;i++)
+            for (int i=0;i<SDs.Count;i++)
             {
                 Dist_list.assign = 0; Dist_list.fyp = 0; Dist_list.pro = 0; Dist_list.lab = 0; Dist_list.pres = 0; Dist_list.quiz = 0;
+
+                query = "select Course.CourseName " +
+                "from FacultySections, CourseFaculty, CourseOffered, Course " +
+                "where FacultySections.CFID = CourseFaculty.CFID and CourseFaculty.CourseOfferedID = CourseOffered.CourseOfferedID and CourseOffered.CourseID = Course.CourseID "
+                + "and FacultySections.FSID = " + id.ToString();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            SDs[i].CourseName = reader.GetString(reader.GetOrdinal("CourseName"));
+                        }
+                    }
+                    finally
+                    {
+                        reader.Close();
+                    }
+                }
+
                 query = "select MarksDistribution.MDID,MarksDistribution.Weigtage,MarksDistribution.TotalMarks,MarksDistribution.Title,MarksRecord.ObtainedMarks"+
                         " from MarksDistribution, MarksRecord"+
                         " where MarksDistribution.MDID = MarksRecord.MDID and MarksDistribution.FSID = "+id.ToString()+"  and MarksRecord.StudentID = " + SDs[i].StudentID.ToString();
