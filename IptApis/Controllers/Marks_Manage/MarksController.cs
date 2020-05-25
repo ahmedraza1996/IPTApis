@@ -457,7 +457,7 @@ namespace IptApis.Controllers.Marks_Manage
         [HttpPut]
         public String update_distribution(Update_Distribution temp)
         {
-            /*bool check_weightage_100 = true;bool check_total_overflow = false;*/double sum_weightage = 0;double current_weightage = 0;double current_marks = 0;
+            /*bool check_weightage_100 = true;bool check_total_overflow = false;*/double sum_weightage = 0;double current_weightage = 0;double current_min_marks = 0;
             String query= "select sum(MarksDistribution.Weigtage) as SUM from MarksDistribution where MarksDistribution.FSID = "+temp.FSID.ToString();
             string connectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
 
@@ -479,7 +479,7 @@ namespace IptApis.Controllers.Marks_Manage
                     reader.Close();
                 }
             }
-            query = "select MarksDistribution.Weigtage,MarksDistribution.TotalMarks from MarksDistribution where MarksDistribution.MDID = " + temp.MDID.ToString();
+            query = "select MarksDistribution.Weigtage from MarksDistribution where MarksDistribution.MDID = " + temp.MDID.ToString();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -491,7 +491,6 @@ namespace IptApis.Controllers.Marks_Manage
                     while (reader.Read())
                     {
                         current_weightage = reader.GetDouble(reader.GetOrdinal("Weigtage"));
-                        current_marks= reader.GetDouble(reader.GetOrdinal("TotalMarks"));
                     }
                 }
                 finally
@@ -499,7 +498,26 @@ namespace IptApis.Controllers.Marks_Manage
                     reader.Close();
                 }
             }
-            if ((sum_weightage - current_weightage + temp.weightage) <= 100 && (temp.Total_marks >= current_marks))
+            query = "select min(MarksRecord.ObtainedMarks) as min from MarksRecord where MarksRecord.MDID = " + temp.MDID.ToString();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        current_min_marks = reader.GetDouble(reader.GetOrdinal("min"));
+                    }
+                }
+                finally
+                {
+                    reader.Close();
+                }
+            }
+            if ((sum_weightage - current_weightage + temp.weightage) <= 100 && (temp.Total_marks >= current_min_marks))
             {
                 query = "update MarksDistribution set TotalMarks = " + temp.Total_marks.ToString() + ", Weigtage = " + temp.weightage.ToString() + " where MDID = " + temp.MDID.ToString();
                 SqlConnection connection = new SqlConnection(connectionString);
