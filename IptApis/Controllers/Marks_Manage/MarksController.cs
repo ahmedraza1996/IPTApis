@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using IptApis.MarksModels;
 using System.Web.Script.Serialization;
+using System.IO;
 
 namespace IptApis.Controllers.Marks_Manage
 {
@@ -238,7 +239,7 @@ namespace IptApis.Controllers.Marks_Manage
                 for(int i=0;i<records.Count;i++)
                 {
                     int count = 0;
-                    double max = 0,min= records[i].totalmarks, average=0;
+                    double max = 0,min= records[i].totalmarks, average=0;bool no_records_found = true;
                     query = "Select Student.SName,Student.StudentID,MarksRecord.ObtainedMarks " +
                                "from MarksDistribution,MarksRecord,Student " +
                                "where MarksDistribution.MDID=MarksRecord.MDID and MarksRecord.StudentID=Student.StudentID and MarksDistribution.MDID=" + records[i].MDID;
@@ -258,6 +259,12 @@ namespace IptApis.Controllers.Marks_Manage
                             average += temp2.obtained;
                             records[i].SRs.Add(temp2);
                             count++;
+                            no_records_found = false;
+                        }
+                        if(no_records_found)
+                        {
+                            min = 0;
+                            average = 0;
                         }
                     }
                     finally
@@ -267,9 +274,11 @@ namespace IptApis.Controllers.Marks_Manage
                     records[i].max = max; records[i].min = min; records[i].average = average/count;
                 }
             }
+            SectionRecords.assign = 0; SectionRecords.quiz = 0; SectionRecords.pro = 0; SectionRecords.fyp = 0; SectionRecords.lab = 0; SectionRecords.pres = 0;
             return records;
         }
         [HttpGet]
+        //just a function for some testing
         public List<SectionRecords> test()
         {
             List<SectionRecords> test = new List<SectionRecords>();
@@ -596,6 +605,79 @@ namespace IptApis.Controllers.Marks_Manage
             return_value = cmd.ExecuteNonQuery();
             connection.Close();
             return "Success";
+        }
+        [HttpGet]
+        //Given FSID
+        public List<Student_Details> Student_Summary(int id)
+        {
+            //i did not put this in appsetting as this is a merged project and this function is only used by our project's win service
+            String File_Output = "D:\\IPT\\Project";
+            List<Student_Details> SDs = new List<Student_Details>();
+            string query = "select  Student.StudentID,Student.SName,Student.Email " +
+                           "from FacultySections,CourseEnrollment,Student " +
+                           "where FacultySections.FSID=CourseEnrollment.FSID and Student.StudentID=CourseEnrollment.StudentID and FacultySections.FSID=" + id.ToString();
+
+            string connectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        Student_Details sds = new Student_Details();
+                        sds.StudentID = reader.GetInt32(reader.GetOrdinal("StudentID"));
+                        sds.StudentName = reader.GetString(reader.GetOrdinal("SName"));
+                        sds.Email = reader.GetString(reader.GetOrdinal("Email"));
+
+                        SDs.Add(sds);
+                    }
+                }
+                finally
+                {
+                    reader.Close();
+                }
+            }
+            for(int i=0;i<SDs.Count;i++)
+            {
+                Dist_list.assign = 0; Dist_list.fyp = 0; Dist_list.pro = 0; Dist_list.lab = 0; Dist_list.pres = 0; Dist_list.quiz = 0;
+                query = "select MarksDistribution.MDID,MarksDistribution.Weigtage,MarksDistribution.TotalMarks,MarksDistribution.Title,MarksRecord.ObtainedMarks"+
+                        " from MarksDistribution, MarksRecord"+
+                        " where MarksDistribution.MDID = MarksRecord.MDID and MarksDistribution.FSID = "+id.ToString()+"  and MarksRecord.StudentID = " + SDs[i].StudentID.ToString();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            Dist_list temp = new Dist_list();
+                            temp.title_setter(reader.GetInt32(reader.GetOrdinal("Title")));
+                            temp.currentmarks = reader.GetDouble(reader.GetOrdinal("ObtainedMarks"));
+                            temp.totalmarks= reader.GetDouble(reader.GetOrdinal("TotalMarks"));
+                            temp.weightage= reader.GetDouble(reader.GetOrdinal("Weigtage"));
+                            SDs[i].DL.Add(temp);
+                        }
+
+                    }
+                    finally
+                    {
+                        reader.Close();
+                    }
+                }
+            }
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            var data = serializer.Serialize(SDs);
+            File.WriteAllText(File_Output + "\\Summary.json", data);
+            File.WriteAllText(File_Output + "\\Check", "New Data");
+            return SDs;
         }
     }
 
