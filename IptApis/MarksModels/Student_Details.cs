@@ -11,6 +11,7 @@ namespace IptApis.MarksModels
         {
             DL= new List<Dist_list>();
         }
+        public String CourseName { get; set; }
         public int StudentID { get; set; }
         public String StudentName { get; set; }
         public String Email { get; set; }
