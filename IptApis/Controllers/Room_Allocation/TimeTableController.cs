@@ -12,7 +12,7 @@ namespace IptApis.Controllers.Room_Allocation
     public class TimeTableController : ApiController
     {
         private List<TimetableModel> complete = new List<TimetableModel>();
-
+        [System.Web.Http.HttpGet]
         public List<TimetableModel> GetCourses()
         {
             //populate this list will the items needed from the DB
@@ -54,6 +54,40 @@ namespace IptApis.Controllers.Room_Allocation
             return TTM;
         }
 
+        public List<String> GetInstructor()
+        {
+            //populate this list will the items needed from the DB
+            List<String> TTM = new List<String>();
+
+
+            string queryString = "select distinct(Employee.EmpName) from Employee, Section, Batch, FacultySections, CourseFaculty, Course, CourseOffered " +
+                "where CourseFaculty.EmpID = Employee.EmpID and CourseFaculty.CFID = FacultySections.CFID and Section.SectionID = FacultySections.SectionID and Batch.BatchID = Section.BatchID " +
+                "and Course.CourseID = CourseOffered.CourseID and CourseOffered.CourseOfferedID = CourseFaculty.CourseOfferedID and CourseOffered.CreditHrs = 3; ";
+
+            string connectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {                     
+                        String CourseInstructor = reader.GetString(reader.GetOrdinal("EmpName"));
+                        TTM.Add(CourseInstructor);
+                    }
+                }
+                finally
+                {
+                    reader.Close();
+                }
+            }
+            return TTM;
+        }
+
         [System.Web.Http.HttpGet]
         public TimeTableData extraclass(String course, String Section, int day, String instructor)
         {
@@ -79,6 +113,31 @@ namespace IptApis.Controllers.Room_Allocation
                     td.timeslot = ts;
                     td.section = Section;
                     td.room = "" + (roomempty(day, ts) + 1);
+
+                    string connectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
+
+
+
+                    SqlConnection con = new SqlConnection(connectionString);
+                    con.Open();
+                    String batcher = "Batch16";
+                    for(int i=0;i<TTD.Count;i++)
+                    {
+                        if(TTD[i].course.Equals(td.course))
+                        {
+                            batcher = TTD[i].batch;
+                            break;
+                        }
+                    }
+                    int rooms = roomempty(day, ts) + 1;
+                    int batchid = getBatchID(batcher);
+                    SqlCommand cmd = new SqlCommand("insert into Timetable(empID,dayID,courseID,sectionID,batchID,roomID,timeslotID) values (" + getinstructorID(td.empname) + "," + td.day + "" +
+                        "," + getCourseID(td.course) + "," + getSectionID(td.section, batchid) + "," + batchid + "," + rooms + "," + td.timeslot + ")", con);
+
+                    int asd = cmd.ExecuteNonQuery();
+
+                    con.Close();
+                    td.batch = batcher;
                     return td;
                 }
             }
@@ -240,7 +299,20 @@ namespace IptApis.Controllers.Room_Allocation
 
             return temp;
         }
+        [System.Web.Http.HttpGet]
+        public void ClearDB()
+        {
+            string connectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
+            SqlConnection con = new SqlConnection(connectionString);
 
+            con.Open();
+            
+            SqlCommand cmd = new SqlCommand("DBCC CHECKIDENT('Timetable', RESEED, 0);", con);
+            int poe = cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("delete from Timetable", con);
+            int asd = cmd.ExecuteNonQuery();
+            con.Close();
+        }
 
         [System.Web.Http.HttpGet]
         public List<TimeTableData> FetchTimetable()
@@ -266,8 +338,10 @@ namespace IptApis.Controllers.Room_Allocation
                 SqlDataReader reader = command.ExecuteReader();
                 try
                 {
-                    while (reader.Read())
+                    int i = 0;
+                    while (reader.Read()   )
                     {
+                        //i++;
                         TimeTableData temp = new TimeTableData();
                         temp.course = reader.GetString(reader.GetOrdinal("CourseName"));
                         temp.empname = reader.GetString(reader.GetOrdinal("EmpName"));
