@@ -8,5 +8,6 @@ namespace IptApis.Controllers.Search_Module.Stemmer
 {
     interface IStemmer
     {
+        StemmedWord Stem(string word);
     }
 }

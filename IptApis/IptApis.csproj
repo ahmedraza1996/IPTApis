@@ -47,6 +47,10 @@
       <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\ReferenceAssemblies\v4.0\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -101,6 +105,20 @@
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\HelpersForSnowballPorterStemmer.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\IPorterStemmer.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\IStemmer.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\SnowballPorterStemmer.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\StemmedWord.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\StepsForSnowballPorterStemmer.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\LyEndingsTests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\MarkingVowelsAsConsonantsTests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\RegionTests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\RemoveOtherSPluralSuffixesTests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\RemoveSPluralTests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\ReplaceYSuffixWithITests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\ShortSyllableTests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\SnowballPorterStemmerUnitTests.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
