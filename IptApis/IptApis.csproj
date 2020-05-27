@@ -113,14 +113,21 @@
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
     <Compile Include="Controllers\CourseRegistration\CourseRegistrationController.cs" />
     <Compile Include="Controllers\Course\CourseController.cs" />
+    <Compile Include="Controllers\Semester\SemesterController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\OfferedCourse.cs" />
     <Compile Include="Models\CourseRegistrationModel.cs" />
+    <Compile Include="Models\SemesterBasic.cs" />
+    <Compile Include="Models\SemesterConfig.cs" />
+    <Compile Include="Models\SemesterInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\Constants\General.constants.cs" />
+    <Compile Include="Shared\Constants\Semester.constants.cs" />
     <Compile Include="Shared\DbUtils.cs" />
+    <Compile Include="Shared\HelperFunctions.cs" />
     <Compile Include="Shared\JsonFormatter.cs" />
     <Compile Include="Shared\Test.cs" />
   </ItemGroup>

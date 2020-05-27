@@ -7,7 +7,7 @@ using System.Web;
 
 namespace IptApis.Models
 {
-    public class CourseModel
+    public class OfferedCourse
     {
         public int courseID { get; set; }
         public string courseName { get; set; }

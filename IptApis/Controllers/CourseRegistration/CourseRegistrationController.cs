@@ -43,8 +43,8 @@ namespace IptApis.Controllers.CourseRegistration
 
             int fsID = (int)section.FSID;
 
-            CourseModel course = db.Query("coursedetails").Where("CourseOfferedID", value.courseOfferedID)
-                .First<CourseModel>();
+            OfferedCourse course = db.Query("coursedetails").Where("CourseOfferedID", value.courseOfferedID)
+                .First<OfferedCourse>();
 
 
             IEnumerable<dynamic> records = db.Query("courseSectionsNum").Where("FSID", fsID).Get();

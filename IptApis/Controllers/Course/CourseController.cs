@@ -24,24 +24,24 @@ namespace IptApis.Controllers.Course
         public IHttpActionResult getStudentCourses(int studentID)
         {
             
-            IEnumerable<CourseModel> courses = db.Query("coursedetails").Where("StudentID",studentID).Get<CourseModel>();
+            IEnumerable<OfferedCourse> courses = db.Query("coursedetails").Where("StudentID",studentID).Get<OfferedCourse>();
             return Ok(courses);
         }
 
         // GET: api/Course/5
         public IHttpActionResult Get(int id)
         {
-           CourseModel course = db.Query("coursedetails").Where("CourseOfferedID",id).First<CourseModel>();
+           OfferedCourse course = db.Query("coursedetails").Where("CourseOfferedID",id).First<OfferedCourse>();
            return Ok(course);
         }
 
         // POST: api/Course
-        public void Post([FromBody]CourseModel course)
+        public void Post([FromBody]dynamic course)
         {
         }
 
         // PUT: api/Course/5
-        public void Put(int id, [FromBody]CourseModel course)
+        public void Put(int id, [FromBody]dynamic course)
         {
         }
 
