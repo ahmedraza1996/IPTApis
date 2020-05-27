@@ -66,3 +66,139 @@ C:\Users\ahmed\source\repos\IptApis\IptApis\bin\QueryBuilder.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\SqlKata.Execution.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Dapper.xml
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Transactions.Workflows.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\IptApis.dll.config
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\IptApis.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\IptApis.pdb
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\csc.exe
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\csc.exe.config
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\csc.rsp
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\csi.exe
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\csi.exe.config
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\csi.rsp
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.AppContext.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Console.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.IO.Compression.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Security.Claims.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.ValueTuple.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\vbc.exe
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\vbc.exe.config
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\vbc.rsp
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\VBCSCompiler.exe
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\Dapper.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\Newtonsoft.Json.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\QueryBuilder.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\SqlKata.Execution.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\System.Net.Http.Formatting.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\System.Transactions.Workflows.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\System.Web.Http.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\System.Web.Http.WebHost.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\Dapper.xml
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\Newtonsoft.Json.xml
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\System.Net.Http.Formatting.xml
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\System.Web.Http.xml
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\System.Web.Http.WebHost.xml
+C:\Users\Yousuf Jusani\IPTApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Yousuf Jusani\IPTApis\IptApis\obj\Debug\IptApis.csprojAssemblyReference.cache
+C:\Users\Yousuf Jusani\IPTApis\IptApis\obj\Debug\IptApis.csproj.CopyComplete
+C:\Users\Yousuf Jusani\IPTApis\IptApis\obj\Debug\IptApis.dll
+C:\Users\Yousuf Jusani\IPTApis\IptApis\obj\Debug\IptApis.pdb
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\IptApis.dll.config
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\IptApis.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\IptApis.pdb
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\csc.exe
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\csc.exe.config
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\csc.rsp
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\csi.exe
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\csi.exe.config
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\csi.rsp
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.AppContext.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Console.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.IO.Compression.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.IO.Pipes.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Security.Claims.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.ValueTuple.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Xml.XPath.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\vbc.exe
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\vbc.exe.config
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\vbc.rsp
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\VBCSCompiler.exe
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\Dapper.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\Newtonsoft.Json.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\QueryBuilder.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\SqlKata.Execution.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\System.Net.Http.Formatting.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\System.Transactions.Workflows.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\System.Web.Http.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\System.Web.Http.WebHost.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\Dapper.xml
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\Newtonsoft.Json.xml
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\System.Net.Http.Formatting.xml
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\System.Web.Http.xml
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\System.Web.Http.WebHost.xml
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\obj\Debug\IptApis.csprojAssemblyReference.cache
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\obj\Debug\IptApis.csproj.CopyComplete
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\obj\Debug\IptApis.dll
+C:\Users\M.Bilal Un Nabi Khan\IPTApis\IptApis\obj\Debug\IptApis.pdb
