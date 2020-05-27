@@ -113,6 +113,10 @@
     <Compile Include="Controllers\Search Module\Indexes\Vector.cs" />
     <Compile Include="Controllers\Search Module\Indexes\WordDocuments.cs" />
     <Compile Include="Controllers\Search Module\Indexes\WordsVector.cs" />
+    <Compile Include="Controllers\Search Module\QueryParser\BooleanQueryParser.cs" />
+    <Compile Include="Controllers\Search Module\QueryParser\InfixToPostfixConvertor.cs" />
+    <Compile Include="Controllers\Search Module\QueryParser\QueryParser.cs" />
+    <Compile Include="Controllers\Search Module\QueryParser\TestQueryParser\InfixToPostfixConvertorTest.cs" />
     <Compile Include="Controllers\Search Module\TextProcessingHelpers\TestTextProcessingHelpers\PreprocessorTests.cs" />
     <Compile Include="Controllers\Search Module\TextProcessingHelpers\TestTextProcessingHelpers\TokenizerTests.cs" />
     <Compile Include="Controllers\Search Module\TextProcessingHelpers\Token.cs" />
@@ -151,7 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Search Module\QueryParser\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
