@@ -334,7 +334,7 @@ namespace IptApis.Controllers.Marks_Manage
                 }
             }
             //checking if weightage doesn't overflow
-            query = "select sum(MarksDistribution.Weigtage) as Weightage_Sum from MarksDistribution, FacultySections where MarksDistribution.FSID = FacultySections.FSID and FacultySections.FSID =  " + temp.FSID;
+            query = "select isnull(sum(MarksDistribution.Weigtage),0) from MarksDistribution, FacultySections where MarksDistribution.FSID = FacultySections.FSID and FacultySections.FSID =  " + temp.FSID;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -420,6 +420,7 @@ namespace IptApis.Controllers.Marks_Manage
             //check if their marks < total and student exist in course
             foreach (var data in temp.SMs)
             {
+                /*
                 query= " select CourseEnrollment.StudentID from MarksRecord, MarksDistribution, FacultySections, CourseEnrollment where MarksRecord.MDID = MarksDistribution.MDID and MarksDistribution.FSID = FacultySections.FSID and FacultySections.FSID = CourseEnrollment.FSID and MarksRecord.StudentID = CourseEnrollment.StudentID and"+
                     " MarksDistribution.TotalMarks <= "+data.ObtainedMarks.ToString()+" and MarksDistribution.MDID = "+temp.MDID.ToString()+" and CourseEnrollment.StudentID = "+data.StudentID.ToString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -446,6 +447,8 @@ namespace IptApis.Controllers.Marks_Manage
                         reader.Close();
                     }
                 }
+                */
+                if (data.ObtainedMarks > total_marks) return "One or more of the Students Marks are greater than total marks";
             }
 
             if (all_checked)
@@ -507,7 +510,7 @@ namespace IptApis.Controllers.Marks_Manage
                     reader.Close();
                 }
             }
-            query = "select min(MarksRecord.ObtainedMarks) as min from MarksRecord where MarksRecord.MDID = " + temp.MDID.ToString();
+            query = "select isnull(min(MarksRecord.ObtainedMarks),0) as min from MarksRecord where MarksRecord.MDID = " + temp.MDID.ToString();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -543,8 +546,28 @@ namespace IptApis.Controllers.Marks_Manage
         {
             string query = "select MarksDistribution.TotalMarks from MarksDistribution where MarksDistribution.MDID = " + temp.MDID.ToString(); bool all_checked = true;
             string connectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
+            double total_marks = 0;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        total_marks = reader.GetDouble(reader.GetOrdinal("TotalMarks"));
+                    }
+                }
+                finally
+                {
+                    reader.Close();
+                }
+            }
             foreach (var data in temp.SMs)
             {
+                /*
                 query = " select CourseEnrollment.StudentID from MarksRecord, MarksDistribution, FacultySections, CourseEnrollment where MarksRecord.MDID = MarksDistribution.MDID and MarksDistribution.FSID = FacultySections.FSID and FacultySections.FSID = CourseEnrollment.FSID and MarksRecord.StudentID = CourseEnrollment.StudentID and" +
                     " MarksDistribution.TotalMarks <= " + data.ObtainedMarks.ToString() + " and MarksDistribution.MDID = " + temp.MDID.ToString() + " and CourseEnrollment.StudentID = " + data.StudentID.ToString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -571,6 +594,8 @@ namespace IptApis.Controllers.Marks_Manage
                         reader.Close();
                     }
                 }
+                */
+                if (data.ObtainedMarks > total_marks) return "One or more of the Students Marks are greater than total marks";
             }
             if (all_checked)
             {
