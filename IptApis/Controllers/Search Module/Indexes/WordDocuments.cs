@@ -19,6 +19,18 @@ namespace IptApis.Controllers.Search_Module.Indexes
             Update(documentIndex, index);
         }
 
+        public HashSet<int> GetDocuments()
+        {
+            HashSet<int> documents = new HashSet<int>();
+
+            foreach(var key in DocumentsDictionary.Keys)
+            {
+                documents.Add(key);
+            }
+
+            return documents;
+        }
+
         public bool Equals(WordDocuments wordDocuments)
         {
             if (DocumentsDictionary.Count != wordDocuments.DocumentsDictionary.Count)

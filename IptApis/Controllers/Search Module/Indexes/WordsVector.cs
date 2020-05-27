@@ -8,6 +8,11 @@ namespace IptApis.Controllers.Search_Module.Indexes
     {
         Dictionary<string, WordDocuments> Values;
 
+        public Dictionary<string, WordDocuments> GetVector()
+        {
+            return Values;
+        }
+
         public WordsVector()
         {
             Values = new Dictionary<string, WordDocuments>();
