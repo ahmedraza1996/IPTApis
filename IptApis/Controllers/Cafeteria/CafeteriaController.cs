@@ -30,7 +30,7 @@ namespace IptApis.Controllers.Cafeteria
            
 
             //var strResponse = response.ElementAt(0).ToString().Replace("DapperRow,", "").Replace("=", ":");
-            
+            //comment
             //Dictionary<string, object> temp = JsonConvert.DeserializeObject<Dictionary<string, object>>(strResponse);
             return this.Request.CreateResponse(HttpStatusCode.OK, response);   //send list of items and Status code =200
         }
