@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Transactions;
 using System.Web.Http;
 
 namespace IptApis.Controllers.Cafeteria
@@ -16,7 +17,7 @@ namespace IptApis.Controllers.Cafeteria
     public class CafeteriaController : ApiController
     {
 
-        public HttpResponseMessage GetProduct()
+        public HttpResponseMessage GetItems()
         {
             var db = DbUtils.GetDBConnection();   //GetDBConnection will return a DBFactory type object, which have establish sql connection
             db.Connection.Open();
@@ -33,14 +34,14 @@ namespace IptApis.Controllers.Cafeteria
             //Dictionary<string, object> temp = JsonConvert.DeserializeObject<Dictionary<string, object>>(strResponse);
             return this.Request.CreateResponse(HttpStatusCode.OK, response);   //send list of items and Status code =200
         }
-        public HttpResponseMessage GetProductbyID()
+        public HttpResponseMessage GetAvailableItems()
         {
-         
-            var db = DbUtils.GetDBConnection();
+            var db = DbUtils.GetDBConnection(); 
             db.Connection.Open();
             IEnumerable<IDictionary<string, object>> response;
-            response = db.Query("fooditem").Where("ItemId", 1).Get().Cast<IDictionary<string, object>>();  //get product by id=1
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+            response = db.Query("fooditem").Where("ItemStatus", "Available").Get().Cast<IDictionary<string, object>>();
+            return this.Request.CreateResponse(HttpStatusCode.OK, response);
         }
+        
     }
 }
