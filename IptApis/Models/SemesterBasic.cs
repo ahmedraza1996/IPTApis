@@ -7,7 +7,7 @@ namespace IptApis.Models
 {
     public class SemesterBasic
     {
-        public int semesterID { get; set; }
+    
         public string semesterName { get; set; }
         public string semesterType { get; set; }
 

@@ -12,8 +12,7 @@ namespace IptApis.Shared
 
         public static bool checkDateFormat(string date)
         {
-            Regex regex = new Regex(@"^\d$");
-
+            Regex regex = new Regex(@"^\d+$");
             return regex.IsMatch(date);
         }
 

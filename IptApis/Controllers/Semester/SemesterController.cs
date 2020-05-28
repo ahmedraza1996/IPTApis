@@ -34,11 +34,11 @@ namespace IptApis.Controllers.Semester
         }
 
         // GET: api/Semester/5
-        public IHttpActionResult Get(int semesterID)
+        public IHttpActionResult Get(int id)
         {
             try
             {
-                SemesterInfo semester = db.Query("SemesterDetails").Where("semesterID", semesterID).First<SemesterInfo>();
+                SemesterInfo semester = db.Query("SemesterDetails").Where("semesterID", id).First<SemesterInfo>();
                 return Ok(semester);
 
             }catch(Exception err)
@@ -51,7 +51,6 @@ namespace IptApis.Controllers.Semester
         public IHttpActionResult Post([FromBody] SemesterInfo semester)
         {
             if (semester is null) return BadRequest(General.INVALID_INPUT);
-
             if (!HelperFunctions.checkDateFormat(semester.registrationStartDate)) return BadRequest(SemesterConstants.INVALID_REG_START_DATE);
             if (!HelperFunctions.checkDateFormat(semester.registrationEndDate)) return BadRequest(SemesterConstants.INVALID_REG_END_DATE);
             if (!HelperFunctions.checkDateFormat(semester.semesterStartDate)) return BadRequest(SemesterConstants.INVALID_REG_START_DATE);
@@ -68,6 +67,7 @@ namespace IptApis.Controllers.Semester
                 SemesterBasic semesterBasic = new SemesterBasic(semester);
                 int semesterID = db.Query("Semester").InsertGetId<int>(semesterBasic);
 
+                semester.semesterID = semesterID;
                 SemesterConfig semesterConfig = new SemesterConfig(semester);
                 var affected = db.Query("Config").Insert(semesterConfig);
                 return Ok();
