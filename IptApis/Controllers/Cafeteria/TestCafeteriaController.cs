@@ -142,7 +142,7 @@ namespace IptApis.Controllers.Cafeteria
             //    return Request.CreateResponse(HttpStatusCode.OK, dict);
 
             //}
-          
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 
