@@ -1,0 +1,134 @@
+Keys:
+Note(This for distribution table):
+1-Assignment
+2-Quiz
+3-Project
+4-Lab
+5-Presentation
+6-FYP
+
+Get=HTTP_Get
+Insert=HTTP_POST
+Update=HTTP_PUT
+Delete=HTTP_Delete
+
+{id}=Insert a int value
+
+https://localhost:44380/api/marks/insert_weightage
+
+{
+	
+"title":"Assignment",
+
+"FSID":"2",
+
+"Total_marks":"20",
+
+"weightage":"5"
+
+}
+
+https://localhost:44380/api/marks/Get_Courses/{id}
+Note:id=empid
+
+https://localhost:44380/api/marks/Get_Section/{id}
+Note:id=CFID
+
+https://localhost:44380/api/marks/Get_Section_Records/{id}
+Note:id=FSID
+
+https://localhost:44380/api/marks/Get_Student_Given_Section/{id}
+Note:id=FSID
+
+https://localhost:44380/api/marks/insert_marks
+
+{
+	
+	"MDID":"3",
+
+	"SMs": [
+
+		{
+					"StudentID":"8",
+				"ObtainedMarks":"15"
+				},
+
+		{
+					"StudentID":"9",
+				"ObtainedMarks":"18"
+				},
+
+		{
+					"StudentID":"10",
+				"ObtainedMarks":"3"
+				}
+
+		]
+
+}
+
+https://localhost:44380/api/marks/update_distribution
+
+{
+	
+	"MDID":"9",
+
+	"FSID":"2",
+			"Total_marks":"110",
+
+	"weightage":"2"
+
+}
+
+https://localhost:44380/api/marks/update_marks
+
+{
+	
+	
+	"MDID":"3",
+
+
+	"SMs": [
+
+
+		{
+
+			"StudentID":"8",
+			
+
+						"ObtainedMarks":"18"
+
+		},
+
+		
+		{
+
+		
+
+	"StudentID":"9",
+			
+
+						"ObtainedMarks":"15"
+
+		},
+
+
+		{
+
+		
+
+	"StudentID":"10",
+			
+
+						"ObtainedMarks":"13"
+
+		}
+
+
+	       ]
+
+
+}
+
+https://localhost:44380/api/marks/Delete_Records/{id}
+Note:Here id is MDID
