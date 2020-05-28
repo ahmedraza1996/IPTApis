@@ -7,7 +7,7 @@ namespace IptApis.Controllers.Search_Module.Indexes
     public class Index : IEquatable<Index>
     {
         public string Word;
-        public int Count;
+        public double Count;
         public IList<int> Positions;
 
         public Index()

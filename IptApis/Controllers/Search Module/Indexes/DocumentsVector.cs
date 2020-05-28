@@ -12,6 +12,21 @@ namespace IptApis.Controllers.Search_Module.Indexes
             Value = new Dictionary<int, Vector>();
         }
 
+        public List<int> DocumentsIndex()
+        {
+            List<int> keys = new List<int>();
+            foreach (var pair in Value)
+            {
+                keys.Add(pair.Key);
+            }
+            return keys;
+        }
+
+        public Vector GetVectorOfDocumentIndex(int documentIndex)
+        {
+            return Value[documentIndex];
+        }
+
         public DocumentsVector(int documentIndex, Vector vector)
         {
             Value = new Dictionary<int, Vector>();

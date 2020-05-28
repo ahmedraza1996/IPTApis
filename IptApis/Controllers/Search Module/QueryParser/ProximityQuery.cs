@@ -27,12 +27,12 @@ namespace IptApis.Controllers.Search_Module.QueryParser
                 var commonDocuments = document1.GetDocuments();
                 commonDocuments.IntersectWith(document2.GetDocuments());
 
-                foreach(int doc in commonDocuments)
+                foreach (int doc in commonDocuments)
                 {
                     var list1 = document1.DocumentsDictionary[doc].Positions;
                     var list2 = document2.DocumentsDictionary[doc].Positions;
 
-                    foreach(var position in list1)
+                    foreach (var position in list1)
                     {
                         if (list2.Contains(position + displacement) || list2.Contains(position - displacement))
                         {
@@ -51,3 +51,4 @@ namespace IptApis.Controllers.Search_Module.QueryParser
 
         }
     }
+}
