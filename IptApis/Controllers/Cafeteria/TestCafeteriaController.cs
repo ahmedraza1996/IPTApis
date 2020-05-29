@@ -121,28 +121,29 @@ namespace IptApis.Controllers.Cafeteria
            
         }
 
+
         public HttpResponseMessage GetProductWithImage()
         {
             string relativepath = "~/productimage/" + "Bojack.jpg";
             var filePath = HttpContext.Current.Server.MapPath(relativepath);
 
-           // var Response = Request.CreateResponse(HttpStatusCode.OK);
+            var Response = Request.CreateResponse(HttpStatusCode.OK);
             var path = "~/";
-            //using (byte[] contents = System.IO.File.ReadAllBytes(filePath))
-            //{
-            //    var base64string = Convert.ToBase64String(contents);
-            //    //System.IO.MemoryStream ms = new System.IO.MemoryStream(contents);
-            //    //StreamContent image = new StreamContent(base64string);
-            //    //Response.Content = image;
-            //    //Response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            byte[] contents = System.IO.File.ReadAllBytes(filePath);
+            
+                var base64string = Convert.ToBase64String(contents);
+                //System.IO.MemoryStream ms = new System.IO.MemoryStream(contents);
+                //StreamContent image = new StreamContent(base64string);
+                //Response.Content = image;
+                //Response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
-            //    Dictionary<string, object> dict = new Dictionary<string, object>();
-            //    dict["base64string"] = base64string;
+                Dictionary<string, object> dict = new Dictionary<string, object>();
+                dict["base64string"] = base64string;
 
-            //    return Request.CreateResponse(HttpStatusCode.OK, dict);
+                return Request.CreateResponse(HttpStatusCode.OK, dict);
 
-            //}
-            return Request.CreateResponse(HttpStatusCode.OK);
+            
+           
         }
 
 
