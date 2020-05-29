@@ -109,10 +109,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\JobPortal\AppliedFor.cs" />
     <Compile Include="Models\JobPortal\Domain.cs" />
     <Compile Include="Models\JobPortal\Experience.cs" />
     <Compile Include="Models\JobPortal\Framework.cs" />
     <Compile Include="Models\JobPortal\Job.cs" />
+    <Compile Include="Models\JobPortal\JobDetails.cs" />
+    <Compile Include="Models\JobPortal\newJob.cs" />
     <Compile Include="Models\JobPortal\Organization.cs" />
     <Compile Include="Models\JobPortal\Project.cs" />
     <Compile Include="Models\JobPortal\Skill.cs" />
