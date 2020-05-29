@@ -334,7 +334,7 @@ namespace IptApis.Controllers.Marks_Manage
                 }
             }
             //checking if weightage doesn't overflow
-            query = "select isnull(sum(MarksDistribution.Weigtage),0) from MarksDistribution, FacultySections where MarksDistribution.FSID = FacultySections.FSID and FacultySections.FSID =  " + temp.FSID;
+            query = "select isnull(sum(MarksDistribution.Weigtage),0) as Weightage_Sum from MarksDistribution, FacultySections where MarksDistribution.FSID = FacultySections.FSID and FacultySections.FSID = " + temp.FSID;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -470,7 +470,7 @@ namespace IptApis.Controllers.Marks_Manage
         public String update_distribution(Update_Distribution temp)
         {
             /*bool check_weightage_100 = true;bool check_total_overflow = false;*/double sum_weightage = 0;double current_weightage = 0;double current_min_marks = 0;
-            String query= "select sum(MarksDistribution.Weigtage) as SUM from MarksDistribution where MarksDistribution.FSID = "+temp.FSID.ToString();
+            String query= "select isnull(sum(MarksDistribution.Weigtage),0) as SUM from MarksDistribution where MarksDistribution.FSID = "+temp.FSID.ToString();
             string connectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -636,7 +636,7 @@ namespace IptApis.Controllers.Marks_Manage
         public List<Student_Details> Student_Summary(int id)
         {   
             //i did not put this in appsetting as this is a merged project and this function is only used by our project's win service
-            String File_Output = "D:\\IPT\\Project";
+            //String File_Output = "D:\\IPT\\Project";
             List<Student_Details> SDs = new List<Student_Details>();
             string query = "select  Student.StudentID,Student.SName,Student.Email " +
                            "from FacultySections,CourseEnrollment,Student " +
@@ -708,6 +708,7 @@ namespace IptApis.Controllers.Marks_Manage
                         while (reader.Read())
                         {
                             Dist_list temp = new Dist_list();
+                            temp.MDID = (reader.GetInt32(reader.GetOrdinal("MDID")));
                             temp.title_setter(reader.GetInt32(reader.GetOrdinal("Title")));
                             temp.currentmarks = reader.GetDouble(reader.GetOrdinal("ObtainedMarks"));
                             temp.totalmarks= reader.GetDouble(reader.GetOrdinal("TotalMarks"));
@@ -722,10 +723,10 @@ namespace IptApis.Controllers.Marks_Manage
                     }
                 }
             }
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            var data = serializer.Serialize(SDs);
-            File.WriteAllText(File_Output + "\\Summary.json", data);
-            File.WriteAllText(File_Output + "\\Check", "New Data");
+            //JavaScriptSerializer serializer = new JavaScriptSerializer();
+            //var data = serializer.Serialize(SDs);
+            //File.WriteAllText(File_Output + "\\Summary.json", data);
+            //File.WriteAllText(File_Output + "\\Check", "New Data");
             return SDs;
         }
     }
