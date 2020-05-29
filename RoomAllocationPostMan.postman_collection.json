@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "813231bd-e49f-4efe-836e-e90fa8497bf9",
+		"name": "RoomAllocationPostMan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ExtraClass",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44380/api/timetable/extraclass/?course=Design Defects and Restructuring&Section=A&day=5&instructor=Dr. Muhammad Rafi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"timetable",
+						"extraclass",
+						""
+					],
+					"query": [
+						{
+							"key": "course",
+							"value": "Design Defects and Restructuring"
+						},
+						{
+							"key": "Section",
+							"value": "A"
+						},
+						{
+							"key": "day",
+							"value": "5"
+						},
+						{
+							"key": "instructor",
+							"value": "Dr. Muhammad Rafi"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FetchClasses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44380/api/timetable/FetchClassroom/?course=Design Defects and Restructuring&Section=A&day=5&instructor=Dr. Muhammad Rafi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"timetable",
+						"FetchClassroom",
+						""
+					],
+					"query": [
+						{
+							"key": "course",
+							"value": "Design Defects and Restructuring"
+						},
+						{
+							"key": "Section",
+							"value": "A"
+						},
+						{
+							"key": "day",
+							"value": "5"
+						},
+						{
+							"key": "instructor",
+							"value": "Dr. Muhammad Rafi"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FetchTimetable",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44380/api/timetable/FetchTimetable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"timetable",
+						"FetchTimetable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "classtimetalbe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44380/api/timetable/classtimetalbe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"timetable",
+						"classtimetalbe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LabTimetable",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44380/api/timetable/maketimetable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"timetable",
+						"maketimetable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reallocateclassroom",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44380/api/timetable/reallocateclassroom/?course=Design Defects and Restructuring&Section=A&day=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"timetable",
+						"reallocateclassroom",
+						""
+					],
+					"query": [
+						{
+							"key": "course",
+							"value": "Design Defects and Restructuring"
+						},
+						{
+							"key": "Section",
+							"value": "A"
+						},
+						{
+							"key": "day",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
