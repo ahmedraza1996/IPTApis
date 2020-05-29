@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using IptApis.MarksModels;
 using System.Web.Script.Serialization;
+using System.IO;
 
 namespace IptApis.Controllers.Marks_Manage
 {
@@ -238,7 +239,7 @@ namespace IptApis.Controllers.Marks_Manage
                 for(int i=0;i<records.Count;i++)
                 {
                     int count = 0;
-                    double max = 0,min= records[i].totalmarks, average=0;
+                    double max = 0,min= records[i].totalmarks, average=0;bool no_records_found = true;
                     query = "Select Student.SName,Student.StudentID,MarksRecord.ObtainedMarks " +
                                "from MarksDistribution,MarksRecord,Student " +
                                "where MarksDistribution.MDID=MarksRecord.MDID and MarksRecord.StudentID=Student.StudentID and MarksDistribution.MDID=" + records[i].MDID;
@@ -258,6 +259,12 @@ namespace IptApis.Controllers.Marks_Manage
                             average += temp2.obtained;
                             records[i].SRs.Add(temp2);
                             count++;
+                            no_records_found = false;
+                        }
+                        if(no_records_found)
+                        {
+                            min = 0;
+                            average = 0;
                         }
                     }
                     finally
@@ -267,9 +274,11 @@ namespace IptApis.Controllers.Marks_Manage
                     records[i].max = max; records[i].min = min; records[i].average = average/count;
                 }
             }
+            SectionRecords.assign = 0; SectionRecords.quiz = 0; SectionRecords.pro = 0; SectionRecords.fyp = 0; SectionRecords.lab = 0; SectionRecords.pres = 0;
             return records;
         }
         [HttpGet]
+        //just a function for some testing
         public List<SectionRecords> test()
         {
             List<SectionRecords> test = new List<SectionRecords>();
@@ -325,7 +334,7 @@ namespace IptApis.Controllers.Marks_Manage
                 }
             }
             //checking if weightage doesn't overflow
-            query = "select sum(MarksDistribution.Weigtage) as Weightage_Sum from MarksDistribution, FacultySections where MarksDistribution.FSID = FacultySections.FSID and FacultySections.FSID =  " + temp.FSID;
+            query = "select isnull(sum(MarksDistribution.Weigtage),0) as Weightage_Sum from MarksDistribution, FacultySections where MarksDistribution.FSID = FacultySections.FSID and FacultySections.FSID = " + temp.FSID;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -411,6 +420,7 @@ namespace IptApis.Controllers.Marks_Manage
             //check if their marks < total and student exist in course
             foreach (var data in temp.SMs)
             {
+                /*
                 query= " select CourseEnrollment.StudentID from MarksRecord, MarksDistribution, FacultySections, CourseEnrollment where MarksRecord.MDID = MarksDistribution.MDID and MarksDistribution.FSID = FacultySections.FSID and FacultySections.FSID = CourseEnrollment.FSID and MarksRecord.StudentID = CourseEnrollment.StudentID and"+
                     " MarksDistribution.TotalMarks <= "+data.ObtainedMarks.ToString()+" and MarksDistribution.MDID = "+temp.MDID.ToString()+" and CourseEnrollment.StudentID = "+data.StudentID.ToString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -437,6 +447,8 @@ namespace IptApis.Controllers.Marks_Manage
                         reader.Close();
                     }
                 }
+                */
+                if (data.ObtainedMarks > total_marks) return "One or more of the Students Marks are greater than total marks";
             }
 
             if (all_checked)
@@ -457,8 +469,8 @@ namespace IptApis.Controllers.Marks_Manage
         [HttpPut]
         public String update_distribution(Update_Distribution temp)
         {
-            /*bool check_weightage_100 = true;bool check_total_overflow = false;*/double sum_weightage = 0;double current_weightage = 0;double current_marks = 0;
-            String query= "select sum(MarksDistribution.Weigtage) as SUM from MarksDistribution where MarksDistribution.FSID = "+temp.FSID.ToString();
+            /*bool check_weightage_100 = true;bool check_total_overflow = false;*/double sum_weightage = 0;double current_weightage = 0;double current_min_marks = 0;
+            String query= "select isnull(sum(MarksDistribution.Weigtage),0) as SUM from MarksDistribution where MarksDistribution.FSID = "+temp.FSID.ToString();
             string connectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -479,7 +491,7 @@ namespace IptApis.Controllers.Marks_Manage
                     reader.Close();
                 }
             }
-            query = "select MarksDistribution.Weigtage,MarksDistribution.TotalMarks from MarksDistribution where MarksDistribution.MDID = " + temp.MDID.ToString();
+            query = "select MarksDistribution.Weigtage from MarksDistribution where MarksDistribution.MDID = " + temp.MDID.ToString();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -491,7 +503,6 @@ namespace IptApis.Controllers.Marks_Manage
                     while (reader.Read())
                     {
                         current_weightage = reader.GetDouble(reader.GetOrdinal("Weigtage"));
-                        current_marks= reader.GetDouble(reader.GetOrdinal("TotalMarks"));
                     }
                 }
                 finally
@@ -499,7 +510,26 @@ namespace IptApis.Controllers.Marks_Manage
                     reader.Close();
                 }
             }
-            if ((sum_weightage - current_weightage + temp.weightage) <= 100 && (temp.Total_marks >= current_marks))
+            query = "select isnull(min(MarksRecord.ObtainedMarks),0) as min from MarksRecord where MarksRecord.MDID = " + temp.MDID.ToString();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        current_min_marks = reader.GetDouble(reader.GetOrdinal("min"));
+                    }
+                }
+                finally
+                {
+                    reader.Close();
+                }
+            }
+            if ((sum_weightage - current_weightage + temp.weightage) <= 100 && (temp.Total_marks >= current_min_marks))
             {
                 query = "update MarksDistribution set TotalMarks = " + temp.Total_marks.ToString() + ", Weigtage = " + temp.weightage.ToString() + " where MDID = " + temp.MDID.ToString();
                 SqlConnection connection = new SqlConnection(connectionString);
@@ -516,8 +546,28 @@ namespace IptApis.Controllers.Marks_Manage
         {
             string query = "select MarksDistribution.TotalMarks from MarksDistribution where MarksDistribution.MDID = " + temp.MDID.ToString(); bool all_checked = true;
             string connectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
+            double total_marks = 0;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        total_marks = reader.GetDouble(reader.GetOrdinal("TotalMarks"));
+                    }
+                }
+                finally
+                {
+                    reader.Close();
+                }
+            }
             foreach (var data in temp.SMs)
             {
+                /*
                 query = " select CourseEnrollment.StudentID from MarksRecord, MarksDistribution, FacultySections, CourseEnrollment where MarksRecord.MDID = MarksDistribution.MDID and MarksDistribution.FSID = FacultySections.FSID and FacultySections.FSID = CourseEnrollment.FSID and MarksRecord.StudentID = CourseEnrollment.StudentID and" +
                     " MarksDistribution.TotalMarks <= " + data.ObtainedMarks.ToString() + " and MarksDistribution.MDID = " + temp.MDID.ToString() + " and CourseEnrollment.StudentID = " + data.StudentID.ToString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -544,6 +594,8 @@ namespace IptApis.Controllers.Marks_Manage
                         reader.Close();
                     }
                 }
+                */
+                if (data.ObtainedMarks > total_marks) return "One or more of the Students Marks are greater than total marks";
             }
             if (all_checked)
             {
@@ -578,6 +630,104 @@ namespace IptApis.Controllers.Marks_Manage
             return_value = cmd.ExecuteNonQuery();
             connection.Close();
             return "Success";
+        }
+        [HttpGet]
+        //Given FSID
+        public List<Student_Details> Student_Summary(int id)
+        {   
+            //i did not put this in appsetting as this is a merged project and this function is only used by our project's win service
+            //String File_Output = "D:\\IPT\\Project";
+            List<Student_Details> SDs = new List<Student_Details>();
+            string query = "select  Student.StudentID,Student.SName,Student.Email " +
+                           "from FacultySections,CourseEnrollment,Student " +
+                           "where FacultySections.FSID=CourseEnrollment.FSID and Student.StudentID=CourseEnrollment.StudentID and FacultySections.FSID=" + id.ToString();
+
+            string connectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        Student_Details sds = new Student_Details();
+                        sds.StudentID = reader.GetInt32(reader.GetOrdinal("StudentID"));
+                        sds.StudentName = reader.GetString(reader.GetOrdinal("SName"));
+                        sds.Email = reader.GetString(reader.GetOrdinal("Email"));
+
+                        SDs.Add(sds);
+                    }
+                }
+                finally
+                {
+                    reader.Close();
+                }
+            }
+            for (int i=0;i<SDs.Count;i++)
+            {
+                Dist_list.assign = 0; Dist_list.fyp = 0; Dist_list.pro = 0; Dist_list.lab = 0; Dist_list.pres = 0; Dist_list.quiz = 0;
+
+                query = "select Course.CourseName " +
+                "from FacultySections, CourseFaculty, CourseOffered, Course " +
+                "where FacultySections.CFID = CourseFaculty.CFID and CourseFaculty.CourseOfferedID = CourseOffered.CourseOfferedID and CourseOffered.CourseID = Course.CourseID "
+                + "and FacultySections.FSID = " + id.ToString();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            SDs[i].CourseName = reader.GetString(reader.GetOrdinal("CourseName"));
+                        }
+                    }
+                    finally
+                    {
+                        reader.Close();
+                    }
+                }
+
+                query = "select MarksDistribution.MDID,MarksDistribution.Weigtage,MarksDistribution.TotalMarks,MarksDistribution.Title,MarksRecord.ObtainedMarks"+
+                        " from MarksDistribution, MarksRecord"+
+                        " where MarksDistribution.MDID = MarksRecord.MDID and MarksDistribution.FSID = "+id.ToString()+"  and MarksRecord.StudentID = " + SDs[i].StudentID.ToString();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            Dist_list temp = new Dist_list();
+                            temp.MDID = (reader.GetInt32(reader.GetOrdinal("MDID")));
+                            temp.title_setter(reader.GetInt32(reader.GetOrdinal("Title")));
+                            temp.currentmarks = reader.GetDouble(reader.GetOrdinal("ObtainedMarks"));
+                            temp.totalmarks= reader.GetDouble(reader.GetOrdinal("TotalMarks"));
+                            temp.weightage= reader.GetDouble(reader.GetOrdinal("Weigtage"));
+                            SDs[i].DL.Add(temp);
+                        }
+
+                    }
+                    finally
+                    {
+                        reader.Close();
+                    }
+                }
+            }
+            //JavaScriptSerializer serializer = new JavaScriptSerializer();
+            //var data = serializer.Serialize(SDs);
+            //File.WriteAllText(File_Output + "\\Summary.json", data);
+            //File.WriteAllText(File_Output + "\\Check", "New Data");
+            return SDs;
         }
     }
 
