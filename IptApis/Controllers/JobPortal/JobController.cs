@@ -18,5 +18,6 @@ namespace IptApis.Controllers.JobPortal
             IEnumerable<Job> response = db.Query("Job").Get<Job>();//;.Cast<ProjectModel>();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
+
      }
 }
