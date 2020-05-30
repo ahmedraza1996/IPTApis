@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Models\MarksModels\How to use API.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,10 +102,20 @@
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
+    <Compile Include="Controllers\Course_Feedback\CourseFeedbackController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CouseFeedbackModels\Questions.cs" />
+    <Compile Include="Models\MarksModels\Courses.cs" />
+    <Compile Include="Models\MarksModels\iMarks.cs" />
+    <Compile Include="Models\MarksModels\iWeightage.cs" />
+    <Compile Include="Models\MarksModels\SectionRecords.cs" />
+    <Compile Include="Models\MarksModels\Sections.cs" />
+    <Compile Include="Models\MarksModels\Section_Students.cs" />
+    <Compile Include="Models\MarksModels\Student_Details.cs" />
+    <Compile Include="Models\MarksModels\Update_Distribution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\DbUtils.cs" />
     <Compile Include="Shared\Test.cs" />
