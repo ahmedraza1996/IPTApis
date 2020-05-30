@@ -7,11 +7,11 @@ namespace IptApis.Models.CouseFeedbackModels
 {
     public class Student
     {
-        public string StudentID;
-        public string Name;
-        public string Email;
-        public string MobileNo;
-        public string RollNo;
+        public string StudentID { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string MobileNo { get; set; }
+        public string RollNo { get; set; }
 
     }
 }

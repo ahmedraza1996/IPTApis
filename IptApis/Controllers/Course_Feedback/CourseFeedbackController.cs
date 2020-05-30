@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using IptApis.CourseFeedbackModels;
+using IptApis.Models.CouseFeedbackModels;
 
 namespace IptApis.Controllers
 {
@@ -20,16 +21,25 @@ namespace IptApis.Controllers
         }
 
         [HttpGet]
-        public string getCurrentStudent(string studentID)
+        public Student getCurrentStudent(string studentID)
         {
             //Will return the current student from the session(Logged in)
             //Currently no session is setup i.e why taking student id in parameter
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
-            IEnumerable<IDictionary<string, object>> responseQuestions;
-            responseQuestions = db.Query("Question").Where("CourseType", "1").Get().Cast<IDictionary<string, object>>();
-
-            return "AAA";
+            IEnumerable<IDictionary<string, object>> responseStudent;
+            responseStudent = db.Query("Student").Where("RollNumber", studentID).Get().Cast<IDictionary<string, object>>();
+            Student x = new Student();
+            foreach (var res in responseStudent)
+            {
+                x.Name = res["SName"].ToString();
+                x.Email = res["Email"].ToString();
+                x.MobileNo = res["MobileNumber"].ToString();
+                x.RollNo = res["RollNumber"].ToString();
+                x.StudentID = res["StudentID"].ToString();
+            }
+            Debug.WriteLine("AAA");
+            return x;
         }
 
         [HttpGet]
