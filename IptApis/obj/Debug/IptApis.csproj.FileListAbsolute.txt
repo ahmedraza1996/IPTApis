@@ -269,3 +269,6 @@ C:\Users\Syed Ghazanfer Anwar\Desktop\IPT Project\IPTApis\IptApis\obj\Debug\IptA
 C:\Users\Syed Ghazanfer Anwar\Desktop\IPT Project\IPTApis\IptApis\obj\Debug\IptApis.csproj.CopyComplete
 C:\Users\Syed Ghazanfer Anwar\Desktop\IPT Project\IPTApis\IptApis\obj\Debug\IptApis.dll
 C:\Users\Syed Ghazanfer Anwar\Desktop\IPT Project\IPTApis\IptApis\obj\Debug\IptApis.pdb
+C:\Users\Syed Ghazanfer Anwar\Desktop\IPT Project\IPTApis\IptApis\bin\System.Web.Cors.dll
+C:\Users\Syed Ghazanfer Anwar\Desktop\IPT Project\IPTApis\IptApis\bin\System.Web.Http.Cors.dll
+C:\Users\Syed Ghazanfer Anwar\Desktop\IPT Project\IPTApis\IptApis\bin\System.Web.Http.Cors.xml
