@@ -74,38 +74,4 @@ namespace IptApis.Controllers.JobPortal
                 studentJobID.JobId
             });
         }
-
-
-        //[HttpPost]
-        //[Route("api/addJob")]
-        //public int AddJob([FromBody]ArrayList param)
-        //{
-        //    Job newJob = new Job().setAll((Job)param[0]);
-
-        //    List<string> description = new List<string>();
-        //    var db = DbUtils.GetDBConnection();
-        //    db.Connection.Open();
-        //    //IReadOnlyDictionary<string, string> values = new Job (newJob);
-        //    int jobid = db.Query("Job").InsertGetId<int>(new
-        //    {
-        //        newJob.Title,
-        //        newJob.Organization,
-        //        newJob.LastApplyDate,
-        //        newJob.Designation,
-        //        newJob.MinExperience,
-        //        newJob.AttachmentPath,
-        //        newJob.ApplicationLink,
-        //        newJob.Contactperson
-        //    });
-        //    foreach (string desc in description)
-        //    {
-        //        db.Query("JobDescription").InsertGetId<int>(new { jobid, desc });
-        //    }
-        //    return jobid;
-        //}
-        //newJob.Title,newJob.Organization,newJob.LastApplyDate, newJob.Designation, newJob.MinExperience, newJob.AttachmentPath, newJob.ApplicationLink, newJob.Contactperson
-        //return Request.CreateResponse(HttpStatusCode.OK, response);
-        //}
-    }
->>>>>>> 67938032ffc79a8d2d9f6a3589e3540d2fb35690
 }
