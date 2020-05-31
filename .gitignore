@@ -1,3 +1,4 @@
-.vs/
-IptApis/bin/
-IptApis/obj/
+.vs/*
+IptApis/bin/*
+IptApis/obj/*
+.*.cache
