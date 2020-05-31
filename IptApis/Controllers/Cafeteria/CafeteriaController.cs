@@ -225,5 +225,145 @@ namespace IptApis.Controllers.Cafeteria
         }
 
 
+        public HttpResponseMessage Checkout(Object Order)
+        {
+            HttpStatusCode statusCode = HttpStatusCode.Unauthorized;
+            var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Order));
+            object StudentId;
+            test.TryGetValue("StudentId", out StudentId);
+            object PaymentMethod;
+            test.TryGetValue("PaymentMethod", out PaymentMethod);
+            string _PaymentMethod = Convert.ToString(PaymentMethod);
+            object orderAmount;
+            test.TryGetValue("Amount", out orderAmount);
+            int Amount = Convert.ToInt32(orderAmount);
+            object OrderDetail;
+            test.TryGetValue("OrderDetail", out OrderDetail);
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            if (_PaymentMethod.Equals("Wallet"))
+            {
+                IEnumerable<IDictionary<string, object>> response;
+                response = db.Query("Wallet").Where("StudentId", StudentId).Get().Cast<IDictionary<string, object>>();
+                var strResponse = response.ElementAt(0).ToString().Replace("DapperRow,", "").Replace("=", ":");
+                Dictionary<string, object> walletinfo = JsonConvert.DeserializeObject<Dictionary<string, object>>(strResponse);
+                object walletBalance;
+                walletinfo.TryGetValue("Balance", out walletBalance);
+                int _walletBalance = Convert.ToInt32(walletBalance);
+                object walletID;
+                walletinfo.TryGetValue("WalletID", out walletID);
+                int _walletID = Convert.ToInt32(walletID);
+
+
+                if (_walletBalance > Amount)
+                {
+                    using (TransactionScope scope = new TransactionScope())
+                    {
+                        try
+                        {
+
+                            var res = db.Query("FoodOrder").InsertGetId<int>(new
+                            {
+                                StudentID = Convert.ToInt32(StudentId),
+                                OrderStatus = "Pending",
+                                OrderDate = DateTime.Now.Date,
+                                PaymentMethod = _PaymentMethod,
+                                Amount = Amount
+
+                            });
+                            List<Dictionary<string, object>> OrderDetails = OrderDetail as List<Dictionary<string, object>>;
+                            foreach (var item in OrderDetails)
+                            {
+                                item["OrderID"] = res;
+                                var Subresponse = db.Query("OrderDetails").AsInsert(item);
+                            }
+                            //update wallet
+                            var walletRes = db.Query("Wallet").Where("StudentId", StudentId).Update(new
+                            {
+                                WalletID = _walletID,
+                                StudentID = StudentId,
+                                _walletBalance = _walletBalance - Amount
+
+                            });
+                            //insert into payment
+                            var PaymentRes = db.Query("Payment").Insert(new
+                            {
+                                PaymentDate = DateTime.Now.Date,
+                                StudentID = StudentId,
+                                OrderID = res
+
+                            });
+
+                            //insert into transaction
+                            var TransactionRes = db.Query("STransaction").Insert(new
+                            {
+                                TransactionDate = DateTime.Now.Date,
+                                Amount = Amount,
+                                WalletID = _walletID,
+                                TypeID = 1
+                            });
+
+                            scope.Complete();
+                            db.Connection.Close();
+                            return Request.CreateResponse(HttpStatusCode.Created, new Dictionary<string, object>() { { "LastInsertedId", res } });
+                        }
+                        catch (Exception ex)
+                        {
+                            scope.Dispose();   //if there are any error, rollback the transaction
+                            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+                        }
+
+                    }
+
+
+                }
+                else
+                {
+                    statusCode = HttpStatusCode.Forbidden;
+                    return Request.CreateErrorResponse(statusCode, "Insufficient balance in wallet");
+                }
+            }
+            else
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    try
+                    {
+
+                        var res = db.Query("FoodOrder").InsertGetId<int>(new
+                        {
+                            StudentID = Convert.ToInt32(StudentId),
+                            OrderStatus = "Pending",
+                            OrderDate = DateTime.Now.Date,
+                            PaymentMethod = _PaymentMethod,
+                            Amount = Amount
+
+                        });
+                        List<Dictionary<string, object>> OrderDetails = OrderDetail as List<Dictionary<string, object>>;
+                        foreach (var item in OrderDetails)
+                        {
+                            item["OrderID"] = res;
+                            var Subresponse = db.Query("OrderDetails").AsInsert(item);
+                        }
+
+                        scope.Complete();
+                        db.Connection.Close();
+                        return Request.CreateResponse(HttpStatusCode.Created, new Dictionary<string, object>() { { "OrderID", res }, { "Message", "Your Order has been placed" } });
+                    }
+                    catch (Exception ex)
+                    {
+                        scope.Dispose();   //if there are any error, rollback the transaction
+                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+                    }
+
+                }
+
+
+            }
+
+        }
+
+
+
     }
 }
