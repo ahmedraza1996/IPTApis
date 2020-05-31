@@ -1,0 +1,24 @@
+public HttpResponseMessage AddJob(JobOpening job)
+public HttpResponseMessage GetAllJobs()
+public HttpResponseMessage GetJobByID(int id)
+public HttpResponseMessage DeleteJob(int id)
+public HttpResponseMessage UpdateJob(int id)
+public HttpResponseMessage AddDesignation()
+public HttpResponseMessage AddDepartment()
+public HttpResponseMessage GetAllDesignations()
+public HttpResponseMessage GetAllDepartments()
+public HttpResponseMessage DeleteDesignation(int id)
+public HttpResponseMessage DeleteDepartment(int id)
+
+
+
+public HttpResponseMessage AddCandidate(CandidateEmployee emp, int jobid)
+public HttpResponseMessage GetCandidateByID(int CandidateID)
+public HttpResponseMessage EditEcandidateApplication(int candidateID)
+public HttpResponseMessage DeleteCandidate(int CandidateID)
+public HttpResponseMessage UpdateCandidate(int CandidateID)
+
+
+
+
+

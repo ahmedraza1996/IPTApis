@@ -20,6 +20,7 @@ namespace IptApis.MarksModels
     public class Dist_list
     {
         public static int assign, quiz, pro, lab, pres, fyp;
+        public int MDID { get; set; }
         public String title { get; set; }
         public double currentmarks { get; set; }
         public double weightage { get; set; }
