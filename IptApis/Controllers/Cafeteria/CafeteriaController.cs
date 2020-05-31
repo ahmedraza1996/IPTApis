@@ -93,5 +93,51 @@ namespace IptApis.Controllers.Cafeteria
 
 
         }
+
+        public HttpResponseMessage GetUserWallet(object data)
+        {
+            var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(data));
+            object StudentID;
+            test.TryGetValue("StudentID", out StudentID);
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            IEnumerable<IDictionary<string, object>> response;
+            response = db.Query("Wallet").Where("StudentID", StudentID).Get().Cast<IDictionary<string, object>>();
+            object res;
+            if (response.Count() == 0)
+            {
+                //create wallet
+                int balance = 0;
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    try
+                    {
+
+                        res = db.Query("Wallet").InsertGetId<int>(new
+                        {
+                            StudentID = StudentID,
+                            Balance = balance
+
+                        });
+
+
+                        scope.Complete();
+                        db.Connection.Close();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        scope.Dispose();   //if there are any error, rollback the transaction
+                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+                    }
+
+                }
+                response = db.Query("Wallet").Where("StudentID", StudentID).Get().Cast<IDictionary<string, object>>();
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
     }
 }

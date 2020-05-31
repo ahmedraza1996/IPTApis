@@ -176,5 +176,58 @@ namespace IptApis.Controllers.Cafeteria
 
         }
 
+        public HttpResponseMessage TopupWallet(Object Wallet)
+        {
+            // HttpStatusCode statusCode = HttpStatusCode.Unauthorized;
+            var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Wallet));
+            object StudentId;
+            test.TryGetValue("StudentID", out StudentId);
+            int _StudentId = Convert.ToInt32(StudentId);
+            object Amount;
+            test.TryGetValue("Amount", out Amount);
+            int _Amount = Convert.ToInt32(Amount);
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            using (TransactionScope scope = new TransactionScope())
+            {
+                try
+                {
+                    IEnumerable<IDictionary<string, object>> response;
+                    response = db.Query("Wallet").Where("StudentId", _StudentId).Get().Cast<IDictionary<string, object>>();
+                    var strResponse = response.ElementAt(0).ToString().Replace("DapperRow,", "").Replace("=", ":");
+                    Dictionary<string, object> walletinfo = JsonConvert.DeserializeObject<Dictionary<string, object>>(strResponse);
+                    object walletBalance;
+                    walletinfo.TryGetValue("Balance", out walletBalance);
+                    int _walletBalance = Convert.ToInt32(walletBalance);
+                    object walletID;
+                    walletinfo.TryGetValue("WalletID", out walletID);
+                    int _walletID = Convert.ToInt32(walletID);
+
+                    var walletRes = db.Query("Wallet").Where("StudentId", StudentId).Update(new
+                    {
+                        WalletID = _walletID,
+                        StudentID = StudentId,
+                        _walletBalance = _walletBalance + _Amount
+
+                    });
+
+
+                    scope.Complete();
+                    db.Connection.Close();
+                    return Request.CreateResponse(HttpStatusCode.Created, new Dictionary<string, object>() { { "Message", "Amount added successfully!" } });
+                }
+                catch (Exception ex)
+                {
+                    scope.Dispose();
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+                }
+
+            }
+
+
+        }
+
+
+
     }
 }
