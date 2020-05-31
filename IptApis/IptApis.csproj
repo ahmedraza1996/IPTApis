@@ -1,4 +1,4 @@
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -79,7 +79,7 @@
     <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
-    <Reference Include="System.Drawing"/>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -107,6 +107,11 @@
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
+    <Compile Include="Controllers\FYP\Fyp1GetController.cs" />
+    <Compile Include="Controllers\FYP\Fyp1PostController.cs" />
+    <Compile Include="Controllers\FYP\Fyp2GetController.cs" />
+    <Compile Include="Controllers\FYP\Fyp2PostController.cs" />
+    <Compile Include="Controllers\FYP\FypLoginController.cs" />
     <Compile Include="Controllers\JobPortal\JobController.cs" />
     <Compile Include="Controllers\JobPortal\StudentProfileController.cs" />
     <Compile Include="Controllers\Marks_Manage\MarksController.cs" />
@@ -141,7 +146,6 @@
     <Compile Include="Models\MarksModels\Courses.cs" />
     <Compile Include="Models\MarksModels\Section_Students.cs" />
     <Compile Include="Models\MarksModels\Student_Details.cs" />
- 
     <Compile Include="Models\MarksModels\Update_Distribution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\DbUtils.cs" />
