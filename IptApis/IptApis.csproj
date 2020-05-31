@@ -141,9 +141,7 @@
     <Compile Include="Models\MarksModels\Courses.cs" />
     <Compile Include="Models\MarksModels\Section_Students.cs" />
     <Compile Include="Models\MarksModels\Student_Details.cs" />
- <Compile Include="Controllers\Room_Allocation\TimeTableController.cs" />
-    <Compile Include="Controllers\Room_Allocation\TimeTableData.cs" />
-    <Compile Include="Controllers\Room_Allocation\TimetableModel.cs" />
+ 
     <Compile Include="Models\MarksModels\Update_Distribution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\DbUtils.cs" />
