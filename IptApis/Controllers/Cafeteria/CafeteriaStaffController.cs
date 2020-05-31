@@ -175,6 +175,72 @@ namespace IptApis.Controllers.Cafeteria
 
 
         }
+        public HttpResponseMessage GetPendingOrderbyStudentId(Object Sid)
+        {
+            var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Sid));
+            object StudentId;
+            test.TryGetValue("StudentID", out StudentId);
+            int _StudentId = Convert.ToInt32(StudentId);
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<IDictionary<string, object>> response;
+            response = db.Query("FoodOrder")
+                .Where("OrderStatus", "Pending")
+                .Where("StudentID", _StudentId)
+                .OrderByDesc("OrderDate")
+                .OrderByDesc("OrderTime")
+                .Get()
+                .Cast<IDictionary<string, object>>();
+            foreach (var item in response)
+            {
+                object OrderId;
+                item.TryGetValue("OrderID", out OrderId);
+                IEnumerable<IDictionary<string, object>> OrderDetails;
+
+                OrderDetails = db.Query("OrderDetails")
+                    .Select("ODID", "itemname", "qunatity")
+                    .Where("orderid", OrderId)
+                    .Join("fooditem", "orderdetails.itemid", "fooditem.itemid")
+                    .Get()
+                    .Cast<IDictionary<string, object>>();
+                item["OrderDetails"] = OrderDetails;
+
+            }
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+        public HttpResponseMessage UpdateOrderStatus(Object Order)
+        {
+            var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Order));
+            object OrderId;
+            test.TryGetValue("OrderId", out OrderId);
+            var db = DbUtils.GetDBConnection();
+            //IEnumerable<IDictionary<string, object>> response;
+            //response = db.Query("foodorder").Where("OrderID", OrderId).Get().Cast<IDictionary<string, object>>();
+            //var strResponse = response.ElementAt(0).ToString().Replace("DapperRow,", "").Replace("=", ":");
+            //Dictionary<string, object> Foodorder = JsonConvert.DeserializeObject<Dictionary<string, object>>(strResponse);
+            //object OrderStatus
+            //Foodorder.TryGetValue("OrderStatus", )
+            var res = db.Query("foodorder").Where("orderid", OrderId).AsUpdate(Order);
+            return this.Request.CreateResponse(HttpStatusCode.OK, res);
+        }
+        public HttpResponseMessage GetOrderDetails(Object Order)
+        {
+            var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Order));
+            object OrderId;
+            test.TryGetValue("OrderId", out OrderId);
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<IDictionary<string, object>> response;
+            response = db.Query("OrderDetails").Where("OrderID", OrderId).Get().Cast<IDictionary<string, object>>();
+
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+
 
         public HttpResponseMessage TopupWallet(Object Wallet)
         {

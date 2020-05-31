@@ -93,6 +93,40 @@ namespace IptApis.Controllers.Cafeteria
 
 
         }
+        public HttpResponseMessage ViewOrders()
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<IDictionary<string, object>> response;
+            response = db.Query("FoodOrder").Where("OrderStatus", "Pending").OrderByDesc("OrderDate").OrderByDesc("OrderTime").Get().Cast<IDictionary<string, object>>();
+            foreach (var item in response)
+            {
+                object OrderId;
+                item.TryGetValue("OrderID", out OrderId);
+                IEnumerable<IDictionary<string, object>> OrderDetails;
+                /* SELECT
+    [itemname],
+   [qunatity]
+         FROM
+   [OrderDetails]
+   INNER JOIN[fooditem] ON[orderdetails].[itemid] = [fooditem].[itemid]
+         WHERE
+ [orderid] = 1 */
+                OrderDetails = db.Query("OrderDetails")
+                    .Select("ODID", "itemname", "qunatity")
+                    .Where("orderid", OrderId)
+                    .Join("fooditem", "orderdetails.itemid", "fooditem.itemid")
+                    .Get()
+                    .Cast<IDictionary<string, object>>();
+                item["OrderDetails"] = OrderDetails;
+
+            }
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, response);
+
+        }
+
 
         public HttpResponseMessage GetUserWallet(object data)
         {
