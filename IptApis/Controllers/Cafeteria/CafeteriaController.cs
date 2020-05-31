@@ -173,5 +173,57 @@ namespace IptApis.Controllers.Cafeteria
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
+
+        public HttpResponseMessage AddFeedback(Object feedback)
+        {
+
+            var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(feedback));
+
+            object Date;
+            test.TryGetValue("Date", out Date);
+            string _Date = Convert.ToString(Date);
+            object Rating;
+            test.TryGetValue("Rating", out Rating);
+            int _Rating = Convert.ToInt32(Rating);
+            object FDescription;
+            test.TryGetValue("FDescription", out FDescription);
+            string _FDescription = Convert.ToString(FDescription);
+            object StudentID;
+            test.TryGetValue("StudentID", out StudentID);
+            int _StudentID = Convert.ToInt32(StudentID);
+
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            // using (var scope = db.Connection.BeginTransaction())
+            using (TransactionScope scope = new TransactionScope())
+            {
+                try
+                {
+
+                    var res = db.Query("Feedback").InsertGetId<int>(new
+                    {
+                        StudentID = _StudentID,
+                        FDescription = _FDescription,
+                        Rating = _Rating,
+                        Date = _Date
+                    });
+
+
+                    scope.Complete();
+                    db.Connection.Close();
+                    return Request.CreateResponse(HttpStatusCode.Created, new Dictionary<string, object>() { { "LastInsertedId", res } });
+                }
+                catch (Exception ex)
+                {
+                    scope.Dispose();   //if there are any error, rollback the transaction
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+                }
+
+            }
+
+
+        }
+
+
     }
 }
