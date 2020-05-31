@@ -293,6 +293,20 @@ namespace IptApis.Controllers.Cafeteria
 
         }
 
+        public HttpResponseMessage GetFeedback()
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<IDictionary<string, object>> response;
+            response = db.Query("Feedback").OrderByDesc("Date").Get().Cast<IDictionary<string, object>>();
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+
+
+
 
 
     }
