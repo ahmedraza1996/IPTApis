@@ -10,8 +10,5 @@ namespace IptApis.Models.Admission
         public DateTime ApplyDate { get; set; }
         public int CandidateId { get; set; }
         public int SopeningId { get; set; }
-
-        //public virtual CandidateStudent Candidate { get; set; }
-        //public virtual StudentOpening Sopening { get; set; }
     }
 }

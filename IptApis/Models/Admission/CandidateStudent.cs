@@ -5,13 +5,6 @@ namespace IptApis.Models.Admission
 {
     public partial class CandidateStudent
     {
-        public CandidateStudent()
-        {
-            //CandidateTestDetails = new HashSet<CandidateTestDetails>();
-            //ScandidateApplication = new HashSet<ScandidateApplication>();
-            //Student = new HashSet<Student>();
-        }
-
         public int CandidateId { get; set; }
         public string Cname { get; set; }
         public string Email { get; set; }
@@ -20,9 +13,5 @@ namespace IptApis.Models.Admission
         public string ContactInfo { get; set; }
         public string Hscresult { get; set; }
         public string Sscresult { get; set; }
-
-        //public virtual ICollection<CandidateTestDetails> CandidateTestDetails { get; set; }
-        //public virtual ICollection<ScandidateApplication> ScandidateApplication { get; set; }
-        //public virtual ICollection<Student> Student { get; set; }
     }
 }

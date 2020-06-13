@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace IptApis.Models.Admission
+﻿namespace IptApis.Models.Admission
 {
     public partial class Student
     {
@@ -13,8 +10,5 @@ namespace IptApis.Models.Admission
         public int CandidateId { get; set; }
         public int BatchId { get; set; }
         public string Spassword { get; set; }
-
-        //public virtual Batch Batch { get; set; }
-        //public virtual CandidateStudent Candidate { get; set; }
     }
 }

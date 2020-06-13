@@ -9,8 +9,5 @@ namespace IptApis.Models.Admission
         public int CandidateId { get; set; }
         public int AssignedTestId { get; set; }
         public string TestScore { get; set; }
-
-        //public virtual AdmissionTest AssignedTest { get; set; }
-        //public virtual CandidateStudent Candidate { get; set; }
     }
 }

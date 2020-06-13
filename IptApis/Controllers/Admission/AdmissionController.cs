@@ -20,7 +20,7 @@ namespace IptApis.Controllers.Admission
         public async Task<IHttpActionResult> GetCandidates() =>
             Ok(await DB.CandidateStudent.Select(x => new CandidateStudentDto(x)).ToListAsync());
 
-        [Route("api/admission/candidate/{id}")]
+        [Route("api/admission/{id}")]
         [ResponseType(typeof(CandidateStudentDto))]
         public async Task<IHttpActionResult> GetCandidate(int id)
         {
