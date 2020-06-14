@@ -9,7 +9,7 @@ namespace IptApis.Controllers.Search_Module.QueryParser
 {
     public class ProximityQuery
     {
-        public IList<int> Parse(string query, WordsVector wordsVector)
+        public static IList<int> Parse(string query, WordsVector wordsVector)
         {
             var ProximityQueryRegex = new Regex(@"^(\w+)\s(\w+)\s*/\s*(\d+)$");
             var groups = ProximityQueryRegex.Match(query).Groups;

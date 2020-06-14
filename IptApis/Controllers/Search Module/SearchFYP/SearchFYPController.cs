@@ -1,4 +1,9 @@
-﻿using IptApis.Controllers.Search_Module.Indexes;
+﻿using IptApis.Controllers.Search_Module.Content;
+using IptApis.Controllers.Search_Module.Indexes;
+using IptApis.Controllers.Search_Module.QueryParser;
+using IptApis.Shared;
+using Newtonsoft.Json;
+using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,115 +21,98 @@ namespace IptApis.Controllers.Search_Module.SearchFYP
 {
     public class SearchFYPController : ApiController
     {
-
-        WordsVector wordsVector;
-        DocumentsVector documentsVector;
-
+        
         public HttpResponseMessage Get()
         {
             return Request.CreateResponse(HttpStatusCode.OK, "Hello World");
         }
 
-        public HttpResponseMessage GetEmbeddings()
+        public HttpResponseMessage GetAllProjects()
         {
 
-            return Request.CreateResponse(HttpStatusCode.OK, "Hello World");
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<IDictionary<string, object>> response;
+            response = db.Query("FypProposal")
+                .Select("ProposalID", "ProjectTitle", "ProjectType", "Abstract", "SupervisorID", "CoSupervisorID", "LeaderID", "Member1ID", "Member2ID", "Comment", "Status")
+                .Where("Status", "Accepted")
+                .Get()
+                .Cast<IDictionary<string, object>>();
+
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+        [HttpGet]
+        public HttpResponseMessage UpdateIndex()
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<IDictionary<string, object>> responses;
+            responses = db.Query("FypProposal")
+                .Select("ProposalID", "ProjectTitle", "ProjectType", "Abstract", "SupervisorID", "CoSupervisorID", "LeaderID", "Member1ID", "Member2ID", "Comment", "Status")
+                .Where("Status", "Accepted")
+                .Get()
+                .Cast<IDictionary<string, object>>();
+
+            DataStorage dataStorage = DataStorage.GetInstance();
+
+            foreach (var response in responses)
+            {
+                int id = (int)response["ProposalID"];
+
+                if (!dataStorage.FYP_Data.ContainsKey(id))
+                {
+                    string title = (string)response["ProjectTitle"];
+                    string supervisor = ((int)response["SupervisorID"]).ToString();
+                    string member1 = ((int)response["LeaderID"]).ToString();
+                    string member2 = ((int)response["Member1ID"]).ToString();
+                    string member3 = ((int)response["Member2ID"]).ToString();
+                    string description = (string)response["Abstract"];
+
+                    dataStorage.FYP_Data.Add(id, new FYPSearchModel(supervisor, member1, member2, member3, title, description));
+                    Vector vector = new Vector(description);
+                    dataStorage.wordsVector.Update(id, vector);
+                    dataStorage.documentsVector.Update(id, vector);
+                }
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, "Indexes Updated");
         }
 
         [HttpPost]
-        public HttpResponseMessage UploadFile(FYPSearchModel model)
+        public HttpResponseMessage GetSearchResult(object data)
         {
-            WordsVector wordsVector = ReadWordVectorFile();
-            DocumentsVector documentsVector = ReadDocumentVectorFile();
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
 
-            Vector vector = new Vector(model.description);
+            DataStorage dataStorage = DataStorage.GetInstance();
 
-            int index = documentsVector.Value.Count + 1;
+            var jsonData = JsonConvert.SerializeObject(data);
 
-            wordsVector.Update(index, vector);
-            documentsVector.Update(index, vector);
+            var dictJson = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonData);
+            object queryObect;
+            dictJson.TryGetValue("query", out queryObect);
+            string Query = queryObect.ToString();
 
-            UpdateWordVectorFile(wordsVector);
-            UpdateDocumentVectorFile(documentsVector);
-
-            return Request.CreateResponse(HttpStatusCode.OK, "Hello World");
-        }
-
-        public HttpResponseMessage UploadFile(string title) 
-        {
-            FYPSearchModel model = new FYPSearchModel();
-            model.description = title;
-            return UploadFile(model);
-        }
-
-
-        private void UpdateWordVectorFile(WordsVector vector)
-        {
-            var path = "~/Controllers/Search Module/Content/WordsDocument.txt";
-            var filePath = HttpContext.Current.Server.MapPath(path);
-            var json = new JavaScriptSerializer().Serialize(vector);
-            using (StreamWriter writer = new StreamWriter(filePath))
-            {
-                writer.WriteLine(json);
-            }
-
-        }
-
-        private void UpdateDocumentVectorFile(DocumentsVector vector)
-        {
-            var path = "~/Controllers/Search Module/Content/DocumentsVector.txt";
-            var filePath = HttpContext.Current.Server.MapPath(path);
-
-            XmlSerializer serializer = new XmlSerializer(typeof(DocumentsVector));
-            
-
-  //          var json = new JavaScriptSerializer().Serialize(vector);
-            using (StreamWriter writer = new StreamWriter(filePath))
-            {
-                serializer.Serialize(writer, vector);
-//                writer.WriteLine(json);
-            }
-        }
-
-        private WordsVector ReadWordVectorFile()
-        {
             try
             {
-                var path = "~/Controllers/Search Module/Content/WordsDocument.txt";
-                var filePath = HttpContext.Current.Server.MapPath(path);
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    var data = reader.ReadLine();
-                    WordsVector vector = new WordsVector();
-                    var json = new JavaScriptSerializer().Deserialize(data, vector.GetType());
-                    return vector;
-                }
+                var parser = QueryParser.QueryParser.GetInstance();
+                var indexes = parser.Parse(Query, dataStorage.wordsVector, dataStorage.documentsVector, dataStorage.documentsVector.DocumentsSet());
 
-            }
-            catch
-            {
-                return new WordsVector();
-            }
-        }
-        private DocumentsVector ReadDocumentVectorFile()
-        {
-            try
-            {
-                var path = "~/Controllers/Search Module/Content/DocumentsVector.txt";
-                var filePath = HttpContext.Current.Server.MapPath(path);
-                using (StreamReader reader = new StreamReader(filePath))
+                var resultant = new List<IDictionary<string, object>>();
+                foreach (var index in indexes)
                 {
-                    var data = reader.ReadLine();
-                    DocumentsVector vector = new DocumentsVector();
-                    var json = new JavaScriptSerializer().Deserialize(data, vector.GetType());
-                    return vector;
+                    if (dataStorage.FYP_Data.ContainsKey(index))
+                        resultant.Add(dataStorage.FYP_Data[index].cast());
                 }
-
+                return Request.CreateResponse(HttpStatusCode.OK, resultant);
             }
-            catch
+            catch (Exception e)
             {
-                return new DocumentsVector();
+                return Request.CreateResponse(HttpStatusCode.BadRequest, JsonConvert.SerializeObject(e.Message));
             }
+
         }
 
     }

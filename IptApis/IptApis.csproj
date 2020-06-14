@@ -107,6 +107,7 @@
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
+    <Compile Include="Controllers\Search Module\Content\DataStorage.cs" />
     <Compile Include="Controllers\Search Module\SearchFYP\FYPSearchModel.cs" />
     <Compile Include="Controllers\Search Module\SearchFYP\SearchFYPController.cs" />
     <Compile Include="Controllers\Search Module\Indexes\DocumentsVector.cs" />
@@ -117,12 +118,12 @@
     <Compile Include="Controllers\Search Module\Indexes\Vector.cs" />
     <Compile Include="Controllers\Search Module\Indexes\WordDocuments.cs" />
     <Compile Include="Controllers\Search Module\Indexes\WordsVector.cs" />
-    <Compile Include="Controllers\Search Module\QueryParser\BooleanQueryParser.cs" />
-    <Compile Include="Controllers\Search Module\QueryParser\GeneralTextQueryParser.cs" />
-    <Compile Include="Controllers\Search Module\QueryParser\InfixToPostfixConvertor.cs" />
-    <Compile Include="Controllers\Search Module\QueryParser\ProximityQuery.cs" />
-    <Compile Include="Controllers\Search Module\QueryParser\QueryParser.cs" />
-    <Compile Include="Controllers\Search Module\QueryParser\TestQueryParser\InfixToPostfixConvertorTest.cs" />
+    <Compile Include="Controllers\Search Module\DifferentQueryParser\BooleanQueryParser.cs" />
+    <Compile Include="Controllers\Search Module\DifferentQueryParser\GeneralTextQueryParser.cs" />
+    <Compile Include="Controllers\Search Module\DifferentQueryParser\InfixToPostfixConvertor.cs" />
+    <Compile Include="Controllers\Search Module\DifferentQueryParser\ProximityQuery.cs" />
+    <Compile Include="Controllers\Search Module\DifferentQueryParser\QueryParser.cs" />
+    <Compile Include="Controllers\Search Module\DifferentQueryParser\TestQueryParser\InfixToPostfixConvertorTest.cs" />
     <Compile Include="Controllers\Search Module\QuerySearch\SearchController.cs" />
     <Compile Include="Controllers\Search Module\TextProcessingHelpers\TestTextProcessingHelpers\PreprocessorTests.cs" />
     <Compile Include="Controllers\Search Module\TextProcessingHelpers\TestTextProcessingHelpers\TokenizerTests.cs" />

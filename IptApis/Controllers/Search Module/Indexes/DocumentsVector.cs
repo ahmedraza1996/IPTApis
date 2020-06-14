@@ -21,7 +21,15 @@ namespace IptApis.Controllers.Search_Module.Indexes
             }
             return keys;
         }
-
+        public HashSet<int> DocumentsSet()
+        {
+            HashSet<int> keys = new HashSet<int>();
+            foreach (var pair in Value)
+            {
+                keys.Add(pair.Key);
+            }
+            return keys;
+        }
         public Vector GetVectorOfDocumentIndex(int documentIndex)
         {
             return Value[documentIndex];

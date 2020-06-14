@@ -8,7 +8,7 @@ namespace IptApis.Controllers.Search_Module.QueryParser
     public class GeneralTextQueryParser
     {
 
-        public IList<int> Parse(string query, WordsVector wordsVector, DocumentsVector documentsVector)
+        public static IList<int> Parse(string query, WordsVector wordsVector, DocumentsVector documentsVector)
         {
             var query_tfidf = ComputeQueryTfIdfVector(query, wordsVector, documentsVector.DocumentsIndex().Count);
 
@@ -26,7 +26,7 @@ namespace IptApis.Controllers.Search_Module.QueryParser
             return SortTheDictionaryOnValue(similarities);
         }
 
-        private List<int> SortTheDictionaryOnValue(Dictionary<int, double> dictionary)
+        private static List<int> SortTheDictionaryOnValue(Dictionary<int, double> dictionary)
         {
             var sortedList = dictionary.ToList();
 
@@ -36,7 +36,7 @@ namespace IptApis.Controllers.Search_Module.QueryParser
             return keys;
         }
 
-        private List<int> DocumentsOccuredInQuery(WordsVector wordsVector, Vector queryVector)
+        private static List<int> DocumentsOccuredInQuery(WordsVector wordsVector, Vector queryVector)
         {
             List<int> documents = new List<int>();
             foreach(var pair in queryVector.Dictionary)
@@ -51,14 +51,14 @@ namespace IptApis.Controllers.Search_Module.QueryParser
             return documents;
         }
 
-        private List<int> AddDocuments(List<int> prevdocuments, HashSet<int> newDocuments)
+        private static List<int> AddDocuments(List<int> prevdocuments, HashSet<int> newDocuments)
         {
             HashSet<int> documents = prevdocuments.ToHashSet();
             documents.UnionWith(newDocuments);
             return documents.ToList();
         }
 
-        private Vector ComputeQueryTfIdfVector(string query, WordsVector wordsVector, int totalDocuments)
+        private static Vector ComputeQueryTfIdfVector(string query, WordsVector wordsVector, int totalDocuments)
         {
             Vector vector = new Vector(query);
 
@@ -77,7 +77,7 @@ namespace IptApis.Controllers.Search_Module.QueryParser
             return vector;
         }
 
-        private double ComputeCosineSimilarity(Vector document, Vector query)
+        private static double ComputeCosineSimilarity(Vector document, Vector query)
         {
             double numerator, magnitude_q, magnitude_d;
 
@@ -89,7 +89,7 @@ namespace IptApis.Controllers.Search_Module.QueryParser
             return (numerator + 0.5) / (denominator + 1.0);
         }
 
-        private double ComputeMagnitude(Vector vector1, Vector vector2)
+        private static double ComputeMagnitude(Vector vector1, Vector vector2)
         {
             double magnitude = 0.0;
             foreach(var pair in vector1.Dictionary)
