@@ -18,11 +18,7 @@ namespace IptApis.Controllers
     [RoutePrefix("")]
     public class CourseFeedbackController : ApiController
     {
-        [HttpGet]
-        public string test()
-        {
-            return "Hello this is cafeteria";
-        }
+
 
         [HttpGet]
         public Student getCurrentStudent(string studentRollNo)
@@ -161,28 +157,16 @@ namespace IptApis.Controllers
             db.Connection.Open();
             foreach (dynamic Answer in Answers)
             {
-                var z = Answer.ResponseType;
-                var z2 = Answer.Response;
-                var z3 = Answer.FeedbackID;
-                var z4 = Answer.QuestionID;
+
                 int response = db.Query("Answers").Insert(new
                 {
-                    ResponseType = z,
-                    response = z2,
-                    FeedbackID = z3,
-                    QuestionId = z4,
+                    ResponseType = Answer.ResponseType.Value,
+                    response = Answer.Response.Value,
+                    FeedbackID = Answer.FeedbackID.Value,
+                    QuestionId = Answer.QuestionID.Value
                 }
                 );
             }
-
-
-            //var response = db.Query("CourseFeedback")
-            //    .Join("CourseEnrollment", "CourseFeedback.EnrollmentID", "CourseEnrollment.EnrollmentID")
-            //    .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.FSID")
-            //    .Join("CourseFaculty", "CourseFaculty.CFID", "FacultySections.CFID")
-            //    .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.FSID")
-            //    .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.CFID")
-            //    .Get().Cast<IDictionary<string, object>>();
 
             return Answers;
         }
