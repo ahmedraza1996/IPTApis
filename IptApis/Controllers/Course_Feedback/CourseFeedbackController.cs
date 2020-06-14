@@ -153,25 +153,38 @@ namespace IptApis.Controllers
 
 
         [HttpPost]
-        public object postAnswers([FromBody]Object test)
+        public object postAnswers([FromBody]dynamic Answers)
         {
             //Will accept the answers as post request and add them to DB
             //var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Product));
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
-            var response = db.Query("CourseFeedback")
-                .Join("CourseEnrollment", "CourseFeedback.EnrollmentID", "CourseEnrollment.EnrollmentID")
-                .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.FSID")
-                .Join("CourseFaculty", "CourseFaculty.CFID", "FacultySections.CFID")
-                .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.FSID")
-                .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.CFID")
-                .Get().Cast<IDictionary<string, object>>();
-            foreach (var res in response)
+            foreach (dynamic Answer in Answers)
             {
-                Debug.WriteLine(res);
-
+                var z = Answer.ResponseType;
+                var z2 = Answer.Response;
+                var z3 = Answer.FeedbackID;
+                var z4 = Answer.QuestionID;
+                int response = db.Query("Answers").Insert(new
+                {
+                    ResponseType = z,
+                    response = z2,
+                    FeedbackID = z3,
+                    QuestionId = z4,
+                }
+                );
             }
-            return response;
+
+
+            //var response = db.Query("CourseFeedback")
+            //    .Join("CourseEnrollment", "CourseFeedback.EnrollmentID", "CourseEnrollment.EnrollmentID")
+            //    .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.FSID")
+            //    .Join("CourseFaculty", "CourseFaculty.CFID", "FacultySections.CFID")
+            //    .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.FSID")
+            //    .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.CFID")
+            //    .Get().Cast<IDictionary<string, object>>();
+
+            return Answers;
         }
 
         [HttpGet]
