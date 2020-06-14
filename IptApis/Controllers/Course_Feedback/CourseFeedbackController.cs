@@ -46,23 +46,33 @@ namespace IptApis.Controllers
         }
 
         [HttpGet]
-        public List<Course> getAllCourses(string studentID)
+        public object getAllCourses(string studentID)
         {
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
-            IEnumerable<IDictionary<string, object>> responseStudent;
-            responseStudent = db.Query("AllStudentCourses").Where("StudentID", studentID).Get().Cast<IDictionary<string, object>>();
+            var response = db.Query("CourseFeedback")
+            .Join("CourseEnrollment", "CourseFeedback.EnrollmentID", "CourseEnrollment.EnrollmentID")
+            .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.FSID")
+            .Join("CourseFaculty", "CourseFaculty.CFID", "FacultySections.CFID")
+            .Join("CourseOffered", "CourseOffered.CourseOfferedID", "CourseFaculty.CourseOfferedID")
+            .Join("Course", "Course.CourseID", "CourseOffered.CourseID")
+            .Join("Student", "CourseEnrollment.StudentID", "Student.StudentID")
+            .Where("RollNumber", studentID)
+            .Select("FbID", "isSubmitted", "CourseName", "CourseCode", "Course.CourseID")
+            .Get().Cast<IDictionary<string, object>>();
+
             List<Course> courses = new List<Course>();
-            foreach (var res in responseStudent)
+            foreach (var res in response)
             {
                 Course course = new Course();
                 course.CourseName = res["CourseName"].ToString();
                 course.CourseCode = res["CourseCode"].ToString();
                 course.CourseID = res["CourseID"].ToString();
-
+                course.FeedbackID = res["FbID"].ToString();
+                course.isSubmitted = res["isSubmitted"].ToString();
                 courses.Add(course);
             }
-            //Will return the list of courses current student is enrolled in
+            ////Will return the list of courses current student is enrolled in
             return courses;
         }
 
@@ -149,13 +159,19 @@ namespace IptApis.Controllers
             //var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Product));
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
-            var response = db.Query("Posts").Join("Authors", "Authors.Id", "Posts.AuthorId").Get().Cast<IDictionary<string, object>>();
+            var response = db.Query("CourseFeedback")
+                .Join("CourseEnrollment", "CourseFeedback.EnrollmentID", "CourseEnrollment.EnrollmentID")
+                .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.FSID")
+                .Join("CourseFaculty", "CourseFaculty.CFID", "FacultySections.CFID")
+                .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.FSID")
+                .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.CFID")
+                .Get().Cast<IDictionary<string, object>>();
             foreach (var res in response)
             {
                 Debug.WriteLine(res);
 
             }
-            return test;
+            return response;
         }
 
         [HttpGet]

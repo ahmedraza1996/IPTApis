@@ -10,5 +10,8 @@ namespace IptApis.Models.CouseFeedbackModels
         public string CourseName { get; set; }
         public string CourseCode { get; set; }
         public string CourseID { get; set; }
+        public string FeedbackID { get; set; }
+        public string isSubmitted { get; set; }
+
     }
 }
