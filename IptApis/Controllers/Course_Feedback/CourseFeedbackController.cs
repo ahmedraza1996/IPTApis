@@ -147,6 +147,14 @@ namespace IptApis.Controllers
         {
             //Will accept the answers as post request and add them to DB
             //var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Product));
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            var response = db.Query("Posts").Join("Authors", "Authors.Id", "Posts.AuthorId").Get().Cast<IDictionary<string, object>>();
+            foreach (var res in response)
+            {
+                Debug.WriteLine(res);
+
+            }
             return test;
         }
 
