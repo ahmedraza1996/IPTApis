@@ -97,6 +97,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controllers\Search Module\Content\DocumentsVector.txt" />
+    <Content Include="Controllers\Search Module\Content\WordsDocument.txt" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -105,6 +107,8 @@
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
+    <Compile Include="Controllers\Search Module\SearchFYP\FYPSearchModel.cs" />
+    <Compile Include="Controllers\Search Module\SearchFYP\SearchFYPController.cs" />
     <Compile Include="Controllers\Search Module\Indexes\DocumentsVector.cs" />
     <Compile Include="Controllers\Search Module\Indexes\Index.cs" />
     <Compile Include="Controllers\Search Module\Indexes\TestIndexes\DocumentsVectorTest.cs" />
@@ -119,6 +123,7 @@
     <Compile Include="Controllers\Search Module\QueryParser\ProximityQuery.cs" />
     <Compile Include="Controllers\Search Module\QueryParser\QueryParser.cs" />
     <Compile Include="Controllers\Search Module\QueryParser\TestQueryParser\InfixToPostfixConvertorTest.cs" />
+    <Compile Include="Controllers\Search Module\QuerySearch\SearchController.cs" />
     <Compile Include="Controllers\Search Module\TextProcessingHelpers\TestTextProcessingHelpers\PreprocessorTests.cs" />
     <Compile Include="Controllers\Search Module\TextProcessingHelpers\TestTextProcessingHelpers\TokenizerTests.cs" />
     <Compile Include="Controllers\Search Module\TextProcessingHelpers\Token.cs" />

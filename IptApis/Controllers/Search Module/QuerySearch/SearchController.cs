@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 
@@ -10,11 +12,12 @@ namespace IptApis.Controllers.Search_Module.QuerySearch
 {
     public class SearchController : ApiController
     {
-        public string Get()
+        public HttpResponseMessage Get()
         {
-            return "Hello World";
+            return Request.CreateResponse(HttpStatusCode.OK, "Hello World");
         }
-        [System.Web.Http.HttpGet]
+
+
         public string getInstructorDetailByName(String Name)
         {
             string queryString = "SELECT EmpID, EmpName, Email, MobileNumber  FROM dbo.Employee WHERE LOWER(EmpName) = @Name";
@@ -24,7 +27,7 @@ namespace IptApis.Controllers.Search_Module.QuerySearch
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(queryString, connection);
-                command.Parameters.AddWithValue("@Name", Name.ToLower());
+                command.Parameters.AddWithValue("@Name", "dr. abdul aziz");// Name.ToLower());
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 

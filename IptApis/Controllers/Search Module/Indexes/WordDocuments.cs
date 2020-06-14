@@ -66,7 +66,7 @@ namespace IptApis.Controllers.Search_Module.Indexes
         public void Update(int documentIndex, Index index)
         {
             DocumentsDictionary.Add(documentIndex, index);
-            WordCount += index.Count;
+            WordCount += Convert.ToInt32(index.Count);
             DocumentCount += 1;
         }
 
