@@ -51,10 +51,10 @@ namespace IptApis.Controllers.Semester
         public IHttpActionResult Post([FromBody] SemesterInfo semester)
         {
             if (semester is null) return BadRequest(General.INVALID_INPUT);
-            if (!HelperFunctions.checkDateFormat(semester.registrationStartDate)) return BadRequest(SemesterConstants.INVALID_REG_START_DATE);
-            if (!HelperFunctions.checkDateFormat(semester.registrationEndDate)) return BadRequest(SemesterConstants.INVALID_REG_END_DATE);
-            if (!HelperFunctions.checkDateFormat(semester.semesterStartDate)) return BadRequest(SemesterConstants.INVALID_REG_START_DATE);
-            if (!HelperFunctions.checkDateFormat(semester.semesterEndDate)) return BadRequest(SemesterConstants.INVALID_SEM_END_DATE);
+            if (!HelperFunctions.checkDateFormat(semester.registrationStartDate.ToString())) return BadRequest(SemesterConstants.INVALID_REG_START_DATE);
+            if (!HelperFunctions.checkDateFormat(semester.registrationEndDate.ToString())) return BadRequest(SemesterConstants.INVALID_REG_END_DATE);
+            if (!HelperFunctions.checkDateFormat(semester.semesterStartDate.ToString())) return BadRequest(SemesterConstants.INVALID_REG_START_DATE);
+            if (!HelperFunctions.checkDateFormat(semester.semesterEndDate.ToString())) return BadRequest(SemesterConstants.INVALID_SEM_END_DATE);
 
             if (semester.creditLimit <= 0) return BadRequest(SemesterConstants.INVALID_CREDIT_LIMIT);
 
@@ -84,11 +84,55 @@ namespace IptApis.Controllers.Semester
         // PUT: api/Semester/5
         public void Put(int id, [FromBody]string value)
         {
+            
         }
 
         // DELETE: api/Semester/5
         public void Delete(int id)
         {
         }
+
+
+        [Route("api/Semester/registrationStatus/{semesterID}")]
+        [HttpPatch]
+        public IHttpActionResult changeRegistrationStatus(int semesterID, [FromBody] Boolean registrationStatus)
+        {
+            int status = Convert.ToInt32(registrationStatus);
+            if (status > 1 || status < 0) return BadRequest(SemesterConstants.INVALID_REGISTRATION_STATUS);
+            try
+            {
+                db.Query("Config").Where("semesterID", semesterID).Update(new
+                {
+                    RegistrationStatus = status
+                });
+                return Ok();
+            }catch(Exception err)
+            {
+                return InternalServerError();
+            }
+        }
+
+
+        [Route("api/Semester/current/{currentDate}")]
+        [HttpGet]
+
+        public IHttpActionResult getCurrentSemester(int currentDate)
+        {
+            if (!HelperFunctions.checkDateFormat(currentDate.ToString())) return BadRequest(General.INVALID_DATE_FORMAT);
+
+            try
+            {
+                SemesterInfo semester = db.Query("SemesterDetails").Where("SemesterStartDate", "<=",currentDate)
+                    .Where("SemesterEndDate", ">=",currentDate).First<SemesterInfo>();
+                if (semester is null) return NotFound();
+                return Ok(semester);
+            }catch(Exception err)
+            {
+                return InternalServerError(err);
+            }
+
+        }
+
+
     }
 }

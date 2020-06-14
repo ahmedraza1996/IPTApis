@@ -14,7 +14,7 @@ namespace IptApis.Shared.Constants
         public static string INVALID_CREDIT_LIMIT = "Invalid credit limit";
         public static string REG_START_DATE_GT_END_DATE = "Registration start date is greater than end date";
         public static string SEM_START_DATE_GT_END_DATE = "Semester start date is greater than end date";
-
-
+        public static string INVALID_REGISTRATION_STATUS = "Invalid registration status";
+        public static string NO_CURRENT_SEM = "No current semester";
     }
 }

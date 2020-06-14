@@ -7,6 +7,9 @@ using System.Web.Http;
 using IptApis.Shared;
 using SqlKata.Execution;
 using IptApis.Models;
+using IptApis.Shared.Constants;
+using System.Linq.Expressions;
+
 namespace IptApis.Controllers.Course
 {
     public class CourseController : ApiController
@@ -36,8 +39,64 @@ namespace IptApis.Controllers.Course
         }
 
         // POST: api/Course
-        public void Post([FromBody]dynamic course)
+        public IHttpActionResult Post([FromBody]CourseModel course)
         {
+            try
+            {
+                IEnumerable<CourseModel> courses=db.Query("Course").Where(new
+                {
+                    courseCode = course.courseCode,
+                    courseName = course.courseName
+                }).Get<CourseModel>();
+
+                if (courses.ToArray().Length>0) return BadRequest(CourseConstants.COURSE_EXISTS);
+
+                int affected=db.Query("Course").Insert(course);
+                return Ok(affected);
+                   
+            }
+            catch (Exception err)
+            {
+                return InternalServerError();
+            }
+        }
+
+        [Route("api/Course/offerCourse")]
+        [HttpPost]
+        public IHttpActionResult addOfferedCourse([FromBody] OfferedCourseBasic course)
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(General.FIELDS_MISSING);
+                CourseModel courseCheck=db.Query("Course").Where("courseID", course.courseID).First<CourseModel>();
+
+                if (courseCheck == null) return BadRequest(CourseConstants.COURSE_NOT_EXISTS);
+                
+
+                int affected=db.Query("CourseOffered").Insert(course);
+                return Ok(affected);
+            }
+            catch(Exception ex)
+            {
+                return InternalServerError();
+            }
+
+        }
+
+        [Route("api/Course/offeredCourses/semester/{semesterID}")]
+        [HttpGet]
+
+        public IHttpActionResult getOfferedCoursesBySemester(int semesterID)
+        {
+            try
+            {
+                IEnumerable<dynamic> courses = db.Query("OfferedCourseDetails").Get();
+                return Ok(courses);
+            }
+            catch(Exception ex)
+            {
+                return InternalServerError();
+            }
         }
 
         // PUT: api/Course/5

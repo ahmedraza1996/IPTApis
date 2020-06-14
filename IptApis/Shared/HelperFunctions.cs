@@ -17,9 +17,9 @@ namespace IptApis.Shared
         }
 
 
-        public static bool dateVerfication(string start_date,string end_date)
+        public static bool dateVerfication(int start_date,int end_date)
         {
-            return int.Parse(start_date) < int.Parse(end_date);
+            return start_date < end_date;
         }
     }
 }

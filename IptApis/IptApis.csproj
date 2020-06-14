@@ -108,22 +108,26 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
-    <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
-    <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
     <Compile Include="Controllers\CourseRegistration\CourseRegistrationController.cs" />
     <Compile Include="Controllers\Course\CourseController.cs" />
+    <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\Semester\SemesterController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CourseModel.cs" />
+    <Compile Include="Models\FacultyBasic.cs" />
+    <Compile Include="Models\FacultyCourseAssign.cs" />
+    <Compile Include="Models\FacultySectionDetails.cs" />
     <Compile Include="Models\OfferedCourse.cs" />
     <Compile Include="Models\CourseRegistrationModel.cs" />
+    <Compile Include="Models\OfferedCourseBasic.cs" />
     <Compile Include="Models\SemesterBasic.cs" />
     <Compile Include="Models\SemesterConfig.cs" />
     <Compile Include="Models\SemesterInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\Constants\CourseConstants.cs" />
     <Compile Include="Shared\Constants\General.constants.cs" />
     <Compile Include="Shared\Constants\Semester.constants.cs" />
     <Compile Include="Shared\DbUtils.cs" />
