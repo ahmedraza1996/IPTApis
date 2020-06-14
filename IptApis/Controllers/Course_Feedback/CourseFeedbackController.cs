@@ -9,9 +9,13 @@ using System.Net.Http;
 using System.Web.Http;
 using IptApis.CourseFeedbackModels;
 using IptApis.Models.CouseFeedbackModels;
+using System.Web.Http.Cors;
 
 namespace IptApis.Controllers
 {
+    //CourseEnrollment ->FacultySections->CourseFaculty->CourseOffered->Course
+    [EnableCors(origins: "*", headers: "*", methods: "*")] // tune to your needs
+    [RoutePrefix("")]
     public class CourseFeedbackController : ApiController
     {
         [HttpGet]
