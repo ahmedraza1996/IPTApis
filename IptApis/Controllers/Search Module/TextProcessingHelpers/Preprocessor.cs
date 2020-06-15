@@ -1,5 +1,6 @@
 ﻿using IptApis.Controllers.Search_Module.Stemmer;
 using System.Collections.Generic;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace IptApis.Controllers.Search_Module.TextProcessingHelpers
@@ -36,7 +37,25 @@ namespace IptApis.Controllers.Search_Module.TextProcessingHelpers
             if (IsStopWord(word))
                 return "";
             return word;
-        } 
+        }
+
+        public string PreprocessQuery(string query)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (var _token in query.Split(' '))
+            {
+                var token = _token.ToLower().Trim();
+                token = Regex.Replace(token, "[^a-z()|&!/]", "");
+                if (IsStopWord(token))
+                    return "";
+                token = Stemmer.Stem(token).Stemmed;
+                if (!IsStopWord(token))
+                {
+                    stringBuilder.Append(token + ' ');
+                }
+            }
+            return stringBuilder.ToString().Trim();
+        }
 
         private bool IsStopWord(string word)
         {

@@ -9,7 +9,7 @@ namespace IptApis.Controllers.Search_Module.QueryParser
 {
     public class BooleanQueryParser
     {
-        public IList<int> Parse(string query, HashSet<int> universalSet, WordsVector wordsVector)
+        public static IList<int> Parse(string query, HashSet<int> universalSet, WordsVector wordsVector)
         {
             var PostfixQuery = InfixToPostfixConvertor.Convert(query);
 
