@@ -14,6 +14,26 @@ namespace IptApis.Controllers.JobPortal
 {
     public class JobController : ApiController
     {
+        
+        [HttpGet]
+        [Route("api/subscribe/{studentId}")]
+        public void Subscribe(int studentId)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            int rows = db.Query("Subscribe").InsertGetId<int>(new {studentId=studentId });
+            db.Connection.Close();
+        }
+        [HttpGet]
+        [Route("api/getsubscribers")]
+        public HttpResponseMessage GetSubscribers()
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            IEnumerable<String> response = db.Query("Subscribe").Select("studentId").Get<String>();
+            db.Connection.Close();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
 
         [HttpGet]
         [Route("api/job/detail/{id}")]
@@ -21,7 +41,8 @@ namespace IptApis.Controllers.JobPortal
         {
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
-            IEnumerable<JobDetails> response = db.Query("JobDetails").Where("jobid", "=", id).Get < JobDetails>();//;.Cast<ProjectModel>();
+            IEnumerable<JobDetails> response = db.Query("JobDetails").Where("jobid", "=", id).Get<JobDetails>();//;.Cast<ProjectModel>();
+            db.Connection.Close();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
@@ -32,12 +53,10 @@ namespace IptApis.Controllers.JobPortal
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
             IEnumerable<Job> response = db.Query("Job").Get<Job>();//;.Cast<ProjectModel>();
+            db.Connection.Close();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
-<<<<<<< HEAD
-     }
-=======
         [HttpPost]
         [Route("api/addJob")]
         public int AddJob([FromBody]JobDetails newJob)
@@ -55,10 +74,11 @@ namespace IptApis.Controllers.JobPortal
                 newJob.ApplicationLink,
                 newJob.Contactperson
             });
-            foreach(string description in newJob.DescriptionList)
+            foreach (string description in newJob.DescriptionList)
             {
                 db.Query("JobDescription").InsertGetId<int>(new { jobid, description });
             }
+            db.Connection.Close();
             return jobid;
         }
 
@@ -73,5 +93,8 @@ namespace IptApis.Controllers.JobPortal
                 studentJobID.StudentId,
                 studentJobID.JobId
             });
+            db.Connection.Close();
         }
+
+    }
 }

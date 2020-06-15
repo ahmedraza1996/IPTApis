@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 
 using System.Web.Script.Serialization;
 using System.IO;
+using IptApis.MarksModels;
 
 namespace IptApis.Controllers.Marks_Manage
 {

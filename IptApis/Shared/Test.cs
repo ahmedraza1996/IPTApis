@@ -9,7 +9,5 @@ namespace IptApis.Shared
     {
         object data;
         object tablename; 
-
-
     }
 }

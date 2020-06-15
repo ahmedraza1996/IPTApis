@@ -201,11 +201,6 @@ C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.csproj.CopyComplet
 C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.pdb
 <<<<<<< HEAD
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Dapper.dll
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\QueryBuilder.dll
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\SqlKata.Execution.dll
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Dapper.xml
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Transactions.Workflows.dll
 C:\Users\User\IPTApis\IptApis\bin\IptApis.dll.config
 C:\Users\User\IPTApis\IptApis\bin\IptApis.dll
 C:\Users\User\IPTApis\IptApis\bin\IptApis.pdb
@@ -274,10 +269,8 @@ C:\Users\User\IPTApis\IptApis\obj\Debug\IptApis.csprojAssemblyReference.cache
 C:\Users\User\IPTApis\IptApis\obj\Debug\IptApis.csproj.CopyComplete
 C:\Users\User\IPTApis\IptApis\obj\Debug\IptApis.dll
 C:\Users\User\IPTApis\IptApis\obj\Debug\IptApis.pdb
-<<<<<<< HEAD
 =======
 >>>>>>> upstream/master
-=======
 C:\Users\Jamash\Source\Repos\IPTApis\IptApis\bin\IptApis.dll.config
 C:\Users\Jamash\Source\Repos\IPTApis\IptApis\bin\IptApis.dll
 C:\Users\Jamash\Source\Repos\IPTApis\IptApis\bin\IptApis.pdb
