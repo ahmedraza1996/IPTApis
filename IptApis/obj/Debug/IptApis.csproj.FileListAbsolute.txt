@@ -273,16 +273,3 @@ C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.
 C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.Http.WebHost.xml
 C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\obj\Debug\IptApis.csproj.CopyComplete
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.Helpers.dll
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.Mvc.dll
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.Razor.dll
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.WebPages.Deployment.dll
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.WebPages.dll
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.WebPages.Razor.dll
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.Helpers.xml
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.Mvc.xml
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.Razor.xml
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.WebPages.xml
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.WebPages.Deployment.xml
-C:\Users\Amir\Documents\8th Semester\IPT_Project\IPTApis\IptApis\bin\System.Web.WebPages.Razor.xml

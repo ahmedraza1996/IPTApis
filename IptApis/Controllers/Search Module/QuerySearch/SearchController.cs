@@ -36,7 +36,7 @@ namespace IptApis.Controllers.Search_Module.QuerySearch
             {
                 object tableName;
                 dictJson.TryGetValue("TableName", out tableName);
-                response = db.Query("INFORMATION_SCHEMA.COLUMNS").Select("COLUMN_NAME").Where("TableName "," = ", tableName).Get().Cast<IDictionary<string, object>>();
+                response = db.Query("INFORMATION_SCHEMA.COLUMNS").Select("COLUMN_NAME").WhereRaw("TABLE_NAME  = ?",tableName).Get().Cast<IDictionary<string, object>>();
             }
             if (Action.Equals("GetInstructorByName"))
             {
