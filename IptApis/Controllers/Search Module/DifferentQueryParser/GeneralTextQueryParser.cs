@@ -53,7 +53,7 @@ namespace IptApis.Controllers.Search_Module.QueryParser
 
         private static List<int> AddDocuments(List<int> prevdocuments, HashSet<int> newDocuments)
         {
-            HashSet<int> documents = prevdocuments.ToHashSet();
+            HashSet<int> documents = new HashSet<int>(prevdocuments);
             documents.UnionWith(newDocuments);
             return documents.ToList();
         }
