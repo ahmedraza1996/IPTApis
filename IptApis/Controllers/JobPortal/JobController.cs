@@ -30,7 +30,13 @@ namespace IptApis.Controllers.JobPortal
         {
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
-            IEnumerable<String> response = db.Query("Subscribe").Select("studentId").Get<String>();
+            IEnumerable<int> studentID = db.Query("Subscribe").Select("studentId").Get<int>();
+            List<string> response = new List<String>();
+            foreach (int i in studentID)
+            {
+                string emailID = db.Query("Student").Select("Email").Where("StudentID",i).Get<string>().First();
+                response.Add(emailID);
+            }
             db.Connection.Close();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
