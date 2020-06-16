@@ -20,15 +20,10 @@ namespace IptApis.Controllers.JobPortal
     {
         [HttpPost]
         [AllowAnonymous]
-        [Route("api/upload/{newCV}")]
-        public void UploadCV(CV newCV)
+//        [Route("api/upload/{newCV}")]
+        public void UploadCV([FromBody]CV newCV)
         {
-            var db = DbUtils.GetDBConnection();
-            //db.Connection.Open();
-            //byte x = 1;
-            //System.Data.Linq.Binary binData = newCV.data;
-            //int row = db.Query("CV").InsertGetId<int>(new { studentId = newCV.studentId,name = newCV.name,contentType = newCV.contentType,data = binData });
-
+            
             using (SqlConnection connection = new SqlConnection())
             {
                 connection.ConnectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
@@ -37,13 +32,13 @@ namespace IptApis.Controllers.JobPortal
                 cmd.Connection = connection;
                 //cmd.CommandTimeout = 0;
 
-                string commandText = "INSERT INTO CV VALUES(@studentId, @name, @contentType, @data)";
+                string commandText = "INSERT INTO CV VALUES(@studentId, @name, @data,@contentType )";
             
                 cmd.CommandText = commandText;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.Parameters.Add("@studentId", SqlDbType.NVarChar, 30);
-                cmd.Parameters.Add("@name", SqlDbType.NVarChar, 100);
+                cmd.Parameters.Add("@studentId", SqlDbType.Int);
+                cmd.Parameters.Add("@name", SqlDbType.VarChar, 50);
                 cmd.Parameters.Add("@contentType", SqlDbType.VarChar,50);
                 cmd.Parameters.Add("@data", SqlDbType.VarBinary);
 
@@ -55,6 +50,14 @@ namespace IptApis.Controllers.JobPortal
 
                 connection.Close();
             }
+        }
+        [HttpGet]
+        public HttpResponseMessage DownloadCV(int id)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            CV myCV = db.Query("CV").Where("StudentId", id).Get<CV>().First();
+            return Request.CreateResponse(HttpStatusCode.OK, myCV);
         }
         public HttpResponseMessage GetProjectsByID(int id)
         {
@@ -262,7 +265,7 @@ namespace IptApis.Controllers.JobPortal
 
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage ApproveProject(int id)
+        public String ApproveProject(int id)
         {
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
@@ -271,7 +274,7 @@ namespace IptApis.Controllers.JobPortal
                 try
                 {
                     int studentID = db.Query("StudentProject").Where("ProjectID", id).Select("StudentID").Get<int>().First();
-                    int skillID = db.Query("ProjectSkills").Where("ProjectID",id).Select("SkillID").Get<int>().First();
+                    int skillID = db.Query("ProjectSkills").Where("ProjectID", id).Select("SkillID").Get<int>().First();
 
                     int affected = db.Query("ProjectSkills").Where("ProjectID", id).Update(new
                     {
@@ -291,13 +294,14 @@ namespace IptApis.Controllers.JobPortal
                     IEnumerable<Skill> response = db.Query("AllSkills").Where("StudentID", studentID).Get<Skill>();//;.Cast<ProjectModel>();
 
 
-                    return Request.CreateResponse(HttpStatusCode.OK,response);
+                    return ("The Project has been approved and added as a skill of that candidate");
 
                 }
                 catch
                 {
                     scope.Dispose();
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                    return ("Error! Dubara Try kro ");
+
                 }
             }
         }

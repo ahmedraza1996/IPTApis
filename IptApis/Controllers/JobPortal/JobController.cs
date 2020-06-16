@@ -65,7 +65,7 @@ namespace IptApis.Controllers.JobPortal
 
         [HttpPost]
         [Route("api/addJob")]
-        public int AddJob([FromBody]JobDetails newJob)
+        public string AddJob([FromBody]JobDetails newJob)
         {
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
@@ -85,7 +85,7 @@ namespace IptApis.Controllers.JobPortal
                 db.Query("JobDescription").InsertGetId<int>(new { jobid, description });
             }
             db.Connection.Close();
-            return jobid;
+            return ("The Job Has been uploaded successfully\nJobID:- "+jobid);
         }
 
         [HttpPost]
