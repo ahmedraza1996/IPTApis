@@ -61,4 +61,99 @@ C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.csprojAssemblyRefe
 C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.csproj.CopyComplete
 C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.pdb
-C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.csprojAssemblyReference.cache
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Dapper.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\QueryBuilder.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\SqlKata.Execution.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Dapper.xml
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Transactions.Workflows.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\IptApis.dll.config
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\IptApis.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\IptApis.pdb
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\csc.exe
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\csc.exe.config
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\csc.rsp
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\csi.exe
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\csi.exe.config
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\csi.rsp
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.AppContext.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Console.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.IO.Compression.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Security.Claims.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.ValueTuple.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\vbc.exe
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\vbc.exe.config
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\vbc.rsp
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\VBCSCompiler.exe
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\Antlr3.Runtime.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\Dapper.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\Newtonsoft.Json.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\QueryBuilder.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\SqlKata.Execution.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Net.Http.Formatting.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Transactions.Workflows.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.Helpers.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.Http.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.Http.WebHost.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.Mvc.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.Optimization.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.Razor.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.WebPages.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.WebPages.Razor.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\WebGrease.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\Antlr3.Runtime.pdb
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\Dapper.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\Newtonsoft.Json.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Net.Http.Formatting.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.Helpers.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.Http.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.Http.WebHost.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.Mvc.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.Optimization.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.Razor.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.WebPages.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\System.Web.WebPages.Razor.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\obj\Debug\IptApis.csprojAssemblyReference.cache
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\obj\Debug\IptApis.csproj.CopyComplete
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\obj\Debug\IptApis.dll
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\obj\Debug\IptApis.pdb
+C:\Users\Mansoor ul Islam\source\repos\IPTApis-master\IptApis\obj\Debug\IptApis.csproj.CoreCompileInputs.cache
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\obj\Debug\IptApis.csprojAssemblyReference.cache
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\obj\Debug\IptApis.csproj.CoreCompileInputs.cache
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\obj\Debug\IptApis.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\obj\Debug\IptApis.pdb

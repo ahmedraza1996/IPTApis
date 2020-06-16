@@ -9,89 +9,36 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Transactions;
-using System.Web;
 using System.Web.Http;
 
 namespace IptApis.Controllers.Cafeteria
 {
-    
     public class CafeteriaController : ApiController
     {
 
-        public HttpResponseMessage GetItems()
+        public HttpResponseMessage GetProduct()
         {
             var db = DbUtils.GetDBConnection();   //GetDBConnection will return a DBFactory type object, which have establish sql connection
             db.Connection.Open();
             //var res = db.Query("fooditem").Get();
-
-
             IEnumerable<IDictionary<string, object>> response;
             response = db.Query("fooditem").Get().Cast<IDictionary<string, object>>();   // gets all food items from table and cast it to list of dictionary
             //you can use model instead of dictionary
            
-            foreach( var item in response)
-            { 
-                
-                item["base64image"] =fileToBase64(item["filepath"]) ; 
-            }
 
             //var strResponse = response.ElementAt(0).ToString().Replace("DapperRow,", "").Replace("=", ":");
-            //comment
+            
             //Dictionary<string, object> temp = JsonConvert.DeserializeObject<Dictionary<string, object>>(strResponse);
-            return this.Request.CreateResponse(HttpStatusCode.OK, response);   //send list of items and Status code =200
+            return Request.CreateResponse(HttpStatusCode.OK, response);   //send list of items and Status code =200
         }
-        public string fileToBase64(object relativePath)
+        public HttpResponseMessage GetProductbyID()
         {
-           
-            string base64string = "";
-            if (!(relativePath is null)) {
-                var filePath = HttpContext.Current.Server.MapPath(relativePath.ToString());
-
-                byte[] contents = System.IO.File.ReadAllBytes(filePath);
-
-                base64string = Convert.ToBase64String(contents);
-            }
          
-            return base64string;
-        }
-
-        public HttpResponseMessage GetAvailableItems()
-        {
-            var db = DbUtils.GetDBConnection(); 
+            var db = DbUtils.GetDBConnection();
             db.Connection.Open();
             IEnumerable<IDictionary<string, object>> response;
-            response = db.Query("fooditem").Where("ItemStatus", "Available").Get().Cast<IDictionary<string, object>>();
-            foreach (var item in response)
-            {
-                item["base64image"] = fileToBase64(item["filepath"]);
-            }
-
-            return this.Request.CreateResponse(HttpStatusCode.OK, response);
-        }
-
-        public HttpResponseMessage GetProductWithImage()
-        {
-            string relativepath = "~/productimage/" + "Bojack.jpg";
-            var filePath = HttpContext.Current.Server.MapPath(relativepath);
-
-            var Response = Request.CreateResponse(HttpStatusCode.OK);
-            var path = "~/";
-            byte[] contents = System.IO.File.ReadAllBytes(filePath);
-
-            var base64string = Convert.ToBase64String(contents);
-            //System.IO.MemoryStream ms = new System.IO.MemoryStream(contents);
-            //StreamContent image = new StreamContent(base64string);
-            //Response.Content = image;
-            //Response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-
-            Dictionary<string, object> dict = new Dictionary<string, object>();
-            dict["base64string"] = base64string;
-
-            return Request.CreateResponse(HttpStatusCode.OK, dict);
-
-
-
+            response = db.Query("fooditem").Where("ItemId", 1).Get().Cast<IDictionary<string, object>>();  //get product by id=1
+            return Request.CreateResponse(HttpStatusCode.OK, response);
         }
     }
 }
