@@ -20,6 +20,11 @@ namespace IptApis
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.Routes.MapHttpRoute(
+                name: "PointApi",
+                routeTemplate: "api/PointApp/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
         }
     }
 }
