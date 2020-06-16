@@ -171,20 +171,26 @@ namespace IptApis.Controllers
         }
 
         [HttpGet]
-        public HttpResponseMessage getQuestionAnswerPairs()
+        public object getQuestionAnswerPairs(string studentID)
         {
             //LATER TASK
             //For admin portal to view all question and answer
-            try
-            {
-                //return Request.CreateResponse(HttpStatusCode.Created, new Dictionary<string, object>() { { "LastInsertedId", res } });
-                return Request.CreateResponse(HttpStatusCode.OK, "test");
-            }
-            catch (Exception e)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+            var response = db.Query("CourseFeedback")
+            .Join("CourseEnrollment", "CourseFeedback.EnrollmentID", "CourseEnrollment.EnrollmentID")
+            .Join("FacultySections", "CourseEnrollment.FSID", "FacultySections.FSID")
+            .Join("CourseFaculty", "CourseFaculty.CFID", "FacultySections.CFID")
+            .Join("CourseOffered", "CourseOffered.CourseOfferedID", "CourseFaculty.CourseOfferedID")
+            .Join("Course", "Course.CourseID", "CourseOffered.CourseID")
+            .Join("Student", "CourseEnrollment.StudentID", "Student.StudentID")
+            .Join("Answers","Answers.FeedbackID", "CourseFeedback.FbID")
+            .Join("Question","Question.QuestionID","Answers.QuestionID")
+            .Where("RollNumber", studentID)
+            .Select("FbID", "isSubmitted", "CourseName", "CourseCode", "Course.CourseID","Question.Question","Answers.Response")
+            .Get().Cast<IDictionary<string, object>>();
 
-            }
+            return response;
 
         }
     }
