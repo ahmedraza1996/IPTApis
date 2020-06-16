@@ -18,7 +18,7 @@ namespace IptApis.Controllers.JobPortal
         public HttpResponseMessage GetProjectsByID(int id)
         {
             var db = DbUtils.GetDBConnection();
-            db.Connection.Open();//3870
+            db.Connection.Open();
             IEnumerable<Project> response = db.Query("AllProjects").Where("StudentID", id).Get<Project>();//;.Cast<ProjectModel>();
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
@@ -104,7 +104,7 @@ namespace IptApis.Controllers.JobPortal
                      _ = db.Query("ProjectFramework").Insert(new
                         {
                             projectID = _ProjectID,
-                            Status = test.ApproveStatus,
+                            Status = test.Status,
                             FID = _frameworkID
                         }) ;
                     var SkillID = db.Query("Skill").InsertGetId<int>(new
@@ -116,7 +116,7 @@ namespace IptApis.Controllers.JobPortal
                     {
                         SkillID = SkillID,
                         ProjectID = _ProjectID,
-                        ApproveStatus = test.ApproveStatus
+                        ApproveStatus = test.Status
                     });
                     scope.Complete();  // if record is entered successfully , transaction will be committed
                     db.Connection.Close();

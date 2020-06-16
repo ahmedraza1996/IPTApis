@@ -12,7 +12,7 @@ namespace IptApis.Models.JobPortal
         public string ProjectName { get; set; }
         public string GithubLink { get; set; }
         public int courseOfferedID { get; set; }
-        public string ApproveStatus { get; set; }
+        public string Status { get; set; }
         public string Fname { get; set; }
         public int FrameworkID { get; set; }
 
