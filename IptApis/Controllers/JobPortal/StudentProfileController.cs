@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -15,6 +18,44 @@ namespace IptApis.Controllers.JobPortal
 {
     public class StudentProfileController : ApiController
     {
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("api/upload/{newCV}")]
+        public void UploadCV(CV newCV)
+        {
+            var db = DbUtils.GetDBConnection();
+            //db.Connection.Open();
+            //byte x = 1;
+            //System.Data.Linq.Binary binData = newCV.data;
+            //int row = db.Query("CV").InsertGetId<int>(new { studentId = newCV.studentId,name = newCV.name,contentType = newCV.contentType,data = binData });
+
+            using (SqlConnection connection = new SqlConnection())
+            {
+                connection.ConnectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
+                connection.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = connection;
+                //cmd.CommandTimeout = 0;
+
+                string commandText = "INSERT INTO CV VALUES(@studentId, @name, @contentType, @data)";
+            
+                cmd.CommandText = commandText;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.Add("@studentId", SqlDbType.NVarChar, 30);
+                cmd.Parameters.Add("@name", SqlDbType.NVarChar, 100);
+                cmd.Parameters.Add("@contentType", SqlDbType.VarChar,50);
+                cmd.Parameters.Add("@data", SqlDbType.VarBinary);
+
+                cmd.Parameters["@studentId"].Value = newCV.studentId;
+                cmd.Parameters["@name"].Value = newCV.name;
+                cmd.Parameters["@contentType"].Value = newCV.contentType;                
+                cmd.Parameters["@data"].Value = newCV.data;
+                cmd.ExecuteNonQuery();
+
+                connection.Close();
+            }
+        }
         public HttpResponseMessage GetProjectsByID(int id)
         {
             var db = DbUtils.GetDBConnection();
