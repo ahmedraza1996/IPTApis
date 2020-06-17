@@ -69,3 +69,6 @@ C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Dapper.xml
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Cors.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Http.Cors.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Http.Cors.xml
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Swashbuckle.Core.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\WebActivatorEx.dll
