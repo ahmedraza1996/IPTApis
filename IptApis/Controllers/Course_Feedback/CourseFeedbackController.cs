@@ -154,9 +154,9 @@ namespace IptApis.Controllers
             //var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Product));
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
+            var feedbackId = Answers[0].FeedbackID.Value;
             foreach (dynamic Answer in Answers)
             {
-
                 int response = db.Query("Answers").Insert(new
                 {
                     ResponseType = Answer.ResponseType.Value,
@@ -166,6 +166,12 @@ namespace IptApis.Controllers
                 }
                 );
             }
+
+            int affected = db.Query("CourseFeedback").Where("FbID", feedbackId).Update(new
+            {
+                isSubmitted = 1,
+            });
+
 
             return Answers;
         }
