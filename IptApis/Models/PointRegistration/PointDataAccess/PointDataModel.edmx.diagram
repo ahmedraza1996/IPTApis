@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9458d01d41664db59a53a917f7da0c04" Name="Diagram1">
+        <EntityTypeShape EntityType="PointDBModel.Driver" Width="1.5" PointX="1.5" PointY="12.5" />
+        <EntityTypeShape EntityType="PointDBModel.Point" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PointDBModel.PointFee" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PointDBModel.PointPayment" Width="1.5" PointX="6" PointY="4.625" />
+        <EntityTypeShape EntityType="PointDBModel.Route" Width="1.5" PointX="3" PointY="15.625" />
+        <EntityTypeShape EntityType="PointDBModel.Semester" Width="1.5" PointX="1.5" PointY="9.625" />
+        <EntityTypeShape EntityType="PointDBModel.Student" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="PointDBModel.StudentPoint" Width="1.5" PointX="3" PointY="4.5" />
+        <AssociationConnector Association="PointDBModel.FK_Driver_Point_CNIC" />
+        <AssociationConnector Association="PointDBModel.FK_Point_Route_PointID" />
+        <AssociationConnector Association="PointDBModel.FK_Point_StudentPoint_PointID" />
+        <AssociationConnector Association="PointDBModel.FK_PointFee_PointPayment_FeeID" />
+        <AssociationConnector Association="PointDBModel.FK_Semester_PointFee_SemesterID" />
+        <AssociationConnector Association="PointDBModel.FK_Student_PointPayment_StudentID" />
+        <AssociationConnector Association="PointDBModel.FK_Semester_StudentPoint_SemesterID" />
+        <AssociationConnector Association="PointDBModel.FK_Student_StudentPoint_StudentID" />
+        <EntityTypeShape EntityType="PointDBModel.AdmissionTest" Width="1.5" PointX="10.625" PointY="4.75" />
+        <EntityTypeShape EntityType="PointDBModel.AffiliatedOrganization" Width="1.5" PointX="12.625" PointY="4.75" />
+        <EntityTypeShape EntityType="PointDBModel.Alumnus" Width="1.5" PointX="13.625" PointY="0.75" />
+        <EntityTypeShape EntityType="PointDBModel.AlumniExperience" Width="1.5" PointX="14.625" PointY="3.75" />
+        <EntityTypeShape EntityType="PointDBModel.Answer" Width="1.5" PointX="14.625" PointY="6.75" />
+        <EntityTypeShape EntityType="PointDBModel.AppliedFor" Width="1.5" PointX="6.25" PointY="8.5" />
+        <EntityTypeShape EntityType="PointDBModel.Approvee" Width="1.5" PointX="15.625" PointY="0.75" />
+        <EntityTypeShape EntityType="PointDBModel.Assignment" Width="1.5" PointX="15.75" PointY="19.75" />
+        <EntityTypeShape EntityType="PointDBModel.Attendance" Width="1.5" PointX="18" PointY="10.25" />
+        <EntityTypeShape EntityType="PointDBModel.Batch" Width="1.5" PointX="0.75" PointY="5.25" />
+        <EntityTypeShape EntityType="PointDBModel.Book" Width="1.5" PointX="10.625" PointY="13.75" />
+        <EntityTypeShape EntityType="PointDBModel.BookIssue" Width="1.5" PointX="16.625" PointY="3.75" />
+        <EntityTypeShape EntityType="PointDBModel.BookReturn" Width="1.5" PointX="16.625" PointY="6.75" />
+        <EntityTypeShape EntityType="PointDBModel.CafeteriaStaff" Width="1.5" PointX="17.625" PointY="0.75" />
+        <EntityTypeShape EntityType="PointDBModel.CandidateEmployee" Width="1.5" PointX="18.625" PointY="3.75" />
+        <EntityTypeShape EntityType="PointDBModel.CandidateStudent" Width="1.5" PointX="3" PointY="15.125" />
+        <EntityTypeShape EntityType="PointDBModel.CandidateTestDetail" Width="1.5" PointX="10.625" PointY="16.75" />
+        <EntityTypeShape EntityType="PointDBModel.ChatKeyword" Width="1.5" PointX="18.625" PointY="7.75" />
+        <EntityTypeShape EntityType="PointDBModel.ChatLog" Width="1.5" PointX="19.625" PointY="0.75" />
+        <EntityTypeShape EntityType="PointDBModel.Choice" Width="1.5" PointX="20.625" PointY="3.75" />
+        <EntityTypeShape EntityType="PointDBModel.ClearanceRequest" Width="1.5" PointX="20.625" PointY="6.75" />
+        <EntityTypeShape EntityType="PointDBModel.Config" Width="1.5" PointX="6" PointY="34.25" />
+        <EntityTypeShape EntityType="PointDBModel.Course" Width="1.5" PointX="6.75" PointY="19.375" />
+        <EntityTypeShape EntityType="PointDBModel.CourseEnrollment" Width="1.5" PointX="15.75" PointY="9.5" />
+        <EntityTypeShape EntityType="PointDBModel.CourseFaculty" Width="1.5" PointX="11.25" PointY="9.125" />
+        <EntityTypeShape EntityType="PointDBModel.CourseFeedback" Width="1.5" PointX="20.625" PointY="10.75" />
+        <EntityTypeShape EntityType="PointDBModel.CourseOffered" Width="1.5" PointX="9" PointY="8.75" />
+        <EntityTypeShape EntityType="PointDBModel.daysofweek" Width="1.5" PointX="6" PointY="12.625" />
+        <EntityTypeShape EntityType="PointDBModel.Department" Width="1.5" PointX="6.75" PointY="25" />
+        <EntityTypeShape EntityType="PointDBModel.Designation" Width="1.5" PointX="6.75" PointY="22.625" />
+        <EntityTypeShape EntityType="PointDBModel.Domain" Width="1.5" PointX="20.625" PointY="13.75" />
+        <EntityTypeShape EntityType="PointDBModel.ECandidateApplication" Width="1.5" PointX="20.625" PointY="16.75" />
+        <EntityTypeShape EntityType="PointDBModel.Employee" Width="1.5" PointX="9" PointY="23" />
+        <EntityTypeShape EntityType="PointDBModel.FacultySection" Width="1.5" PointX="13.5" PointY="15" />
+        <EntityTypeShape EntityType="PointDBModel.Feedback" Width="1.5" PointX="21.625" PointY="0.75" />
+        <EntityTypeShape EntityType="PointDBModel.FoodItem" Width="1.5" PointX="9.625" PointY="19.75" />
+        <EntityTypeShape EntityType="PointDBModel.FoodOrder" Width="1.5" PointX="11.625" PointY="19.75" />
+        <EntityTypeShape EntityType="PointDBModel.FrameworkLanguage" Width="1.5" PointX="8.625" PointY="1.25" />
+        <EntityTypeShape EntityType="PointDBModel.Fyp" Width="1.5" PointX="18.625" PointY="19.75" />
+        <EntityTypeShape EntityType="PointDBModel.FypForm" Width="1.5" PointX="20.625" PointY="19.75" />
+        <EntityTypeShape EntityType="PointDBModel.FypProposal" Width="1.5" PointX="22.625" PointY="3.75" />
+        <EntityTypeShape EntityType="PointDBModel.Job" Width="1.5" PointX="4" PointY="25" />
+        <EntityTypeShape EntityType="PointDBModel.JobDescription" Width="1.5" PointX="22.625" PointY="7.75" />
+        <EntityTypeShape EntityType="PointDBModel.JobOpening" Width="1.5" PointX="22.625" PointY="10.75" />
+        <EntityTypeShape EntityType="PointDBModel.JobTag" Width="1.5" PointX="22.625" PointY="14.75" />
+        <EntityTypeShape EntityType="PointDBModel.MarksDistribution" Width="1.5" PointX="22.625" PointY="17.75" />
+        <EntityTypeShape EntityType="PointDBModel.MarksRecord" Width="1.5" PointX="22.625" PointY="20.75" />
+        <EntityTypeShape EntityType="PointDBModel.option" Width="1.5" PointX="23.625" PointY="0.75" />
+        <EntityTypeShape EntityType="PointDBModel.Pattern" Width="1.5" PointX="24.625" PointY="3.75" />
+        <EntityTypeShape EntityType="PointDBModel.Payment" Width="1.5" PointX="24.625" PointY="6.75" />
+        <EntityTypeShape EntityType="PointDBModel.Penalty" Width="1.5" PointX="24.625" PointY="9.75" />
+        <EntityTypeShape EntityType="PointDBModel.Programme" Width="1.5" PointX="3" PointY="18.625" />
+        <EntityTypeShape EntityType="PointDBModel.ProjectFramework" Width="1.5" PointX="10.875" PointY="0.875" />
+        <EntityTypeShape EntityType="PointDBModel.ProjectSkill" Width="1.5" PointX="24.625" PointY="12.75" />
+        <EntityTypeShape EntityType="PointDBModel.Question" Width="1.5" PointX="24.625" PointY="15.75" />
+        <EntityTypeShape EntityType="PointDBModel.RecruitmentExam" Width="1.5" PointX="18.625" PointY="22.75" />
+        <EntityTypeShape EntityType="PointDBModel.RecruitmentQuestion" Width="1.5" PointX="24.625" PointY="18.75" />
+        <EntityTypeShape EntityType="PointDBModel.Result" Width="1.5" PointX="24.625" PointY="21.75" />
+        <EntityTypeShape EntityType="PointDBModel.Room" Width="1.5" PointX="6" PointY="29" />
+        <EntityTypeShape EntityType="PointDBModel.SCandidateApplication" Width="1.5" PointX="25.625" PointY="0.75" />
+        <EntityTypeShape EntityType="PointDBModel.Section" Width="1.5" PointX="3" PointY="21.75" />
+        <EntityTypeShape EntityType="PointDBModel.Skill" Width="1.5" PointX="11.625" PointY="23.75" />
+        <EntityTypeShape EntityType="PointDBModel.STransaction" Width="1.5" PointX="13.625" PointY="23.75" />
+        <EntityTypeShape EntityType="PointDBModel.StudentExperience" Width="1.5" PointX="15.625" PointY="23.75" />
+        <EntityTypeShape EntityType="PointDBModel.StudentOpening" Width="1.5" PointX="20.625" PointY="23.75" />
+        <EntityTypeShape EntityType="PointDBModel.StudentProject" Width="1.5" PointX="8.625" PointY="27.875" />
+        <EntityTypeShape EntityType="PointDBModel.StudentSkill" Width="1.5" PointX="26.625" PointY="3.75" />
+        <EntityTypeShape EntityType="PointDBModel.sysdiagram" Width="1.5" PointX="26.625" PointY="6.75" />
+        <EntityTypeShape EntityType="PointDBModel.Timeslot" Width="1.5" PointX="6" PointY="31.25" />
+        <EntityTypeShape EntityType="PointDBModel.Timetable" Width="1.5" PointX="8.25" PointY="13.75" />
+        <EntityTypeShape EntityType="PointDBModel.TransactionType" Width="1.5" PointX="26.625" PointY="9.75" />
+        <EntityTypeShape EntityType="PointDBModel.Wallet" Width="1.5" PointX="26.625" PointY="12.75" />
+        <EntityTypeShape EntityType="PointDBModel.AlumniSkill" Width="1.5" PointX="26.625" PointY="15.75" />
+        <EntityTypeShape EntityType="PointDBModel.ChatHistory" Width="1.5" PointX="26.625" PointY="18.75" />
+        <EntityTypeShape EntityType="PointDBModel.FypConfig" Width="1.5" PointX="22.625" PointY="24.75" />
+        <EntityTypeShape EntityType="PointDBModel.FypEvaluation" Width="1.5" PointX="26.625" PointY="21.75" />
+        <EntityTypeShape EntityType="PointDBModel.FypExternalJuryy" Width="1.5" PointX="27.625" PointY="0.75" />
+        <EntityTypeShape EntityType="PointDBModel.FypJury" Width="1.5" PointX="17.625" PointY="25.75" />
+        <EntityTypeShape EntityType="PointDBModel.FypMark" Width="1.5" PointX="28.625" PointY="3.75" />
+        <EntityTypeShape EntityType="PointDBModel.FypMember" Width="1.5" PointX="28.625" PointY="6.75" />
+        <EntityTypeShape EntityType="PointDBModel.OrderDetail" Width="1.5" PointX="28.625" PointY="9.75" />
+        <EntityTypeShape EntityType="PointDBModel.RequestApproval" Width="1.5" PointX="11.625" PointY="26.75" />
+        <EntityTypeShape EntityType="PointDBModel.StudentAssignment" Width="1.5" PointX="18" PointY="14.625" />
+        <AssociationConnector Association="PointDBModel.FK__AppliedFo__JobID__66EA454A" />
+        <AssociationConnector Association="PointDBModel.FK__AppliedFo__Stude__65F62111" />
+        <AssociationConnector Association="PointDBModel.FK__Assignment__FSID__084B3915" />
+        <AssociationConnector Association="PointDBModel.FK__Assignment__FSID__26CFC035" />
+        <AssociationConnector Association="PointDBModel.FK__StudentAs__Assig__093F5D4E" />
+        <AssociationConnector Association="PointDBModel.FK_Attendance_CourseEnrollment" />
+        <AssociationConnector Association="PointDBModel.FK__CourseOff__Batch__00AA174D" />
+        <AssociationConnector Association="PointDBModel.FK__CourseOff__Batch__1F2E9E6D" />
+        <AssociationConnector Association="PointDBModel.FK__Section__BatchID__2E70E1FD" />
+        <AssociationConnector Association="PointDBModel.FK__Student__BatchID__2F650636" />
+        <AssociationConnector Association="PointDBModel.FK__Timetable__batch__7B264821" />
+        <AssociationConnector Association="PointDBModel.FK__Student__Candida__314D4EA8" />
+        <AssociationConnector Association="PointDBModel.Config_FK" />
+        <AssociationConnector Association="PointDBModel.FK__CourseEnr__Cours__0D0FEE32" />
+        <AssociationConnector Association="PointDBModel.FK__CourseEnr__Cours__2B947552" />
+        <AssociationConnector Association="PointDBModel.FK__CourseOff__Cours__1D4655FB" />
+        <AssociationConnector Association="PointDBModel.FK__CourseOff__Cours__7FB5F314" />
+        <AssociationConnector Association="PointDBModel.FK__Timetable__cours__793DFFAF" />
+        <AssociationConnector Association="PointDBModel.FK__CourseEnr__Stude__0C1BC9F9" />
+        <AssociationConnector Association="PointDBModel.FK__CourseEnr__Stude__2AA05119" />
+        <AssociationConnector Association="PointDBModel.FK__CourseEnro__FSID__0B27A5C0" />
+        <AssociationConnector Association="PointDBModel.FK__CourseEnro__FSID__29AC2CE0" />
+        <AssociationConnector Association="PointDBModel.FK__StudentAs__Enrol__2C88998B" />
+        <AssociationConnector Association="PointDBModel.FK__CourseFac__Cours__02925FBF" />
+        <AssociationConnector Association="PointDBModel.FK__CourseFac__Cours__2116E6DF" />
+        <AssociationConnector Association="PointDBModel.FK__CourseFac__EmpID__019E3B86" />
+        <AssociationConnector Association="PointDBModel.FK__CourseFac__EmpID__2022C2A6" />
+        <AssociationConnector Association="PointDBModel.FK__FacultySec__CFID__0662F0A3" />
+        <AssociationConnector Association="PointDBModel.FK__FacultySec__CFID__24E777C3" />
+        <AssociationConnector Association="PointDBModel.FK__CourseOff__Semes__1E3A7A34" />
+        <AssociationConnector Association="PointDBModel.FK__Timetable__dayID__7849DB76" />
+        <AssociationConnector Association="PointDBModel.FK__Employee__Depart__047AA831" />
+        <AssociationConnector Association="PointDBModel.FK__Employee__Design__038683F8" />
+        <AssociationConnector Association="PointDBModel.FK__Timetable__empID__7755B73D" />
+        <AssociationConnector Association="PointDBModel.FK__FacultySe__Secti__075714DC" />
+        <AssociationConnector Association="PointDBModel.FK__FacultySe__Secti__12C8C788" />
+        <AssociationConnector Association="PointDBModel.FK__FacultySe__Secti__25DB9BFC" />
+        <AssociationConnector Association="PointDBModel.FK__ProjectFram__FID__7FEAFD3E" />
+        <AssociationConnector Association="PointDBModel.FK__Student__Program__30592A6F" />
+        <AssociationConnector Association="PointDBModel.FK__ProjectFr__proje__00DF2177" />
+        <AssociationConnector Association="PointDBModel.FK__Timetable__roomI__7C1A6C5A" />
+        <AssociationConnector Association="PointDBModel.FK__Timetable__secti__7A3223E8" />
+        <AssociationConnector Association="PointDBModel.FK__Timetable__times__7D0E9093" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
