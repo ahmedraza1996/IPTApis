@@ -153,9 +153,6 @@
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
-    <Compile Include="Controllers\ClearanceMVC\AddClearanceRequestMVCController.cs" />
-    <Compile Include="Controllers\ClearanceMVC\RequestApprovalMVCController.cs" />
-    <Compile Include="Controllers\ClearanceMVC\GetClearanceRequestMVCController.cs" />
     <Compile Include="Controllers\Clearance\ClearanceRequestController.cs" />
     <Compile Include="Controllers\Clearance\EmplDesgController.cs" />
     <Compile Include="Controllers\Clearance\GetClearanceRequestController.cs" />
