@@ -282,11 +282,6 @@
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
-    <Compile Include="Controllers\FYP\Fyp1GetController.cs" />
-    <Compile Include="Controllers\FYP\Fyp1PostController.cs" />
-    <Compile Include="Controllers\FYP\Fyp2GetController.cs" />
-    <Compile Include="Controllers\FYP\Fyp2PostController.cs" />
-    <Compile Include="Controllers\FYP\FypLoginController.cs" />
     <Compile Include="Controllers\JobPortal\JobController.cs" />
     <Compile Include="Controllers\JobPortal\StudentProfileController.cs" />
     <Compile Include="Controllers\Marks_Manage\MarksController.cs" />
