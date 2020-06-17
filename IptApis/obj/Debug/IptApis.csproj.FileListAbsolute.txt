@@ -47,93 +47,61 @@ C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\vbc.exe.config
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\vbc.rsp
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\VBCSCompiler.exe
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Dapper.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Microsoft.Data.Edm.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Microsoft.Data.OData.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Newtonsoft.Json.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\QueryBuilder.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\SqlKata.Execution.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Swashbuckle.Core.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Net.Http.Formatting.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Spatial.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Transactions.Workflows.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Cors.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Http.Cors.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Http.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Http.WebHost.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\WebActivatorEx.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Dapper.xml
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Microsoft.Data.Edm.xml
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Microsoft.Data.OData.xml
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Newtonsoft.Json.xml
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Net.Http.Formatting.xml
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Spatial.xml
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Http.xml
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Http.Cors.xml
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Http.WebHost.xml
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.csprojAssemblyReference.cache
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\de\System.Spatial.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\es\System.Spatial.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\fr\System.Spatial.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\it\System.Spatial.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\ja\System.Spatial.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\ko\System.Spatial.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\ru\System.Spatial.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.csproj.CopyComplete
 C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.pdb
-E:\Final Semester\IPTApis\IptApis\bin\IptApis.dll.config
-E:\Final Semester\IPTApis\IptApis\bin\IptApis.dll
-E:\Final Semester\IPTApis\IptApis\bin\IptApis.pdb
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\csc.exe
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\csc.exe.config
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\csc.rsp
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\csi.exe
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\csi.exe.config
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\csi.rsp
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\Microsoft.CSharp.Core.targets
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\Microsoft.Managed.Core.targets
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\Microsoft.VisualBasic.Core.targets
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.AppContext.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Collections.Immutable.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Console.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Diagnostics.StackTrace.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.IO.Compression.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.IO.FileSystem.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.IO.FileSystem.Primitives.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.IO.Pipes.AccessControl.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.IO.Pipes.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Reflection.Metadata.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Security.AccessControl.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Security.Claims.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Encoding.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Primitives.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Security.Principal.Windows.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Text.Encoding.CodePages.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.ValueTuple.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Xml.ReaderWriter.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Xml.XmlDocument.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Xml.XPath.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\System.Xml.XPath.XDocument.dll
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\vbc.exe
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\vbc.exe.config
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\vbc.rsp
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\VBCSCompiler.exe
-E:\Final Semester\IPTApis\IptApis\bin\roslyn\VBCSCompiler.exe.config
-E:\Final Semester\IPTApis\IptApis\bin\Dapper.dll
-E:\Final Semester\IPTApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-E:\Final Semester\IPTApis\IptApis\bin\Newtonsoft.Json.dll
-E:\Final Semester\IPTApis\IptApis\bin\QueryBuilder.dll
-E:\Final Semester\IPTApis\IptApis\bin\SqlKata.Execution.dll
-E:\Final Semester\IPTApis\IptApis\bin\System.Net.Http.Formatting.dll
-E:\Final Semester\IPTApis\IptApis\bin\System.Transactions.Workflows.dll
-E:\Final Semester\IPTApis\IptApis\bin\System.Web.Http.dll
-E:\Final Semester\IPTApis\IptApis\bin\System.Web.Http.WebHost.dll
-E:\Final Semester\IPTApis\IptApis\bin\Dapper.xml
-E:\Final Semester\IPTApis\IptApis\bin\Newtonsoft.Json.xml
-E:\Final Semester\IPTApis\IptApis\bin\System.Net.Http.Formatting.xml
-E:\Final Semester\IPTApis\IptApis\bin\System.Web.Http.xml
-E:\Final Semester\IPTApis\IptApis\bin\System.Web.Http.WebHost.xml
-E:\Final Semester\IPTApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Final Semester\IPTApis\IptApis\obj\Debug\IptApis.csprojAssemblyReference.cache
-E:\Final Semester\IPTApis\IptApis\obj\Debug\IptApis.csproj.CoreCompileInputs.cache
-E:\Final Semester\IPTApis\IptApis\obj\Debug\IptApis.csproj.CopyComplete
-E:\Final Semester\IPTApis\IptApis\obj\Debug\IptApis.dll
-E:\Final Semester\IPTApis\IptApis\obj\Debug\IptApis.pdb
-E:\Final Semester\IPTApis\IptApis\bin\EntityFramework.dll
-E:\Final Semester\IPTApis\IptApis\bin\EntityFramework.SqlServer.dll
-E:\Final Semester\IPTApis\IptApis\bin\PointDataAccess.dll
-E:\Final Semester\IPTApis\IptApis\bin\EntityFramework.xml
-E:\Final Semester\IPTApis\IptApis\bin\EntityFramework.SqlServer.xml
-E:\Final Semester\IPTApis\IptApis\bin\PointDataAccess.pdb
-E:\Final Semester\IPTApis\IptApis\bin\PointDataAccess.dll.config
+C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.csprojAssemblyReference.cache
