@@ -72,3 +72,6 @@ C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Http.Cors.xml
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Swashbuckle.Core.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\WebActivatorEx.dll
+C:\Users\SALEEM KHOWAJA\Desktop\FAST CS BATCH 16\YEAR 2020\IPT\FINAL\Nareender\IPTApis\IptApis\obj\Debug\IptApis.csprojResolveAssemblyReference.cache
+C:\Users\SALEEM KHOWAJA\Desktop\FAST CS BATCH 16\YEAR 2020\IPT\FINAL\Nareender\IPTApis\IptApis\obj\Debug\IptApis.dll
+C:\Users\SALEEM KHOWAJA\Desktop\FAST CS BATCH 16\YEAR 2020\IPT\FINAL\Nareender\IPTApis\IptApis\obj\Debug\IptApis.pdb
