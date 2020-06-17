@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "cc9cac3e-1120-45e7-a94a-954317ea9abf",
+		"name": "Admission API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Candidate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44380/api/admission/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"admission",
+						"3"
+					]
+				},
+				"description": "Fetch the candidate including test details and application (if exists)."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44380/api/admission/test/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"admission",
+						"test",
+						"1"
+					]
+				},
+				"description": "Get details of a test."
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate Candidate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44380/api/admission/auth/some@gmail.com/12",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"admission",
+						"auth",
+						"some@gmail.com",
+						"12"
+					]
+				},
+				"description": "Authenticate an existing candidate by ID and password. The returned data will have test details and application (if exists)."
+			},
+			"response": []
+		},
+		{
+			"name": "Register Application",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refId\": 0,\n    \"qualifiedStatus\": \"Pending\",\n    \"applyDate\": \"2020-05-23T20:02:01\",\n    \"openingId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44380/api/admission/newapp/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"admission",
+						"newapp",
+						"3"
+					]
+				},
+				"description": "Register a candidate's application. The URL must contain ID of the candidate. RefId must be 0."
+			},
+			"response": []
+		},
+		{
+			"name": "Register Student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"candidateId\": 3,\n    \"cname\": \"Mustafa\",\n    \"email\": \"some@gmail.com\",\n    \"password\": \"12\",\n    \"caddress\": \"House no. 0 Block C1\",\n    \"contactInfo\": \"00000000000\",\n    \"hscresult\": \"5%\",\n    \"sscresult\": \"100%\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44380/api/admission/newstudent",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"admission",
+						"newstudent"
+					]
+				},
+				"description": "Register a candidate as a student."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Candidate's Details",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"candidateId\": 3,\n    \"cname\": \"Mustafa\",\n    \"email\": \"some@gmail.com\",\n    \"password\": \"12\",\n    \"caddress\": \"House no. 0 Block C1\",\n    \"contactInfo\": \"00000000000\",\n    \"hscresult\": \"50%\",\n    \"sscresult\": \"100%\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44380/api/admission/update/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"admission",
+						"update",
+						"3"
+					]
+				},
+				"description": "Since candidate is not required to enter all information at once, the details may be updated later."
+			},
+			"response": []
+		},
+		{
+			"name": "Register Candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"candidateId\": 3,\n    \"cname\": \"Mustafa\",\n    \"email\": \"some@gmail.com\",\n    \"password\": \"12\",\n    \"caddress\": \"House no. 0 Block C1\",\n    \"contactInfo\": \"00000000000\",\n    \"hscresult\": \"5%\",\n    \"sscresult\": \"100%\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44380/api/admission/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"admission",
+						""
+					]
+				},
+				"description": "Register a new candidate."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Student Openings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44380/api/admission/openings",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"admission",
+						"openings"
+					]
+				},
+				"description": "Fetch all student openings for current year."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Programme",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44380/api/admission/programme/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"admission",
+						"programme",
+						"1"
+					]
+				},
+				"description": "Get a programme by ID along with the name of the department offering the programme."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

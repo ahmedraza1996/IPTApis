@@ -25,6 +25,7 @@ mono_crash.*
 =======
 >>>>>>> 67938032ffc79a8d2d9f6a3589e3540d2fb35690
 # Build results
+IptApis/[Dd]ebug
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
