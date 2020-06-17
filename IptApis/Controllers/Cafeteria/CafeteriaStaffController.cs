@@ -20,79 +20,6 @@ namespace IptApis.Controllers.Cafeteria
     public class CafeteriaStaffController : ApiController
     {
         [HttpPost]
-        public HttpResponseMessage AddProduct(Object Product)
-        {
-
-
-            // string username = Thread.CurrentPrincipal.Identity.Name;
-
-            var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Product));
-            //below are optional,just to check if we get anynull value it will chage to their defaults
-            object ItemName;
-            test.TryGetValue("ItemName", out ItemName);   //hover onto trygetvalue, to see the method signature
-            string _ItemName = Convert.ToString(ItemName);
-            object ItemStatus;
-            test.TryGetValue("ItemStatus", out ItemStatus);
-            string _ItemStatus = Convert.ToString(ItemStatus);
-            object IDescription;
-            test.TryGetValue("IDescription", out IDescription);
-            string _IDescription = Convert.ToString(IDescription);
-
-            object Price;
-            test.TryGetValue("Price", out Price);
-            int _Price = Convert.ToInt32(Price);
-
-
-            var db = DbUtils.GetDBConnection();
-            db.Connection.Open();
-            // using (var scope = db.Connection.BeginTransaction())
-            using (TransactionScope scope = new TransactionScope())   
-            {
-                try
-                {
-                  
-                var res = db.Query("fooditem").InsertGetId<int>(new
-                {
-                    ItemName = _ItemName,
-                    ItemStatus = _ItemStatus,
-                    IDescription = _IDescription,
-                    Price = _Price
-                });   //specify each field in form of dictionary or object
-
-                    #region 
-
-                    //var query = db.Query("propertydetail").AsInsert(test);
-
-                    //
-
-                    ////Inject the Identity in the Compiled Query SQL object
-                    //
-
-                    ////Name Binding house the values that the insert query needs 
-                    //
-                    //var res = db.Query("fooditem").AsInsert(fooditemobj);
-                    //SqlKata.SqlResult compiledQuery = compiler.Compile(res);
-                    //var sql = compiledQuery.Sql + "; SELECT @@IDENTITY as ID;";
-                    //var IdentityKey = db.Select<string>(sql, compiledQuery.NamedBindings).FirstOrDefault();
-                    //var insertedIdString = db.Select("SELECT @@IDENTITY");
-                    //var res = db.Query("fooditem").InsertGetId<int>(fooditemobj);
-                    //var res = db.Query()
-                    //scope.Commit();
-                    #endregion 
-                scope.Complete();  // if record is entered successfully , transaction will be committed
-                db.Connection.Close();
-                return Request.CreateResponse(HttpStatusCode.Created, new Dictionary<string, object>() { { "LastInsertedId", res } });
-                }
-                catch (Exception ex)
-                {
-                    scope.Dispose();   //if there are any error, rollback the transaction
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
-                }
-
-            }
-
-
-        }
         public async Task<HttpResponseMessage> AddProductWithImage()
         {
             Dictionary<string, object> dict = new Dictionary<string, object>();
@@ -203,6 +130,38 @@ namespace IptApis.Controllers.Cafeteria
 
 
         }
+        [HttpGet]
+        public HttpResponseMessage ViewOrders()
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<IDictionary<string, object>> response;
+            response = db.Query("FoodOrder").Where("OrderStatus", "Pending").OrderBy("OrderDate").OrderBy("OrderTime").Get().Cast<IDictionary<string, object>>();
+            foreach (var item in response)
+            {
+                object OrderId;
+                item.TryGetValue("OrderID", out OrderId);
+                IEnumerable<IDictionary<string, object>> OrderDetails;
+
+                OrderDetails = db.Query("OrderDetails")
+                    .Select("ODID", "ItemName", "Quantity")
+                    .Where("OrderID", OrderId)
+                    .Join("fooditem", "orderdetails.ItemID", "fooditem.ItemID")
+                    .Get()
+                    .Cast<IDictionary<string, object>>();
+
+
+
+                item["OrderDetails"] = OrderDetails;
+
+            }
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, response);
+
+        }
+
+
         public HttpResponseMessage GetPendingOrderbyStudentId(Object Sid)
         {
             var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Sid));
@@ -227,7 +186,7 @@ namespace IptApis.Controllers.Cafeteria
                 IEnumerable<IDictionary<string, object>> OrderDetails;
 
                 OrderDetails = db.Query("OrderDetails")
-                    .Select("ODID", "itemname", "qunatity")
+                    .Select("ODID", "itemname", "quantity")
                     .Where("orderid", OrderId)
                     .Join("fooditem", "orderdetails.itemid", "fooditem.itemid")
                     .Get()
@@ -248,7 +207,7 @@ namespace IptApis.Controllers.Cafeteria
             //string _OrderStatus = Convert.ToString(OrderStatus);
             var db = DbUtils.GetDBConnection();
 
-            var res = db.Query("foodorder").Where("orderid", OrderId).Update(new
+            var res = db.Query("foodorder").Where("OrderID", OrderId).Update(new
             {
                 OrderStatus = OrderStatus
 
@@ -276,9 +235,9 @@ namespace IptApis.Controllers.Cafeteria
         {
             // HttpStatusCode statusCode = HttpStatusCode.Unauthorized;
             var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Wallet));
-            object StudentId;
-            test.TryGetValue("StudentID", out StudentId);
-            int _StudentId = Convert.ToInt32(StudentId);
+            object rollnumber;
+            test.TryGetValue("RollNumber", out rollnumber);
+            string _rollnumber = Convert.ToString(rollnumber);
             object Amount;
             test.TryGetValue("Amount", out Amount);
             int _Amount = Convert.ToInt32(Amount);
@@ -289,8 +248,14 @@ namespace IptApis.Controllers.Cafeteria
                 try
                 {
                     IEnumerable<IDictionary<string, object>> response;
-                    response = db.Query("Wallet").Where("StudentId", _StudentId).Get().Cast<IDictionary<string, object>>();
+                    response = db.Query("Student").Where("RollNumber", _rollnumber).Get().Cast<IDictionary<string, object>>();
                     var strResponse = response.ElementAt(0).ToString().Replace("DapperRow,", "").Replace("=", ":");
+                    Dictionary<string, object> StudentInfo = JsonConvert.DeserializeObject<Dictionary<string, object>>(strResponse);
+                    object StudentId;
+                    StudentInfo.TryGetValue("StudentID", out StudentId);
+
+                    response = db.Query("Wallet").Where("StudentId", StudentId).Get().Cast<IDictionary<string, object>>();
+                    strResponse = response.ElementAt(0).ToString().Replace("DapperRow,", "").Replace("=", ":");
                     Dictionary<string, object> walletinfo = JsonConvert.DeserializeObject<Dictionary<string, object>>(strResponse);
                     object walletBalance;
                     walletinfo.TryGetValue("Balance", out walletBalance);
@@ -299,11 +264,9 @@ namespace IptApis.Controllers.Cafeteria
                     walletinfo.TryGetValue("WalletID", out walletID);
                     int _walletID = Convert.ToInt32(walletID);
 
-                    var walletRes = db.Query("Wallet").Where("StudentId", StudentId).Update(new
+                    var walletRes = db.Query("Wallet").Where("StudentID", StudentId).Update(new
                     {
-                        WalletID = _walletID,
-                        StudentID = StudentId,
-                        _walletBalance = _walletBalance + _Amount
+                        Balance = _walletBalance + _Amount
 
                     });
 
@@ -476,42 +439,85 @@ namespace IptApis.Controllers.Cafeteria
         }
     
 
-        [HttpGet]
-        public HttpResponseMessage ViewOrders()
+      
+
+
+
+        //extra
+        public HttpResponseMessage AddProduct(Object Product)
         {
+
+
+            // string username = Thread.CurrentPrincipal.Identity.Name;
+
+            var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Product));
+            //below are optional,just to check if we get anynull value it will chage to their defaults
+            object ItemName;
+            test.TryGetValue("ItemName", out ItemName);   //hover onto trygetvalue, to see the method signature
+            string _ItemName = Convert.ToString(ItemName);
+            object ItemStatus;
+            test.TryGetValue("ItemStatus", out ItemStatus);
+            string _ItemStatus = Convert.ToString(ItemStatus);
+            object IDescription;
+            test.TryGetValue("IDescription", out IDescription);
+            string _IDescription = Convert.ToString(IDescription);
+
+            object Price;
+            test.TryGetValue("Price", out Price);
+            int _Price = Convert.ToInt32(Price);
+
+
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
-
-            IEnumerable<IDictionary<string, object>> response;
-            response = db.Query("FoodOrder").Where("OrderStatus", "Pending").OrderBy("OrderDate").OrderBy("OrderTime").Get().Cast<IDictionary<string, object>>();
-            foreach (var item in response)
+            // using (var scope = db.Connection.BeginTransaction())
+            using (TransactionScope scope = new TransactionScope())
             {
-                object OrderId;
-                item.TryGetValue("OrderID", out OrderId);
-                IEnumerable<IDictionary<string, object>> OrderDetails;
+                try
+                {
 
-                OrderDetails = db.Query("OrderDetails")
-                    .Select("ODID", "ItemName", "Quantity")
-                    .Where("OrderID", OrderId)
-                    .Join("fooditem", "orderdetails.ItemID", "fooditem.ItemID")
-                    .Get()
-                    .Cast<IDictionary<string, object>>();
+                    var res = db.Query("fooditem").InsertGetId<int>(new
+                    {
+                        ItemName = _ItemName,
+                        ItemStatus = _ItemStatus,
+                        IDescription = _IDescription,
+                        Price = _Price
+                    });   //specify each field in form of dictionary or object
 
+                    #region 
 
+                    //var query = db.Query("propertydetail").AsInsert(test);
 
-                item["OrderDetails"] = OrderDetails;
+                    //
+
+                    ////Inject the Identity in the Compiled Query SQL object
+                    //
+
+                    ////Name Binding house the values that the insert query needs 
+                    //
+                    //var res = db.Query("fooditem").AsInsert(fooditemobj);
+                    //SqlKata.SqlResult compiledQuery = compiler.Compile(res);
+                    //var sql = compiledQuery.Sql + "; SELECT @@IDENTITY as ID;";
+                    //var IdentityKey = db.Select<string>(sql, compiledQuery.NamedBindings).FirstOrDefault();
+                    //var insertedIdString = db.Select("SELECT @@IDENTITY");
+                    //var res = db.Query("fooditem").InsertGetId<int>(fooditemobj);
+                    //var res = db.Query()
+                    //scope.Commit();
+                    #endregion
+                    scope.Complete();  // if record is entered successfully , transaction will be committed
+                    db.Connection.Close();
+                    return Request.CreateResponse(HttpStatusCode.Created, new Dictionary<string, object>() { { "LastInsertedId", res } });
+                }
+                catch (Exception ex)
+                {
+                    scope.Dispose();   //if there are any error, rollback the transaction
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+                }
 
             }
 
-            return this.Request.CreateResponse(HttpStatusCode.OK, response);
 
         }
-      
-       
 
-
-
-     
 
     }
 }

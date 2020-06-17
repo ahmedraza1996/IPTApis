@@ -47,18 +47,24 @@
     <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>Models\PointRegistration\PointDataAccess\bin\Debug\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>Models\PointRegistration\PointDataAccess\bin\Debug\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PointDataAccess">
-      <HintPath>Models\PointRegistration\PointDataAccess\bin\Debug\PointDataAccess.dll</HintPath>
+    <Reference Include="PointDataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\PointDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="QueryBuilder, Version=1.1.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SqlKata.1.1.7\lib\net45\QueryBuilder.dll</HintPath>
@@ -66,7 +72,11 @@
     <Reference Include="SqlKata.Execution, Version=1.1.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SqlKata.Execution.1.1.7\lib\net451\SqlKata.Execution.dll</HintPath>
     </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -74,6 +84,9 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Transactions.Workflows, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Transactions.Workflows.0.1.2.0\lib\net40\System.Transactions.Workflows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -85,6 +98,9 @@
     <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
@@ -95,6 +111,9 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -104,6 +123,8 @@
   <ItemGroup>
     <Content Include="Controllers\FacultyRecruitment\To-do List.txt" />
     <Content Include="Global.asax" />
+    <Content Include="Models\MarksModels\How to use API.txt" />
+    <Content Include="Web.config" />
     <Content Include="productimage\abc.jpg" />
     <Content Include="productimage\Bojack.jpg" />
     <Content Include="productimage\Pizza fries.jpg" />
@@ -112,10 +133,19 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
+    <Compile Include="Controllers\CourseRegistration\CourseRegistrationController.cs" />
+    <Compile Include="Controllers\Course\CourseController.cs" />
+    <Compile Include="Controllers\FacultyController.cs" />
+    <Compile Include="Controllers\FYP\Fyp1GetController.cs" />
+    <Compile Include="Controllers\FYP\Fyp1PostController.cs" />
+    <Compile Include="Controllers\FYP\Fyp2GetController.cs" />
+    <Compile Include="Controllers\FYP\Fyp2PostController.cs" />
+    <Compile Include="Controllers\FYP\FypLoginController.cs" />
     <Compile Include="Controllers\JobPortal\JobController.cs" />
     <Compile Include="Controllers\JobPortal\StudentProfileController.cs" />
     <Compile Include="Controllers\Marks_Manage\MarksController.cs" />
@@ -124,16 +154,21 @@
     <Compile Include="Controllers\PointRegistration\PointFeeController.cs" />
     <Compile Include="Controllers\PointRegistration\PointPaymentController.cs" />
     <Compile Include="Controllers\PointRegistration\RouteController.cs" />
-    <Compile Include="Controllers\PointRegistration\SemesterController.cs" />
+    <Compile Include="Controllers\PointRegistration\SemesterDataController.cs" />
     <Compile Include="Controllers\PointRegistration\StudentController.cs" />
     <Compile Include="Controllers\PointRegistration\StudentPointController.cs" />
     <Compile Include="Controllers\Room_Allocation\TimeTableController.cs" />
     <Compile Include="Controllers\Room_Allocation\TimeTableData.cs" />
     <Compile Include="Controllers\Room_Allocation\TimetableModel.cs" />
+    <Compile Include="Controllers\Semester\SemesterController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CourseModel.cs" />
+    <Compile Include="Models\CourseRegistrationModel.cs" />
+    <Compile Include="Models\FacultyBasic.cs" />
+    <Compile Include="Models\FacultyCourseAssign.cs" />
     <Compile Include="Models\FacultyRecruitment\CandidateEmployee.cs" />
     <Compile Include="Models\FacultyRecruitment\Choice.cs" />
     <Compile Include="Models\FacultyRecruitment\Department.cs" />
@@ -144,10 +179,15 @@
     <Compile Include="Models\FacultyRecruitment\RecruitmentExam.cs" />
     <Compile Include="Models\FacultyRecruitment\RecruitmentQuestion.cs" />
     <Compile Include="Models\FacultyRecruitment\Result.cs" />
+    <Compile Include="Models\FacultySectionDetails.cs" />
+    <Compile Include="Models\JobPortal\AppliedFor.cs" />
+    <Compile Include="Models\JobPortal\CV.cs" />
     <Compile Include="Models\JobPortal\Domain.cs" />
     <Compile Include="Models\JobPortal\Experience.cs" />
     <Compile Include="Models\JobPortal\Framework.cs" />
     <Compile Include="Models\JobPortal\Job.cs" />
+    <Compile Include="Models\JobPortal\JobDetails.cs" />
+    <Compile Include="Models\JobPortal\newJob.cs" />
     <Compile Include="Models\JobPortal\Organization.cs" />
     <Compile Include="Models\JobPortal\Project.cs" />
     <Compile Include="Models\JobPortal\Skill.cs" />
@@ -159,8 +199,18 @@
     <Compile Include="Models\MarksModels\Section_Students.cs" />
     <Compile Include="Models\MarksModels\Student_Details.cs" />
     <Compile Include="Models\MarksModels\Update_Distribution.cs" />
+    <Compile Include="Models\OfferedCourse.cs" />
+    <Compile Include="Models\OfferedCourseBasic.cs" />
+    <Compile Include="Models\SemesterBasic.cs" />
+    <Compile Include="Models\SemesterConfig.cs" />
+    <Compile Include="Models\SemesterInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\Constants\CourseConstants.cs" />
+    <Compile Include="Shared\Constants\general.constants.cs" />
+    <Compile Include="Shared\Constants\Semester.constants.cs" />
     <Compile Include="Shared\DbUtils.cs" />
+    <Compile Include="Shared\HelperFunctions.cs" />
+    <Compile Include="Shared\JsonFormatter.cs" />
     <Compile Include="Shared\Test.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,7 +224,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\PointRegistration\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -187,16 +239,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51154</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44380/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

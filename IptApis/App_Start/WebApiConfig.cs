@@ -9,6 +9,8 @@ namespace IptApis
     {
         public static void Register(HttpConfiguration config)
         {
+
+            config.EnableCors();
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -18,11 +20,6 @@ namespace IptApis
             config.Routes.MapHttpRoute(
                 name: "ActionApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-            config.Routes.MapHttpRoute(
-                name: "PointApi",
-                routeTemplate: "api/PointApp/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

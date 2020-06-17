@@ -8,7 +8,7 @@ using PointDataAccess;
 namespace IptApis.Controllers.PointRegistration
 {
     [Route("api/PointApp/Semester")]
-    public class SemesterController : ApiController
+    public class SemesterDataController : ApiController
     {
         public IEnumerable<Semester> Get()
         {
