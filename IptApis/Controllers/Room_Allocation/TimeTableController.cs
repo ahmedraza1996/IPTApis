@@ -466,15 +466,15 @@ namespace IptApis.Controllers.Room_Allocation
             List<TimetableModel> TTM = GetCourses();
 
             int count = TTM.Count;
-
-            for (int i = 0; i < 2; i++)
+            for(int i=0;i<count;i++)
             {
-                //copied 3 times
-                for (int j = 0; j < count; j++)
-                {
-                    TTM.Add(TTM[j]);
-                }
+                TTM[i].Room = "Empty";
+                
             }
+           
+            
+            count = TTM.Count;
+            TTM = TTM.OrderBy(o => o.coursename).ToList();
             //list of all classrooms
             List<String> classrooms = GetRooms();
             //counter for checking the status of the room that is has been allocated
@@ -490,7 +490,7 @@ namespace IptApis.Controllers.Room_Allocation
                     day++;
                     timeslot = 4;
                 }
-                if (day > 5)
+                if (day > 5 || day < 1)
                 {
                     day = 1;
                 }
@@ -498,14 +498,16 @@ namespace IptApis.Controllers.Room_Allocation
                 {
                     roomcounter = 0;
                 }
+
                 if (checksection(TTM[counter].Section, TTM[counter].Batch, TTM, day, timeslot) && instructorFree(TTM[counter].CourseInstructor, TTM, day, timeslot))
                 {
+                    System.Diagnostics.Debug.WriteLine("Total size = " + counter);
                     TTM[counter].Room = classrooms[roomcounter];
                     TTM[counter].timeslot = timeslot;
                     TTM[counter].day = day;
-
                     roomcounter++;
                     counter++;
+                    //timeslot++;
                 }
                 else
                 {
@@ -696,7 +698,38 @@ namespace IptApis.Controllers.Room_Allocation
             }
             return id;
         }
+        public bool instructorFree(String name, List<TimetableModel> timetables, int day, int timeslot)
+        {
+            for (int i = 0; i < timetables.Count; i++)
+            {
+                if (timetables[i].CourseInstructor.Equals(name) && timetables[i].day == day && timetables[i].timeslot == timeslot && timetables[i].Room.Equals("Empty"))
+                {
+                    System.Diagnostics.Debug.WriteLine("Room Rejected");
 
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public int sectionFree(String section, String batch, List<TimetableModel> timetables, int day)
+        {
+            for (int i = 0; i < timetables.Count; i++)
+            {
+                if (timetables[i].Section.Equals(section) && timetables[i].Batch.Equals(batch) && timetables[i].timeslot == 1 && timetables[i].day == day)
+                {
+                    if (timetables[i].Section.Equals(section) && timetables[i].Batch.Equals(batch) && timetables[i].timeslot == 2 && timetables[i].day == day)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+            return 1;
+        }
         [System.Web.Http.HttpGet]
         public List<TimetableModel> maketimetable()
         {
@@ -764,61 +797,39 @@ namespace IptApis.Controllers.Room_Allocation
 
             return SortedList;
         }
-
+        
         private bool checksection(String section, String Batch, List<TimetableModel> timetables, int day, int timeslot)
         {
             for (int i = 0; i < timetables.Count; i++)
             {
-                if (timetables[i].Section.Equals(section) && timetables[i].day == day && timetables[i].Room != null && timetables[i].Batch.Equals(Batch) && timetables[i].timeslot == timeslot)
+                if (timetables[i].Section.Equals(section) && timetables[i].day == day && !timetables[i].Room.Equals("Empty") && timetables[i].Batch.Equals(Batch) && timetables[i].timeslot == timeslot)
                 {
+                    System.Diagnostics.Debug.WriteLine("Room Rejected");
+
                     return false;
                 }
             }
             return true;
         }
+        
+       
+
 
         public bool instructorFree(String name, List<TimetableModel> timetables, int day)
         {
             for (int i = 0; i < timetables.Count; i++)
             {
-                if (timetables[i].CourseInstructor.Equals(name) && timetables[i].day == day && timetables[i].Room != null)
+                if (timetables[i].CourseInstructor.Equals(name) && timetables[i].day == day && !timetables[i].Room.Equals("Empty"))
                 {
+                    System.Diagnostics.Debug.WriteLine("Room Rejected instructor");
+
                     return false;
                 }
             }
             return true;
         }
 
-        public bool instructorFree(String name, List<TimetableModel> timetables, int day, int timeslot)
-        {
-            for (int i = 0; i < timetables.Count; i++)
-            {
-                if (timetables[i].CourseInstructor.Equals(name) && timetables[i].day == day && timetables[i].Room != null && timetables[i].timeslot == timeslot)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        public int sectionFree(String section, String batch, List<TimetableModel> timetables, int day)
-        {
-            for (int i = 0; i < timetables.Count; i++)
-            {
-                if (timetables[i].Section.Equals(section) && timetables[i].Batch.Equals(batch) && timetables[i].timeslot == 1 && timetables[i].day == day)
-                {
-                    if (timetables[i].Section.Equals(section) && timetables[i].Batch.Equals(batch) && timetables[i].timeslot == 2 && timetables[i].day == day)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-            return 1;
-        }
+      
         static int counter = 0;
         public string labFree(List<TimetableModel> timetables, List<String> labs, int day, int timeslot)
         {
@@ -829,7 +840,7 @@ namespace IptApis.Controllers.Room_Allocation
 
             for (int i = 0; i < timetables.Count; i++)
             {
-                System.Diagnostics.Debug.WriteLine("Entered ROom function");
+                //System.Diagnostics.Debug.WriteLine("Entered ROom function");
                 /*if (timetables[i].Room == null && timetables[i].timeslot ==  timeslot && timetables[i].day == day)
                 {
                     System.Diagnostics.Debug.WriteLine("Room found?");
