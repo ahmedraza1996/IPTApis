@@ -12,10 +12,11 @@ using System.Net.Http;
 using System.Transactions;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace IptApis.Controllers.Cafeteria
 {
-    
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CafeteriaController : ApiController
     {
 
@@ -70,29 +71,7 @@ namespace IptApis.Controllers.Cafeteria
             return this.Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
-        public HttpResponseMessage GetProductWithImage()
-        {
-            string relativepath = "~/productimage/" + "Bojack.jpg";
-            var filePath = HttpContext.Current.Server.MapPath(relativepath);
-
-            var Response = Request.CreateResponse(HttpStatusCode.OK);
-            var path = "~/";
-            byte[] contents = System.IO.File.ReadAllBytes(filePath);
-
-            var base64string = Convert.ToBase64String(contents);
-            //System.IO.MemoryStream ms = new System.IO.MemoryStream(contents);
-            //StreamContent image = new StreamContent(base64string);
-            //Response.Content = image;
-            //Response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-
-            Dictionary<string, object> dict = new Dictionary<string, object>();
-            dict["base64string"] = base64string;
-
-            return Request.CreateResponse(HttpStatusCode.OK, dict);
-
-
-
-        }
+        [HttpGet]
         public HttpResponseMessage ViewOrders()
         {
             var db = DbUtils.GetDBConnection();
@@ -114,7 +93,40 @@ namespace IptApis.Controllers.Cafeteria
          WHERE
  [orderid] = 1 */
                 OrderDetails = db.Query("OrderDetails")
-                    .Select("ODID", "itemname", "qunatity")
+                    .Select("ODID", "itemname", "quantity")
+                    .Where("orderid", OrderId)
+                    .Join("fooditem", "orderdetails.itemid", "fooditem.itemid")
+                    .Get()
+                    .Cast<IDictionary<string, object>>();
+                item["OrderDetails"] = OrderDetails;
+
+            }
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, response);
+
+        }
+        public HttpResponseMessage GetOrdersbyStudentId(int id)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<IDictionary<string, object>> response;
+            response = db.Query("FoodOrder").Where("StudentID",id).OrderByDesc("OrderDate").OrderByDesc("OrderTime").Get().Cast<IDictionary<string, object>>();
+            foreach (var item in response)
+            {
+                object OrderId;
+                item.TryGetValue("OrderID", out OrderId);
+                IEnumerable<IDictionary<string, object>> OrderDetails;
+                /* SELECT
+    [itemname],
+   [qunatity]
+         FROM
+   [OrderDetails]
+   INNER JOIN[fooditem] ON[orderdetails].[itemid] = [fooditem].[itemid]
+         WHERE
+ [orderid] = 1 */
+                OrderDetails = db.Query("OrderDetails")
+                    .Select("ODID", "itemname", "quantity")
                     .Where("orderid", OrderId)
                     .Join("fooditem", "orderdetails.itemid", "fooditem.itemid")
                     .Get()
@@ -127,7 +139,7 @@ namespace IptApis.Controllers.Cafeteria
 
         }
 
-
+        [HttpPost]
         public HttpResponseMessage GetUserWallet(object data)
         {
             var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(data));
@@ -169,8 +181,10 @@ namespace IptApis.Controllers.Cafeteria
                 response = db.Query("Wallet").Where("StudentID", StudentID).Get().Cast<IDictionary<string, object>>();
 
             }
+            var strResponse = response.ElementAt(0).ToString().Replace("DapperRow,", "").Replace("=", ":");
+            Dictionary<string, object> walletinfo = JsonConvert.DeserializeObject<Dictionary<string, object>>(strResponse);
 
-            return Request.CreateResponse(HttpStatusCode.OK, response);
+            return Request.CreateResponse(HttpStatusCode.OK, walletinfo);
         }
 
 
@@ -363,9 +377,32 @@ namespace IptApis.Controllers.Cafeteria
 
         }
 
-        
+
+        //extra
+
+        public HttpResponseMessage GetProductWithImage()
+        {
+            string relativepath = "~/productimage/" + "Bojack.jpg";
+            var filePath = HttpContext.Current.Server.MapPath(relativepath);
+
+            var Response = Request.CreateResponse(HttpStatusCode.OK);
+            var path = "~/";
+            byte[] contents = System.IO.File.ReadAllBytes(filePath);
+
+            var base64string = Convert.ToBase64String(contents);
+            //System.IO.MemoryStream ms = new System.IO.MemoryStream(contents);
+            //StreamContent image = new StreamContent(base64string);
+            //Response.Content = image;
+            //Response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+
+            Dictionary<string, object> dict = new Dictionary<string, object>();
+            dict["base64string"] = base64string;
+
+            return Request.CreateResponse(HttpStatusCode.OK, dict);
 
 
+
+        }
 
     }
 }
