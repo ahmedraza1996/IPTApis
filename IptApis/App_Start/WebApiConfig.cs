@@ -1,6 +1,8 @@
 ﻿using System;
-using System.Net.Http.Formatting;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
+using IptApis.Shared;
 
 namespace IptApis
 {
@@ -11,14 +13,21 @@ namespace IptApis
 
             config.EnableCors();
             config.MapHttpAttributeRoutes();
-            config.Routes.MapHttpRoute(
+            /*config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
-            );
+            );*/
             config.Routes.MapHttpRoute(
-                name: "ActionApi",
+                name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Formatters.Add(new JsonFormatter());
+            config.Routes.MapHttpRoute(
+                name: "PointApi",
+                routeTemplate: "api/PointApp/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }
