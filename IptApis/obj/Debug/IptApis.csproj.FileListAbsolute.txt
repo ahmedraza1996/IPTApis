@@ -61,11 +61,4 @@ C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.csprojAssemblyRefe
 C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.csproj.CopyComplete
 C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.pdb
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Dapper.dll
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\QueryBuilder.dll
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\SqlKata.Execution.dll
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Transactions.Workflows.dll
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Dapper.xml
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Cors.dll
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Http.Cors.dll
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Http.Cors.xml
+C:\Users\ahmed\source\repos\IptApis\IptApis\obj\Debug\IptApis.csprojAssemblyReference.cache
