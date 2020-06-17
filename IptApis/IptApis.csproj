@@ -129,6 +129,7 @@
     <Compile Include="Controllers\CourseRegistration\CourseRegistrationController.cs" />
     <Compile Include="Controllers\Course\CourseController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
+    <Compile Include="Controllers\FacultyRecruitment\NucesJobController.cs" />
     <Compile Include="Controllers\FYP\Fyp1GetController.cs" />
     <Compile Include="Controllers\FYP\Fyp1PostController.cs" />
     <Compile Include="Controllers\FYP\Fyp2GetController.cs" />
