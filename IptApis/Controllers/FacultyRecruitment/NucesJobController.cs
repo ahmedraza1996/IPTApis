@@ -162,5 +162,38 @@ namespace IptApis.Controllers.FacultyRecruitment
                 }
             }
         }
+
+        public HttpResponseMessage GetAllDesignations()
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();//3870
+            IEnumerable<Designation> response = db.Query("Designation").Get<Designation>();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+        public HttpResponseMessage GetAllDepartments()
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();//3870
+            IEnumerable<Department> response = db.Query("Department").Get<Department>();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+
+        public HttpResponseMessage GetDesignationById(int id)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();//3870
+            IEnumerable<Designation> response = db.Query("Designation").Where("DesignationID", id).Get<Designation>();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+        public HttpResponseMessage GetDepartmentById(int id)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();//3870
+            IEnumerable<Department> response = db.Query("Department").Where("DepartmentID", id).Get<Department>();
+            return Request.CreateResponse(HttpStatusCode.OK, response); ;
+        }
     }
 }
