@@ -312,6 +312,7 @@ namespace IptApis.Controllers.Marks_Manage
         public String insert_weightage(iWeightage temp)
         {
             bool check_FSID=false;double current_weightage=0;bool check_weightage = false;
+            if (temp.weightage < 0 || temp.Total_marks < 0 || temp.title_getter() == 0) return "Value Error"; 
             string query = "select FacultySections.FSID from FacultySections where FacultySections.FSID = "+temp.FSID;
             string connectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
             //checking if foreign key FSID exists
@@ -448,7 +449,7 @@ namespace IptApis.Controllers.Marks_Manage
                     }
                 }
                 */
-                if (data.ObtainedMarks > total_marks) return "One or more of the Students Marks are greater than total marks";
+                if ((data.ObtainedMarks > total_marks) || (data.ObtainedMarks < 0 )) return "One or more of the Students Marks are greater than total marks";
             }
 
             if (all_checked)
@@ -470,7 +471,8 @@ namespace IptApis.Controllers.Marks_Manage
         public String update_distribution(Update_Distribution temp)
         {
             /*bool check_weightage_100 = true;bool check_total_overflow = false;*/double sum_weightage = 0;double current_weightage = 0;double current_min_marks = 0;
-            String query= "select isnull(sum(MarksDistribution.Weigtage),0) as SUM from MarksDistribution where MarksDistribution.FSID = "+temp.FSID.ToString();
+            if (temp.weightage < 0 || temp.Total_marks < 0) return "Value Error";
+            String query = "select isnull(sum(MarksDistribution.Weigtage),0) as SUM from MarksDistribution where MarksDistribution.FSID = "+temp.FSID.ToString();
             string connectionString = ConfigurationManager.AppSettings["SqlDBConn"].ToString();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -595,7 +597,7 @@ namespace IptApis.Controllers.Marks_Manage
                     }
                 }
                 */
-                if (data.ObtainedMarks > total_marks) return "One or more of the Students Marks are greater than total marks";
+                if ((data.ObtainedMarks > total_marks) || (data.ObtainedMarks < 0)) return "One or more of the Students Marks are greater than total marks";
             }
             if (all_checked)
             {
