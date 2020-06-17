@@ -123,13 +123,18 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig2.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
     <Compile Include="Controllers\CourseRegistration\CourseRegistrationController.cs" />
     <Compile Include="Controllers\Course\CourseController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
+<<<<<<< HEAD
+    <Compile Include="Controllers\FacultyRecruitment\CandidateController.cs" />
+=======
     <Compile Include="Controllers\FacultyRecruitment\NucesJobAccoutController.cs" />
+>>>>>>> origin/master
     <Compile Include="Controllers\FacultyRecruitment\NucesJobController.cs" />
     <Compile Include="Controllers\FYP\Fyp1GetController.cs" />
     <Compile Include="Controllers\FYP\Fyp1PostController.cs" />
