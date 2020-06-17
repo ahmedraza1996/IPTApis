@@ -160,6 +160,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
@@ -240,6 +241,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\MarksModels\How to use API.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -266,6 +268,7 @@
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
     <Compile Include="Controllers\JobPortal\JobController.cs" />
     <Compile Include="Controllers\JobPortal\StudentProfileController.cs" />
+    <Compile Include="Controllers\Marks_Manage\MarksController.cs" />
     <Compile Include="Controllers\Marks_Manage\MarksController.cs" />
     <Compile Include="Controllers\PointRegistration\DriverController.cs" />
     <Compile Include="Controllers\PointRegistration\PointController.cs" />
@@ -299,6 +302,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\JobPortal\AppliedFor.cs" />
+    <Compile Include="Models\JobPortal\CV.cs" />
     <Compile Include="Models\Admission\AdmissionTest.cs" />
     <Compile Include="Models\Admission\Batch.cs" />
     <Compile Include="Models\Admission\CandidateStudent.cs" />
@@ -336,9 +341,19 @@
     <Compile Include="Models\JobPortal\Experience.cs" />
     <Compile Include="Models\JobPortal\Framework.cs" />
     <Compile Include="Models\JobPortal\Job.cs" />
+    <Compile Include="Models\JobPortal\JobDetails.cs" />
+    <Compile Include="Models\JobPortal\newJob.cs" />
     <Compile Include="Models\JobPortal\Organization.cs" />
     <Compile Include="Models\JobPortal\Project.cs" />
     <Compile Include="Models\JobPortal\Skill.cs" />
+    <Compile Include="Models\MarksModels\Courses.cs" />
+    <Compile Include="Models\MarksModels\iMarks.cs" />
+    <Compile Include="Models\MarksModels\iWeightage.cs" />
+    <Compile Include="Models\MarksModels\SectionRecords.cs" />
+    <Compile Include="Models\MarksModels\Sections.cs" />
+    <Compile Include="Models\MarksModels\Section_Students.cs" />
+    <Compile Include="Models\MarksModels\Student_Details.cs" />
+    <Compile Include="Models\MarksModels\Update_Distribution.cs" />
     <Compile Include="Models\MarksModels\iMarks.cs" />
     <Compile Include="Models\MarksModels\iWeightage.cs" />
     <Compile Include="Models\MarksModels\SectionRecords.cs" />
