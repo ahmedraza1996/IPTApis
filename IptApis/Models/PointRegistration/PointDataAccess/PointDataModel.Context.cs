@@ -14,7 +14,8 @@ namespace PointDataAccess
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using IptApis.Models.PointRegistration.PointDataAccess;
+
     public partial class PointDBEntities : DbContext
     {
         public PointDBEntities()

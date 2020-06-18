@@ -38,3 +38,159 @@ C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Dapper.xml
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\EntityFramework.xml
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\EntityFramework.SqlServer.xml
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\System.Web.Http.Cors.xml
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\IptApis.dll.config
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\IptApis.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\IptApis.pdb
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\csc.exe
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\csc.exe.config
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\csc.rsp
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\csi.exe
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\csi.exe.config
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\csi.rsp
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.AppContext.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Console.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.IO.Compression.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Security.Claims.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.ValueTuple.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\vbc.exe
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\vbc.exe.config
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\vbc.rsp
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\VBCSCompiler.exe
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\Dapper.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\EntityFramework.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\EntityFramework.SqlServer.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\Newtonsoft.Json.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\QueryBuilder.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\SqlKata.Execution.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\Swashbuckle.Core.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\System.Net.Http.Formatting.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\System.Transactions.Workflows.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\System.Web.Cors.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\System.Web.Http.Cors.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\System.Web.Http.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\System.Web.Http.WebHost.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\WebActivatorEx.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\Dapper.xml
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\EntityFramework.xml
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\EntityFramework.SqlServer.xml
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\Newtonsoft.Json.xml
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\System.Net.Http.Formatting.xml
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\System.Web.Http.xml
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\System.Web.Http.Cors.xml
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\System.Web.Http.WebHost.xml
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\obj\Debug\IptApis.csproj.CopyComplete
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\obj\Debug\IptApis.dll
+C:\Users\Shakeeb\Documents\GitHub\IPTApis\IptApis\obj\Debug\IptApis.pdb
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\IptApis.dll.config
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\IptApis.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\IptApis.pdb
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\csc.rsp
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\csi.exe.config
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\csi.rsp
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\vbc.exe.config
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\vbc.rsp
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\Dapper.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\EntityFramework.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\EntityFramework.SqlServer.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\Newtonsoft.Json.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\QueryBuilder.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\SqlKata.Execution.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\Swashbuckle.Core.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\System.Net.Http.Formatting.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\System.Transactions.Workflows.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\System.Web.Cors.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\System.Web.Http.Cors.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\System.Web.Http.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\System.Web.Http.WebHost.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\WebActivatorEx.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\Dapper.xml
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\EntityFramework.xml
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\EntityFramework.SqlServer.xml
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\Newtonsoft.Json.xml
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\System.Net.Http.Formatting.xml
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\System.Web.Http.xml
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\System.Web.Http.Cors.xml
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\System.Web.Http.WebHost.xml
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\obj\Debug\IptApis.csprojAssemblyReference.cache
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\obj\Debug\IptApis.csproj.CoreCompileInputs.cache
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\obj\Debug\IptApis.csproj.CopyComplete
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\obj\Debug\IptApis.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\obj\Debug\IptApis.pdb
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\csc.exe
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\csc.exe.config
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\csi.exe
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.AppContext.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Console.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.IO.Compression.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Security.Claims.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.ValueTuple.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\vbc.exe
+C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\VBCSCompiler.exe
