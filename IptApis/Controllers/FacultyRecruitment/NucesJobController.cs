@@ -91,6 +91,7 @@ namespace IptApis.Controllers.FacultyRecruitment
 
 
         [HttpDelete]
+        [HttpGet]
         public HttpResponseMessage DeleteJobOpening(int id)
         {
             var db = DbUtils.GetDBConnection();
