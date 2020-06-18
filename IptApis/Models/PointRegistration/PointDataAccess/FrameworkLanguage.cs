@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PointDataAccess
+namespace IptApis.Models.PointRegistration.PointDataAccess
 {
     using System;
     using System.Collections.Generic;

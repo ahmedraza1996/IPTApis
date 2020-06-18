@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using PointDataAccess;
+using IptApis.Models.PointRegistration.PointDataAccess;
 namespace IptApis.Controllers.PointRegistration
 {
     [Route("api/PointApp/Point")]
@@ -12,7 +12,7 @@ namespace IptApis.Controllers.PointRegistration
     {
         public IEnumerable<Point> Get()
         {
-            using (PointDBEntities entities = new PointDBEntities())
+            using (Models.PointRegistration.PointDataAccess.PointDBEntities entities = new Models.PointRegistration.PointDataAccess.PointDBEntities())
             {
                 return entities.Points.ToList();
             }
