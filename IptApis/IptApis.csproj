@@ -123,6 +123,8 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Attendance\AttendanceStudentController.cs" />
+    <Compile Include="Controllers\Attendance\AttendanceTeacherController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
@@ -145,6 +147,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Attendance\AddAttendanceVM.cs" />
+    <Compile Include="Models\Attendance\AllStudentCourses.cs" />
+    <Compile Include="Models\Attendance\Attend.cs" />
+    <Compile Include="Models\Attendance\Batch.cs" />
+    <Compile Include="Models\Attendance\Course.cs" />
+    <Compile Include="Models\Attendance\CourseEnrollment.cs" />
+    <Compile Include="Models\Attendance\CourseFaculty.cs" />
+    <Compile Include="Models\Attendance\CourseOffered.cs" />
+    <Compile Include="Models\Attendance\DataVM.cs" />
+    <Compile Include="Models\Attendance\Department.cs" />
+    <Compile Include="Models\Attendance\Designation.cs" />
+    <Compile Include="Models\Attendance\Employee.cs" />
+    <Compile Include="Models\Attendance\FacultySection.cs" />
+    <Compile Include="Models\Attendance\Section.cs" />
+    <Compile Include="Models\Attendance\Semester.cs" />
+    <Compile Include="Models\Attendance\StoreAttendanceVM.cs" />
+    <Compile Include="Models\Attendance\Student.cs" />
+    <Compile Include="Models\Attendance\StudentCoursesAttendance.cs" />
+    <Compile Include="Models\Attendance\TeacherAttendanceDetails.cs" />
+    <Compile Include="Models\Attendance\TeacherCourseSectionDetail.cs" />
     <Compile Include="Models\CourseModel.cs" />
     <Compile Include="Models\CourseRegistrationModel.cs" />
     <Compile Include="Models\FacultyBasic.cs" />
