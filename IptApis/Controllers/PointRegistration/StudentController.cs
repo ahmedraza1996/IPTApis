@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using PointDataAccess;
+using IptApis.Models.PointRegistration.PointDataAccess;
 namespace IptApis.Controllers.PointRegistration
 {
     [Route("api/PointApp/Student")]

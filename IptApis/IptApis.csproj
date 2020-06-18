@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -48,12 +49,10 @@
       <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -124,6 +123,14 @@
     <Content Include="Controllers\FacultyRecruitment\To-do List.txt" />
     <Content Include="Global.asax" />
     <Content Include="Models\MarksModels\How to use API.txt" />
+    <Content Include="Models\PointRegistration\PointDataAccess\PointDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PointDataModel.Context1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PointRegistration\PointDataAccess\PointDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PointDataModel1.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="productimage\abc.jpg" />
     <Content Include="productimage\Bojack.jpg" />
@@ -223,6 +230,309 @@
     <Compile Include="Models\MarksModels\Update_Distribution.cs" />
     <Compile Include="Models\OfferedCourse.cs" />
     <Compile Include="Models\OfferedCourseBasic.cs" />
+    <Compile Include="Models\PointRegistration\PointDataAccess\AdmissionTest.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\AffiliatedOrganization.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\AlumniExperience.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\AlumniSkill.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Alumnus.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Answer.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\AppliedFor.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Approvee.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Assignment.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Attendance.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Batch.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Book.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\BookIssue.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\BookReturn.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CafeteriaStaff.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CandidateEmployee.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CandidateStudent.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CandidateTestDetail.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ChatHistory.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ChatKeyword.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ChatLog.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Choice.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ClearanceRequest.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Config.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Course.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CourseEnrollment.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CourseFaculty.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CourseFeedback.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CourseOffered.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\daysofweek.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Department.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Designation.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Domain.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Driver.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ECandidateApplication.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Employee.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FacultySection.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Feedback.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FoodItem.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FoodOrder.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FrameworkLanguage.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Fyp.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypConfig.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypEvaluation.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypExternalJuryy.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypForm.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypJury.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypMark.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypMember.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypProposal.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\GetStudentProfile_Result.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Job.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\JobDescription.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\JobOpening.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\JobTag.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\MarksDistribution.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\MarksRecord.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\option.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\OrderDetail.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Pattern.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Payment.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Penalty.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Point.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointDataModel.Context.cs" />
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointDataModel.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PointDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointDataModel.cs" />
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointDataModel.Designer.cs">
+      <DependentUpon>PointDataModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointDataModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointDataModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PointDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointFee.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointPayment.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Programme.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ProjectFramework.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ProjectSkill.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\PointRegistration\PointDataAccess\Question.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\RecruitmentExam.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\RecruitmentQuestion.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\RequestApproval.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Result.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Room.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Route.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\SCandidateApplication.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Section.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Semester.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Skill.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\sp_helpdiagrams_Result.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\STransaction.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Student.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\StudentAssignment.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\StudentExperience.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\StudentOpening.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\StudentPoint.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\StudentProject.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\StudentSkill.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\sysdiagram.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Timeslot.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Timetable.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\TransactionType.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Wallet.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SemesterBasic.cs" />
     <Compile Include="Models\SemesterConfig.cs" />
     <Compile Include="Models\SemesterInfo.cs" />
@@ -236,6 +546,16 @@
     <Compile Include="Shared\Test.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Models\PointRegistration\PointDataAccess\App.Config" />
+    <None Include="Models\PointRegistration\PointDataAccess\packages.config" />
+    <Content Include="Models\PointRegistration\PointDataAccess\PointDataAccess.csproj" />
+    <EntityDeploy Include="Models\PointRegistration\PointDataAccess\PointDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PointDataModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PointRegistration\PointDataAccess\PointDataModel.edmx.diagram">
+      <DependentUpon>PointDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -271,7 +591,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using IptApis.Models.PointRegistration.PointDataAccess;
 using System.Web.Http;
-using PointDataAccess;
+
 namespace IptApis.Controllers.PointRegistration
 {
     [Route("api/PointApp/PointPayment")]

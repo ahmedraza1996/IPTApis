@@ -7,22 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PointDataAccess
+namespace IptApis.Models.PointRegistration.PointDataAccess
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    using IptApis.Models.PointRegistration.PointDataAccess;
-
+    
     public partial class PointDBEntities : DbContext
     {
         public PointDBEntities()
             : base("name=PointDBEntities")
         {
-            //this.Configuration.LazyLoadingEnabled = false;
-            this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
