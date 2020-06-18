@@ -1,5 +1,6 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IptApis</RootNamespace>
     <AssemblyName>IptApis</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44380</IISExpressSSLPort>
@@ -23,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,9 +48,30 @@
     <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\ReferenceAssemblies\v4.0\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PointDataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\PointDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="QueryBuilder, Version=1.1.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SqlKata.1.1.7\lib\net45\QueryBuilder.dll</HintPath>
@@ -56,6 +79,12 @@
     <Reference Include="SqlKata.Execution, Version=1.1.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SqlKata.Execution.1.1.7\lib\net451\SqlKata.Execution.dll</HintPath>
     </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -64,52 +93,522 @@
     <Reference Include="System.Transactions.Workflows, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Transactions.Workflows.0.1.2.0\lib\net40\System.Transactions.Workflows.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controllers\FacultyRecruitment\To-do List.txt" />
+    <Content Include="Controllers\Search Module\Content\DocumentsVector.txt" />
+    <Content Include="Controllers\Search Module\Content\WordsDocument.txt" />
     <Content Include="Global.asax" />
+    <Content Include="Models\MarksModels\How to use API.txt" />
+    <Content Include="Models\PointRegistration\PointDataAccess\PointDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PointDataModel.Context1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PointRegistration\PointDataAccess\PointDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PointDataModel1.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
+    <Content Include="productimage\abc.jpg" />
+    <Content Include="productimage\Bojack.jpg" />
+    <Content Include="productimage\Pizza fries.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Attendance\AttendanceStudentController.cs" />
+    <Compile Include="Controllers\Attendance\AttendanceTeacherController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
+    <Compile Include="Controllers\Search Module\Content\DataStorage.cs" />
+    <Compile Include="Controllers\Search Module\SearchFYP\FYPSearchModel.cs" />
+    <Compile Include="Controllers\Search Module\SearchFYP\SearchFYPController.cs" />
+    <Compile Include="Controllers\Search Module\Indexes\DocumentsVector.cs" />
+    <Compile Include="Controllers\Search Module\Indexes\Index.cs" />
+    <Compile Include="Controllers\Search Module\Indexes\TestIndexes\DocumentsVectorTest.cs" />
+    <Compile Include="Controllers\Search Module\Indexes\TestIndexes\VectorTest.cs" />
+    <Compile Include="Controllers\Search Module\Indexes\TestIndexes\WordsVectorTest.cs" />
+    <Compile Include="Controllers\Search Module\Indexes\Vector.cs" />
+    <Compile Include="Controllers\Search Module\Indexes\WordDocuments.cs" />
+    <Compile Include="Controllers\Search Module\Indexes\WordsVector.cs" />
+    <Compile Include="Controllers\Search Module\DifferentQueryParser\BooleanQueryParser.cs" />
+    <Compile Include="Controllers\Search Module\DifferentQueryParser\GeneralTextQueryParser.cs" />
+    <Compile Include="Controllers\Search Module\DifferentQueryParser\InfixToPostfixConvertor.cs" />
+    <Compile Include="Controllers\Search Module\DifferentQueryParser\ProximityQuery.cs" />
+    <Compile Include="Controllers\Search Module\DifferentQueryParser\QueryParser.cs" />
+    <Compile Include="Controllers\Search Module\DifferentQueryParser\TestQueryParser\InfixToPostfixConvertorTest.cs" />
+    <Compile Include="Controllers\Search Module\QuerySearch\SearchController.cs" />
+    <Compile Include="Controllers\Search Module\TextProcessingHelpers\TestTextProcessingHelpers\PreprocessorTests.cs" />
+    <Compile Include="Controllers\Search Module\TextProcessingHelpers\TestTextProcessingHelpers\TokenizerTests.cs" />
+    <Compile Include="Controllers\Search Module\TextProcessingHelpers\Token.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\HelpersForSnowballPorterStemmer.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\IPorterStemmer.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\IStemmer.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\SnowballPorterStemmer.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\StemmedWord.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\StepsForSnowballPorterStemmer.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\LyEndingsTests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\MarkingVowelsAsConsonantsTests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\RegionTests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\RemoveOtherSPluralSuffixesTests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\RemoveSPluralTests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\ReplaceYSuffixWithITests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\ShortSyllableTests.cs" />
+    <Compile Include="Controllers\Search Module\Stemmer\TestStemmer\SnowballPorterStemmerUnitTests.cs" />
+    <Compile Include="Controllers\Search Module\TextProcessingHelpers\Preprocessor.cs" />
+    <Compile Include="Controllers\Search Module\TextProcessingHelpers\Tokenizer.cs" />
+    <Compile Include="Controllers\Clearance\ClearanceRequestController.cs" />
+    <Compile Include="Controllers\Clearance\EmplDesgController.cs" />
+    <Compile Include="Controllers\Clearance\GetClearanceRequestController.cs" />
+    <Compile Include="Controllers\Clearance\GetRequestApprovalController.cs" />
+    <Compile Include="Controllers\Clearance\ProgDepartController.cs" />
+    <Compile Include="Controllers\Clearance\RequestApprovalController.cs" />
+    <Compile Include="Controllers\Clearance\Student1Controller.cs" />
+    <Compile Include="Controllers\CourseRegistration\CourseRegistrationController.cs" />
+    <Compile Include="Controllers\Course\CourseController.cs" />
+    <Compile Include="Controllers\FacultyController.cs" />
+    <Compile Include="Controllers\FYP\Fyp1GetController.cs" />
+    <Compile Include="Controllers\FYP\Fyp1PostController.cs" />
+    <Compile Include="Controllers\FYP\Fyp2GetController.cs" />
+    <Compile Include="Controllers\FYP\Fyp2PostController.cs" />
+    <Compile Include="Controllers\FYP\FypLoginController.cs" />
+    <Compile Include="Controllers\JobPortal\JobController.cs" />
+    <Compile Include="Controllers\JobPortal\StudentProfileController.cs" />
+    <Compile Include="Controllers\Marks_Manage\MarksController.cs" />
+    <Compile Include="Controllers\PointRegistration\DriverController.cs" />
+    <Compile Include="Controllers\PointRegistration\PointController.cs" />
+    <Compile Include="Controllers\PointRegistration\PointFeeController.cs" />
+    <Compile Include="Controllers\PointRegistration\PointPaymentController.cs" />
+    <Compile Include="Controllers\PointRegistration\RouteController.cs" />
+    <Compile Include="Controllers\PointRegistration\SemesterDataController.cs" />
+    <Compile Include="Controllers\PointRegistration\StudentController.cs" />
+    <Compile Include="Controllers\PointRegistration\StudentPointController.cs" />
+    <Compile Include="Controllers\Room_Allocation\TimeTableController.cs" />
+    <Compile Include="Controllers\Room_Allocation\TimeTableData.cs" />
+    <Compile Include="Controllers\Room_Allocation\TimetableModel.cs" />
+    <Compile Include="Controllers\Semester\SemesterController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Attendance\AddAttendanceVM.cs" />
+    <Compile Include="Models\Attendance\AllStudentCourses.cs" />
+    <Compile Include="Models\Attendance\Attend.cs" />
+    <Compile Include="Models\Attendance\Batch.cs" />
+    <Compile Include="Models\Attendance\Course.cs" />
+    <Compile Include="Models\Attendance\CourseEnrollment.cs" />
+    <Compile Include="Models\Attendance\CourseFaculty.cs" />
+    <Compile Include="Models\Attendance\CourseOffered.cs" />
+    <Compile Include="Models\Attendance\DataVM.cs" />
+    <Compile Include="Models\Attendance\Department.cs" />
+    <Compile Include="Models\Attendance\Designation.cs" />
+    <Compile Include="Models\Attendance\Employee.cs" />
+    <Compile Include="Models\Attendance\FacultySection.cs" />
+    <Compile Include="Models\Attendance\Section.cs" />
+    <Compile Include="Models\Attendance\Semester.cs" />
+    <Compile Include="Models\Attendance\StoreAttendanceVM.cs" />
+    <Compile Include="Models\Attendance\Student.cs" />
+    <Compile Include="Models\Attendance\StudentCoursesAttendance.cs" />
+    <Compile Include="Models\Attendance\TeacherAttendanceDetails.cs" />
+    <Compile Include="Models\Attendance\TeacherCourseSectionDetail.cs" />
+    <Compile Include="Models\CourseModel.cs" />
+    <Compile Include="Models\CourseRegistrationModel.cs" />
+    <Compile Include="Models\FacultyBasic.cs" />
+    <Compile Include="Models\FacultyCourseAssign.cs" />
+    <Compile Include="Models\FacultyRecruitment\CandidateEmployee.cs" />
+    <Compile Include="Models\FacultyRecruitment\Choice.cs" />
+    <Compile Include="Models\FacultyRecruitment\Department.cs" />
+    <Compile Include="Models\FacultyRecruitment\Designation.cs" />
+    <Compile Include="Models\FacultyRecruitment\EcandidateApplication.cs" />
+    <Compile Include="Models\FacultyRecruitment\Employee.cs" />
+    <Compile Include="Models\FacultyRecruitment\JobOpening.cs" />
+    <Compile Include="Models\FacultyRecruitment\RecruitmentExam.cs" />
+    <Compile Include="Models\FacultyRecruitment\RecruitmentQuestion.cs" />
+    <Compile Include="Models\FacultyRecruitment\Result.cs" />
+    <Compile Include="Models\FacultySectionDetails.cs" />
+    <Compile Include="Models\JobPortal\AppliedFor.cs" />
+    <Compile Include="Models\JobPortal\CV.cs" />
+    <Compile Include="Models\JobPortal\Domain.cs" />
+    <Compile Include="Models\JobPortal\Experience.cs" />
+    <Compile Include="Models\JobPortal\Framework.cs" />
+    <Compile Include="Models\JobPortal\Job.cs" />
+    <Compile Include="Models\JobPortal\JobDetails.cs" />
+    <Compile Include="Models\JobPortal\newJob.cs" />
+    <Compile Include="Models\JobPortal\Organization.cs" />
+    <Compile Include="Models\JobPortal\Project.cs" />
+    <Compile Include="Models\JobPortal\Skill.cs" />
+    <Compile Include="Models\MarksModels\iMarks.cs" />
+    <Compile Include="Models\MarksModels\iWeightage.cs" />
+    <Compile Include="Models\MarksModels\SectionRecords.cs" />
+    <Compile Include="Models\MarksModels\Sections.cs" />
+    <Compile Include="Models\MarksModels\Courses.cs" />
+    <Compile Include="Models\MarksModels\Section_Students.cs" />
+    <Compile Include="Models\MarksModels\Student_Details.cs" />
+    <Compile Include="Models\MarksModels\Update_Distribution.cs" />
+    <Compile Include="Models\OfferedCourse.cs" />
+    <Compile Include="Models\OfferedCourseBasic.cs" />
+    <Compile Include="Models\PointRegistration\PointDataAccess\AdmissionTest.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\AffiliatedOrganization.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\AlumniExperience.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\AlumniSkill.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Alumnus.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Answer.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\AppliedFor.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Approvee.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Assignment.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Attendance.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Batch.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Book.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\BookIssue.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\BookReturn.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CafeteriaStaff.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CandidateEmployee.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CandidateStudent.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CandidateTestDetail.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ChatHistory.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ChatKeyword.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ChatLog.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Choice.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ClearanceRequest.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Config.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Course.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CourseEnrollment.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CourseFaculty.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CourseFeedback.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\CourseOffered.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\daysofweek.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Department.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Designation.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Domain.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Driver.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ECandidateApplication.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Employee.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FacultySection.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Feedback.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FoodItem.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FoodOrder.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FrameworkLanguage.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Fyp.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypConfig.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypEvaluation.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypExternalJuryy.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypForm.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypJury.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypMark.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypMember.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\FypProposal.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\GetStudentProfile_Result.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Job.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\JobDescription.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\JobOpening.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\JobTag.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\MarksDistribution.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\MarksRecord.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\option.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\OrderDetail.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Pattern.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Payment.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Penalty.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Point.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointDataModel.Context.cs" />
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointDataModel.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PointDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointDataModel.cs" />
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointDataModel.Designer.cs">
+      <DependentUpon>PointDataModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointDataModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointDataModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PointDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointFee.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\PointPayment.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Programme.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ProjectFramework.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\ProjectSkill.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\PointRegistration\PointDataAccess\Question.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\RecruitmentExam.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\RecruitmentQuestion.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\RequestApproval.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Result.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Room.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Route.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\SCandidateApplication.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Section.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Semester.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Skill.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\sp_helpdiagrams_Result.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\STransaction.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Student.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\StudentAssignment.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\StudentExperience.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\StudentOpening.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\StudentPoint.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\StudentProject.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\StudentSkill.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\sysdiagram.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Timeslot.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Timetable.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\TransactionType.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PointRegistration\PointDataAccess\Wallet.cs">
+      <DependentUpon>PointDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SemesterBasic.cs" />
+    <Compile Include="Models\SemesterConfig.cs" />
+    <Compile Include="Models\SemesterInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\Constants\CourseConstants.cs" />
+    <Compile Include="Shared\Constants\general.constants.cs" />
+    <Compile Include="Shared\Constants\Semester.constants.cs" />
     <Compile Include="Shared\DbUtils.cs" />
+    <Compile Include="Shared\HelperFunctions.cs" />
+    <Compile Include="Shared\JsonFormatter.cs" />
     <Compile Include="Shared\Test.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Models\PointRegistration\PointDataAccess\App.Config" />
+    <None Include="Models\PointRegistration\PointDataAccess\packages.config" />
+    <Content Include="Models\PointRegistration\PointDataAccess\PointDataAccess.csproj" />
+    <EntityDeploy Include="Models\PointRegistration\PointDataAccess\PointDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PointDataModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PointRegistration\PointDataAccess\PointDataModel.edmx.diagram">
+      <DependentUpon>PointDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -120,6 +619,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -132,16 +634,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51154</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44380/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
@@ -150,8 +643,11 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
