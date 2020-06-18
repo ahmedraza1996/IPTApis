@@ -147,6 +147,13 @@
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
+    <Compile Include="Controllers\Clearance\ClearanceRequestController.cs" />
+    <Compile Include="Controllers\Clearance\EmplDesgController.cs" />
+    <Compile Include="Controllers\Clearance\GetClearanceRequestController.cs" />
+    <Compile Include="Controllers\Clearance\GetRequestApprovalController.cs" />
+    <Compile Include="Controllers\Clearance\ProgDepartController.cs" />
+    <Compile Include="Controllers\Clearance\RequestApprovalController.cs" />
+    <Compile Include="Controllers\Clearance\Student1Controller.cs" />
     <Compile Include="Controllers\CourseRegistration\CourseRegistrationController.cs" />
     <Compile Include="Controllers\Course\CourseController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />

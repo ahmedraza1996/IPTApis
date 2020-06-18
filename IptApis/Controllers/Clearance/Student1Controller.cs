@@ -14,7 +14,7 @@ using System.Data.SqlClient;
 
 namespace IptApis.Controllers.Clearance
 {
-    public class StudentController : ApiController
+    public class Student1Controller : ApiController
     {
         //Method to get student
             public HttpResponseMessage GetStudent()
