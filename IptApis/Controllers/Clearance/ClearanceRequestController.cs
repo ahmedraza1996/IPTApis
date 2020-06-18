@@ -16,13 +16,9 @@ namespace IptApis.Controllers.Clearance
     {
         //Method to add "Approved" to Status column of clearance request table on approval from Director.
         [HttpPost]
-        public HttpResponseMessage AddFinalStatus(Object ClearanceRequest)
+        public HttpResponseMessage AddFinalStatus(string RequestID)
         {
-            var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(ClearanceRequest));
-            object status;
-            test.TryGetValue("Status", out status);
-            string _status = Convert.ToString(status);
-
+           
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
             // using (var scope = db.Connection.BeginTransaction())
@@ -31,10 +27,10 @@ namespace IptApis.Controllers.Clearance
                 try
                 {
 
-                    var res = db.Query("ClearanceRequest").InsertGetId<int>(new
+                    var res = db.Query("ClearanceRequest").Where("RequestID", RequestID).Update(new
                     {
-                        Status = _status
-                    }) ;   //specify each field in form of dictionary or object
+                        Status = "Approved"
+                    });   //specify each field in form of dictionary or object
 
                     #region 
 

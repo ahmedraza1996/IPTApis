@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PointDataAccess
+namespace IptApis.Models.PointRegistration.PointDataAccess
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Point
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
