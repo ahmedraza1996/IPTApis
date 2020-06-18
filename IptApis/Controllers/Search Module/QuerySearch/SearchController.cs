@@ -9,10 +9,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Script.Serialization;
 
 namespace IptApis.Controllers.Search_Module.QuerySearch
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     public class SearchController : ApiController
     {
         public string Get()
@@ -20,6 +23,7 @@ namespace IptApis.Controllers.Search_Module.QuerySearch
             return "Hello World";
         }
 
+        [HttpPost]
         public HttpResponseMessage GetSearchResult(object data)
         {
             var db = DbUtils.GetDBConnection();
