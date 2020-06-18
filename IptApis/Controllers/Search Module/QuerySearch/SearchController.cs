@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -48,6 +49,8 @@ namespace IptApis.Controllers.Search_Module.QuerySearch
                 dictJson.TryGetValue("TableName", out tableName);
                 input_queryapi = tableName.ToString();
                 response = db.Query("INFORMATION_SCHEMA.COLUMNS").Select("COLUMN_NAME").WhereRaw("TABLE_NAME  = ?",tableName).Get().Cast<IDictionary<string, object>>();
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+
             }
             if (Action.Equals("GetInstructorByName"))
             {
@@ -243,13 +246,46 @@ namespace IptApis.Controllers.Search_Module.QuerySearch
 
 
 
+            //var db1 = DbUtils.GetDBConnection();
+            //db1.Connection.Open();
+
+            SqlConnection dbConnection = new SqlConnection (ConfigurationManager.AppSettings["SqlDBConn"].ToString());
             
-            db.Query("SearchLog").AsInsert(new
+
+
+            try
             {
-                input_query = input_queryapi,
-                actionName = Action,
-                queried_by_username = userName.ToString()
-            });
+                /**
+                db1.Query("dbo.SearchLog").AsInsert(new
+                {
+                    input_query = input_queryapi,
+                    actionName = Action,
+                    queried_by_username = userName.ToString()
+                });
+                **/
+
+                string query = "INSERT INTO dbo.SearchLog(input_query, actionName, queried_by_username) VALUES(@input_query,@actionName,@queried_by_username)";
+                using (SqlCommand command = new SqlCommand(query, dbConnection))
+                {
+                    command.Parameters.AddWithValue("@input_query", input_queryapi);
+                    command.Parameters.AddWithValue("@actionName", Action);
+                    command.Parameters.AddWithValue("@queried_by_username", userName.ToString());
+
+                    dbConnection.Open();
+                    int result = command.ExecuteNonQuery();
+
+                    // Check Error
+                    if (result < 0)
+                        Console.WriteLine("Error inserting data into Database!");
+                }
+
+            }
+            catch(Exception e)
+            {
+               
+
+            }
+
 
 
 
