@@ -11,7 +11,7 @@ using IptApis.Shared.Constants;
 using SqlKata;
 using SqlKata.Execution;
 
-namespace IptApis.Controllers.Semester
+namespace IptApis.Controllers.Semester2
 {
     public class SemesterController : ApiController
     {
