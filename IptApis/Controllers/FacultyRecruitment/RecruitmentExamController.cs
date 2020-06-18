@@ -19,7 +19,7 @@ namespace IptApis.Controllers.FacultyRecruitment
         //Get All EcandidateApplication
 
         [HttpGet]
-        public HttpResponseMessage GetRecrutmentExam()
+        public HttpResponseMessage GetAllRecruitmentExams()
         {
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();//3870
@@ -84,6 +84,9 @@ namespace IptApis.Controllers.FacultyRecruitment
             db.Connection.Open();
             try
             {
+                _ = db.Query("Choice").Join("RecruitmentQuestion", "Choice.QuestionID", "RecruitmentQuestion.QuestionID").Where("RecruitmentQuestion.ExamID", "=", id).Delete();
+                _ = db.Query("RecruitmentQuestion").Where("ExamID", "=", id).Delete();
+                _ = db.Query("Result").Where("ExamId", "=", id).Delete();
                 _ = db.Query("RecruitmentExam").Where("ExamId", "=", id).Delete();
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -362,7 +365,7 @@ namespace IptApis.Controllers.FacultyRecruitment
             var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(job));
 
             object __ResultID;
-            test.TryGetValue("JobID", out __ResultID);
+            test.TryGetValue("ResultID", out __ResultID);
             int _ResultID = Convert.ToInt32(__ResultID);
 
 

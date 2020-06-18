@@ -130,6 +130,8 @@
     <Compile Include="Controllers\Course\CourseController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\FacultyRecruitment\CandidateController.cs" />
+    <Compile Include="Controllers\FacultyRecruitment\EcandidateApplicationController.cs" />
+    <Compile Include="Controllers\FacultyRecruitment\EmployeeController.cs" />
     <Compile Include="Controllers\FacultyRecruitment\NucesJobAccoutController.cs" />
     <Compile Include="Controllers\FacultyRecruitment\NucesJobController.cs" />
     <Compile Include="Controllers\FacultyRecruitment\RecruitmentExamController.cs" />
