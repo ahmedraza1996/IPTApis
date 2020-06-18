@@ -14,11 +14,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Script.Serialization;
 using System.Xml.Serialization;
 
 namespace IptApis.Controllers.Search_Module.SearchFYP
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     public class SearchFYPController : ApiController
     {
         
@@ -92,6 +95,9 @@ namespace IptApis.Controllers.Search_Module.SearchFYP
 
             var dictJson = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonData);
             object queryObect;
+            object userName;
+            dictJson.TryGetValue("queried_by_username", out userName);
+
             dictJson.TryGetValue("query", out queryObect);
             string Query = queryObect.ToString();
 
@@ -106,6 +112,37 @@ namespace IptApis.Controllers.Search_Module.SearchFYP
                     if (dataStorage.FYP_Data.ContainsKey(index))
                         resultant.Add(dataStorage.FYP_Data[index].cast());
                 }
+
+
+                SqlConnection dbConnection = new SqlConnection(ConfigurationManager.AppSettings["SqlDBConn"].ToString());
+
+                try
+                {
+                    string query = "INSERT INTO dbo.SearchLog(input_query, actionName, queried_by_username) VALUES(@input_query,@actionName,@queried_by_username)";
+                    using (SqlCommand command = new SqlCommand(query, dbConnection))
+                    {
+                        command.Parameters.AddWithValue("@input_query", queryObect);
+                        command.Parameters.AddWithValue("@actionName", "FYPSearch");
+                        command.Parameters.AddWithValue("@queried_by_username", userName.ToString());
+
+                        dbConnection.Open();
+                        int result = command.ExecuteNonQuery();
+
+                        // Check Error
+                        if (result < 0)
+                            Console.WriteLine("Error inserting data into Database!");
+                    }
+
+                }
+                catch (Exception e)
+                {
+
+
+                }
+
+
+
+
                 return Request.CreateResponse(HttpStatusCode.OK, resultant);
             }
             catch (Exception e)
