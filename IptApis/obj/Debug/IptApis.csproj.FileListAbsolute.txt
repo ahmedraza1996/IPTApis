@@ -1,7 +1,6 @@
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\IptApis.dll.config
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\IptApis.dll
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\IptApis.pdb
-C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\csc.exe.config
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\csc.rsp
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\csi.exe.config
 C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\csi.rsp
@@ -194,3 +193,46 @@ C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Xml.XPath.dl
 C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\System.Xml.XPath.XDocument.dll
 C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\vbc.exe
 C:\Users\Mansoor ul Islam\Desktop\IPTApis\IptApis\bin\roslyn\VBCSCompiler.exe
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\csc.exe
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\csc.exe.config
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\csi.exe
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.AppContext.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Console.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.IO.Compression.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Net.Http.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Net.Sockets.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.ValueTuple.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Xml.XPath.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\vbc.exe
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\roslyn\VBCSCompiler.exe
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\EntityFramework.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\EntityFramework.SqlServer.dll
+C:\Users\ahmed\source\repos\IptApis\IptApis\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
