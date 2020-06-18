@@ -47,12 +47,24 @@
     <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PointDataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\PointDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="QueryBuilder, Version=1.1.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SqlKata.1.1.7\lib\net45\QueryBuilder.dll</HintPath>
@@ -123,6 +135,8 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Attendance\AttendanceStudentController.cs" />
+    <Compile Include="Controllers\Attendance\AttendanceTeacherController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaStaffController.cs" />
     <Compile Include="Controllers\Cafeteria\TestCafeteriaController.cs" />
@@ -137,6 +151,14 @@
     <Compile Include="Controllers\JobPortal\JobController.cs" />
     <Compile Include="Controllers\JobPortal\StudentProfileController.cs" />
     <Compile Include="Controllers\Marks_Manage\MarksController.cs" />
+    <Compile Include="Controllers\PointRegistration\DriverController.cs" />
+    <Compile Include="Controllers\PointRegistration\PointController.cs" />
+    <Compile Include="Controllers\PointRegistration\PointFeeController.cs" />
+    <Compile Include="Controllers\PointRegistration\PointPaymentController.cs" />
+    <Compile Include="Controllers\PointRegistration\RouteController.cs" />
+    <Compile Include="Controllers\PointRegistration\SemesterDataController.cs" />
+    <Compile Include="Controllers\PointRegistration\StudentController.cs" />
+    <Compile Include="Controllers\PointRegistration\StudentPointController.cs" />
     <Compile Include="Controllers\Room_Allocation\TimeTableController.cs" />
     <Compile Include="Controllers\Room_Allocation\TimeTableData.cs" />
     <Compile Include="Controllers\Room_Allocation\TimetableModel.cs" />
@@ -145,6 +167,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Attendance\AddAttendanceVM.cs" />
+    <Compile Include="Models\Attendance\AllStudentCourses.cs" />
+    <Compile Include="Models\Attendance\Attend.cs" />
+    <Compile Include="Models\Attendance\Batch.cs" />
+    <Compile Include="Models\Attendance\Course.cs" />
+    <Compile Include="Models\Attendance\CourseEnrollment.cs" />
+    <Compile Include="Models\Attendance\CourseFaculty.cs" />
+    <Compile Include="Models\Attendance\CourseOffered.cs" />
+    <Compile Include="Models\Attendance\DataVM.cs" />
+    <Compile Include="Models\Attendance\Department.cs" />
+    <Compile Include="Models\Attendance\Designation.cs" />
+    <Compile Include="Models\Attendance\Employee.cs" />
+    <Compile Include="Models\Attendance\FacultySection.cs" />
+    <Compile Include="Models\Attendance\Section.cs" />
+    <Compile Include="Models\Attendance\Semester.cs" />
+    <Compile Include="Models\Attendance\StoreAttendanceVM.cs" />
+    <Compile Include="Models\Attendance\Student.cs" />
+    <Compile Include="Models\Attendance\StudentCoursesAttendance.cs" />
+    <Compile Include="Models\Attendance\TeacherAttendanceDetails.cs" />
+    <Compile Include="Models\Attendance\TeacherCourseSectionDetail.cs" />
     <Compile Include="Models\CourseModel.cs" />
     <Compile Include="Models\CourseRegistrationModel.cs" />
     <Compile Include="Models\FacultyBasic.cs" />
@@ -204,6 +246,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
