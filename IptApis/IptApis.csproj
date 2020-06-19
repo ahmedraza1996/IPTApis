@@ -151,6 +151,9 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminPanel\admincontroller.cs" />
+    <Compile Include="Controllers\AdminPanel\facultyController.cs" />
+    <Compile Include="Controllers\AdminPanel\studentController.cs" />
     <Compile Include="Controllers\Attendance\AttendanceStudentController.cs" />
     <Compile Include="Controllers\Attendance\AttendanceTeacherController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
@@ -233,6 +236,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminPanel\admin.cs" />
+    <Compile Include="Models\AdminPanel\faculties.cs" />
+    <Compile Include="Models\AdminPanel\students.cs" />
     <Compile Include="Models\Attendance\AddAttendanceVM.cs" />
     <Compile Include="Models\Attendance\AllStudentCourses.cs" />
     <Compile Include="Models\Attendance\Attend.cs" />
