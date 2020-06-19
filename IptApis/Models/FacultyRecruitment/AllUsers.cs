@@ -5,9 +5,9 @@ using System.Web;
 
 namespace IptApis.Models.FacultyRecruitment
 {
-    public class Department
+    public class AllUsers
     {
-        public int DepartmentID { get; set; }
-        public string DepartmentName { get; set; }
+        public int id { get; set; }
+        public string UserName { get; set; }
     }
 }
