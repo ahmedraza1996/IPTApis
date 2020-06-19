@@ -12,7 +12,7 @@ namespace IptApis.Models.FacultyRecruitment
         public string ApplyDate { get; set; }
 
         public string TestDate { get; set; }
-        public int EcandidateID { get; set; }
+        public int ECandidateID { get; set; }
         public int JobID { get; set; }
 
 
