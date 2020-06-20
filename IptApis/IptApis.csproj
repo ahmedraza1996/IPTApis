@@ -236,7 +236,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminPanel\ABatch.cs" />
+    <Compile Include="Models\AdminPanel\ADepartments.cs" />
+    <Compile Include="Models\AdminPanel\ADesignations.cs" />
     <Compile Include="Models\AdminPanel\admin.cs" />
+    <Compile Include="Models\AdminPanel\DataCourse.cs" />
+    <Compile Include="Models\AdminPanel\DataFaculties.cs" />
+    <Compile Include="Models\AdminPanel\DataStudents.cs" />
     <Compile Include="Models\AdminPanel\faculties.cs" />
     <Compile Include="Models\AdminPanel\students.cs" />
     <Compile Include="Models\Attendance\AddAttendanceVM.cs" />
