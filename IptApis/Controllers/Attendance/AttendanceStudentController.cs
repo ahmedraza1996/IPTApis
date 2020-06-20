@@ -14,6 +14,21 @@ namespace IptApis.Controllers.Attendance
 {
     public class AttendanceStudentController : ApiController
     {
+        //return student data given student id
+        //api/AttendanceStudent/GetStudentData/10
+        [HttpPost]
+        public HttpResponseMessage GetStudentData(string rollNumber)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<Student> response;
+            //response = db.Query("CourseEnrollment").Where("StudentID", id).Get<CourseEnrollment>();
+            response = db.Query("Student").Where("RollNumber", rollNumber)
+                                            .Select("StudentID", "SName", "RollNumber", "Email")
+                                            .Get<Student>();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
 
         //return student course given student id
         //api/AttendanceStudent/GetStudentCourse/10
@@ -27,7 +42,6 @@ namespace IptApis.Controllers.Attendance
             //response = db.Query("CourseEnrollment").Where("StudentID", id).Get<CourseEnrollment>();
             response = db.Query("AllStudentCourses").Where("StudentID", id).Get<AllStudentCourses>();
             return Request.CreateResponse(HttpStatusCode.OK, response);
-
         }
 
         //return student course attendance when student is login in and course id is passed
@@ -42,9 +56,6 @@ namespace IptApis.Controllers.Attendance
             response = db.Query("StudentCoursesAttendance").Where("StudentID", student)
                                                             .Where("CourseID", id).Get<StudentCoursesAttendance>();
             return Request.CreateResponse(HttpStatusCode.OK, response);
-
         }
-
-
     }
 }
