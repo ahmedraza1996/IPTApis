@@ -1,7 +1,4 @@
-﻿
-//using IptApis.Models.Attendance;
-using IptApis.Models.Attendance;
-
+﻿using IptApis.Models.Attendance;
 using IptApis.Shared;
 using Newtonsoft.Json;
 using SqlKata.Execution;
@@ -9,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -21,13 +19,27 @@ namespace IptApis.Controllers.Attendance
     {
         public int teacherid;
 
-        AttendanceTeacherController() {
+        private AttendanceTeacherController()
+        {
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
 
             //teacherid = db.Query("CourseFaculty").Where("EmpID", empId).Select("CFID").Get<int>().First();
         }
-        
+
+        //api/Attendanceteacher/GetEmployeeData/2
+        [HttpPost]
+        public HttpResponseMessage GetEmployeeData(int id)
+        {
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<Employee> response;
+            response = db.Query("Employee").Where("EmpID", id)
+                                           .Select("EmpID", "EmpName", "MobileNumber", "Email")
+                                           .Get<Employee>();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
 
         //api/Attendanceteacher/GetAttendancebyEnroll/2
         //will return attendance status by enrollment id
@@ -114,19 +126,13 @@ namespace IptApis.Controllers.Attendance
             return records;
         }
 */
-         
-
 
         [HttpPost]
         //it will give all students of that teacher course
         //api/AttendanceTeacher/GetTeacherStudents/11
         public HttpResponseMessage GetTeacherStudents(AddAttendanceVM data)//courseid
         {
-
-
-
             //int FSID = 13;
-
 
             //int SemesterID = 1;
             string EmpName = data.EmpName;
@@ -138,15 +144,13 @@ namespace IptApis.Controllers.Attendance
 
             //int empId = id; // teacher login id
 
-
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
-
 
             //IEnumerable<FacultySections> response0;
             //response = db.Query("CourseEnrollment").Where("StudentID", id).Get<CourseEnrollment>();
             //response0 = db.Query("TeacherCourseSectionDetail").Where("EmpID", empId).Select("FSID").Get<FacultySections>();
-            //return Request.CreateResponse(HttpStatusCode.OK, response0);                                    
+            //return Request.CreateResponse(HttpStatusCode.OK, response0);
 
             //int CFID = db.Query("CourseFaculty").Where("EmpID", empId).Select("CFID").Get<int>().First();
             //int FSID = db.Query("FacultySections").Where("CFID", CFID).Select("FSID").Get<int>().First();
@@ -154,17 +158,14 @@ namespace IptApis.Controllers.Attendance
             //return FSID;
 
             IEnumerable<Student> response;
-           
+
             response = db.Query("TeacherAttendanceDetails").Where("EmpName", EmpName)
-                                                    .Where("CourseID", CourseID)                                                   
-                                                    .Where("SectionName", SectionName)                                              
-                                                    .Select("StudentID","SName","RollNumber","EnrollmentID").Distinct()
+                                                    .Where("CourseID", CourseID)
+                                                    .Where("SectionName", SectionName)
+                                                    .Select("StudentID", "SName", "RollNumber", "EnrollmentID").Distinct()
                                                     .Get<Student>();
             db.Connection.Close();
             return Request.CreateResponse(HttpStatusCode.OK, response);
-
-
-
         }
 
         [HttpPost]
@@ -184,8 +185,6 @@ namespace IptApis.Controllers.Attendance
             response = db.Query("TeacherCourseSectionDetail").Where("EmpName", empId).Where("CourseID", cid).Get<Section>();
             db.Connection.Close();
             return Request.CreateResponse(HttpStatusCode.OK, response);
-
-
         }
 
         [HttpGet]
@@ -193,17 +192,15 @@ namespace IptApis.Controllers.Attendance
         //api/AttendanceTeacher/GetTeacherCourses/11
         public HttpResponseMessage GetTeacherCourses(int id)
         {
-
             int empId = id; // teacher login id
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
 
-            IEnumerable<IptApis.Models.Attendance.Course> response;
-            response = db.Query("TeacherCourseSectionDetail").Where("EmpID", empId).Select("CourseID", "CourseCode", "CourseName", "CFID").Distinct().Get<IptApis.Models.Attendance.Course>();
+            IEnumerable<Models.Attendance.Course> response;
+            response = db.Query("TeacherCourseSectionDetail").Where("EmpID", empId).Select("CourseID", "CourseCode", "CourseName", "CFID").Distinct().Get<Models.Attendance.Course>();
             db.Connection.Close();
 
             return Request.CreateResponse(HttpStatusCode.OK, response);
-
         }
 
         [HttpGet]
@@ -211,7 +208,6 @@ namespace IptApis.Controllers.Attendance
         //api/AttendanceTeacher/GetTeacherName/11
         public HttpResponseMessage GetTeacherName(int id)
         {
-
             int empId = id; // teacher login id
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
@@ -221,7 +217,6 @@ namespace IptApis.Controllers.Attendance
             db.Connection.Close();
 
             return Request.CreateResponse(HttpStatusCode.OK, response);
-
         }
 
         [HttpGet]
@@ -229,188 +224,200 @@ namespace IptApis.Controllers.Attendance
         //api/AttendanceTeacher/GetTeacherSemester/11
         public HttpResponseMessage GetTeacherSemester(int id)
         {
-
             int empId = id; // teacher login id
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
 
-            IEnumerable<IptApis.Models.Attendance.Semester> response;
-            response = db.Query("TeacherCourseSectionDetail").Where("EmpID", empId).Select("SemesterID", "SemesterName").Distinct().Get<IptApis.Models.Attendance.Semester>();
+            IEnumerable<Models.Attendance.Semester> response;
+            response = db.Query("TeacherCourseSectionDetail").Where("EmpID", empId).Select("SemesterID", "SemesterName").Distinct().Get<Models.Attendance.Semester>();
             db.Connection.Close();
 
             return Request.CreateResponse(HttpStatusCode.OK, response);
-
         }
 
-
-
-
-
         [HttpPost]
-        //api/AttendanceTeacher/AddStudentAttendance
-        public HttpResponseMessage AddStudentAttendance(List<Attend> data)
+        //api/AttendanceTeacher/ViewTeacherAttendance
+        public HttpResponseMessage ViewTeacherAttendance(AddAttendanceVM data)
         {
+            string EmpName = data.EmpName;
 
-            var db = DbUtils.GetDBConnection();
-            db.Connection.Open();
-
-
-            using (TransactionScope scope = new TransactionScope())
-            {
-                try
-                {
-                    foreach(var item in data)
-                    {
-                        var query = db.Query("Attendance").InsertGetId<int>(new
-                        {
-                            AttendanceDate = item.AttendanceDate,
-                            AttendanceStatus = item.AttendanceStatus,
-                            ClassDuration = item.ClassDuration,
-                            EnrollmentID = item.EnrollmentID
-                        });
-                    }
-                    
-                    scope.Complete();  // if record is entered successfully , transaction will be committed
-                    db.Connection.Close();
-                    return Request.CreateResponse(HttpStatusCode.Created);
-                }
-                catch (Exception ex)
-                {
-                    scope.Dispose();   //if there are any error, rollback the transaction
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
-                }
-            }
-
-
-
-
-            //int FSID = 13;
-
-
-            //int SemesterID = 1;
-            //string EmpName = data.EmpName;
-
-            //string SectionName = data.SectionName;
+            string SectionName = data.SectionName;
 
             //int CourseID = 7;
-            //Int32.TryParse(data.CourseID, out int CourseID);
+            Int32.TryParse(data.CourseID, out int CourseID);
 
             //int empId = id; // teacher login id
 
-
-
-
-            //IEnumerable<FacultySections> response0;
-            //response = db.Query("CourseEnrollment").Where("StudentID", id).Get<CourseEnrollment>();
-            //response0 = db.Query("TeacherCourseSectionDetail").Where("EmpID", empId).Select("FSID").Get<FacultySections>();
-            //return Request.CreateResponse(HttpStatusCode.OK, response0);                                    
-
-            //int CFID = db.Query("CourseFaculty").Where("EmpID", empId).Select("CFID").Get<int>().First();
-            //int FSID = db.Query("FacultySection/
-            //return FSID;
-
-            //IEnumerable<Student> response;
-
-            //response = db.Query("TeacherAttendanceDetails").Where("EmpName", EmpName)
-            //                                        .Where("CourseID", CourseID)
-            //                                        .Where("SectionName", SectionName)
-            //                                        .Select("StudentID", "SName", "RollNumber").Distinct()
-            //                                        .Get<Student>();
-            //db.Connection.Close();
-            //return Request.CreateResponse(HttpStatusCode.OK, response);
-
-
-            /*
-                        var db = DbUtils.GetDBConnection();
-                        db.Connection.Open();
-
-                        int attendid = db.Query("Attendance").InsertGetId<int>(new
-                        {
-                            newAttend.AttendanceDate,
-                            newAttend.AttendanceStatus,
-                            newAttend.ClassDuration,
-                            newAttend.EnrollmentID
-
-                        });
-                        *//*foreach (string description in newAttend.DescriptionList)
-                        {
-                            db.Query("JobDescription").InsertGetId<int>(new { attendid, description });
-                        }*//*
-
-                        db.Connection.Close();
-                        return attendid;*/
-
-
-
-            //int empId = 11;
-            //var db = DbUtils.GetDBConnection();
-            //db.Connection.Open();
-
-
-            //int CFID = db.Query("CourseFaculty").Where("EmpID", empId).Select("CFID").Get<int>().First();
-            //int FSID = db.Query("FacultySections").Where("CFID", CFID).Select("FSID").Get<int>().First();
-
-            ////string AttendanceDate = "2020-04-23";
-
-
-
-            //int SemesterID = 1;
-
-            //int SectionID = 1;
-
-            //int CourseID = 7;
-
-            //int studentid = 9; //student id aayegi
-
-            //int enrollID = db.Query("TeacherAttendanceDetails").Where("EmpID", empId)
-            //                                                .Where("CourseID", CourseID)
-            //                                                .Where("SectionID", SectionID)
-            //                                                .Where("SemesterID", SemesterID)
-            //                                                .Where("StudentID", studentid).Select("EnrollmentID").Get<int>().First();
-
-            //return enrollID;
-
-            //IEnumerable<TeacherAttendanceDetails> response;
-            //response = db.Query("TeacherAttendanceDetails").Where("EmpID", empId)
-            //                                                .Where("CourseID", CourseID)
-            //                                                .Where("SectionID", SectionID)
-            //                                                .Where("SemesterID", SemesterID).Get<TeacherAttendanceDetails>();
-
-
-            //db.Query("Attendance").Insert(new Attend
-            //{
-
-            //});
-            ////db.Query("Attendance").Add()
-
-
-            return Request.CreateResponse(HttpStatusCode.OK, "hello");
-
-
-        }
-
-    
-        //DELETE COMPLETE ATTENDANCE date
-        [HttpDelete]
-        [AllowAnonymous]
-
-        //api/AttendanceTeacher/DeleteStudentAttendance?date=2020-04-28
-        public HttpResponseMessage DeleteStudentAttendance(string date)
-        {
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
 
-            try
-            {
-                _ = db.Query("Attendance").Where("AttendanceDate", "=", date).Delete();
-                return Request.CreateResponse(HttpStatusCode.OK);
-            }
-            catch (Exception e)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e.Message);
-            }
-           
+            IEnumerable<Attend> response;
 
+            response = db.Query("TeacherAttendanceDetails").Where("EmpName", EmpName)
+                                                    .Where("CourseID", CourseID)
+                                                    .Where("SectionName", SectionName)
+                                                    .Select("AttendanceDate", "ClassDuration")
+                                                    .Distinct()
+                                                    .Get<Attend>();
+            db.Connection.Close();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+        [HttpPost]
+        //api/AttendanceTeacher/AddStudentAttendance
+        public HttpResponseMessage AddStudentAttendance(AddAttendanceVM data)
+        {
+            string EmpName = data.EmpName;
+            string SectionName = data.SectionName;
+            //int CourseID = 7;
+            Int32.TryParse(data.CourseID, out int CourseID);
+
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            using (TransactionScope scope = new TransactionScope())
+            {
+                foreach (var item in data.attendances)
+                {
+                    var query = db.Query("Attendance").InsertGetId<int>(new
+                    {
+                        AttendanceDate = item.AttendanceDate,
+                        AttendanceStatus = item.AttendanceStatus,
+                        ClassDuration = item.ClassDuration,
+                        EnrollmentID = item.EnrollmentID
+                    });
+                }
+
+                scope.Complete();  // if record is entered successfully , transaction will be committed
+
+                IEnumerable<Attend> response;
+
+                response = db.Query("TeacherAttendanceDetails").Where("EmpName", EmpName)
+                                                        .Where("CourseID", CourseID)
+                                                        .Where("SectionName", SectionName)
+                                                        .Select("AttendanceDate", "EnrollmentID")
+                                                        .Distinct()
+                                                        .Get<Attend>();
+                db.Connection.Close();
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+        }
+
+        //DELETE COMPLETE ATTENDANCE date
+        //[HttpDelete]
+        //[AllowAnonymous]
+        //api/AttendanceTeacher/DeleteStudentAttendance
+        [HttpPost]
+        public HttpResponseMessage DeleteStudentAttendance(AddAttendanceVM data)
+        {
+            string EmpName = data.EmpName;
+            string SectionName = data.SectionName;
+            //int CourseID = 7;
+            Int32.TryParse(data.CourseID, out int CourseID);
+            DateTime AttendanceDate = data.AttendanceDate;
+
+            //int[] EnrollmentID;
+            //int empId = id; // teacher login id
+
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<int> enrollmentID = db.Query("TeacherAttendanceDetails").Where("AttendanceDate", AttendanceDate)
+                                                    .Where("EmpName", EmpName)
+                                                    .Where("CourseID", CourseID)
+                                                    .Where("SectionName", SectionName)
+                                                    .Select("EnrollmentID").Distinct().Get<int>();
+
+            foreach (int i in enrollmentID)
+            {
+                _ = db.Query("Attendance").Where("AttendanceDate", "=", AttendanceDate)
+                                            .Where("EnrollmentID", "=", i).Delete();
+            }
+
+            IEnumerable<Attend> response;
+
+            response = db.Query("TeacherAttendanceDetails").Where("EmpName", EmpName)
+                                                    .Where("CourseID", CourseID)
+                                                    .Where("SectionName", SectionName)
+                                                    .Select("AttendanceDate")
+                                                    .Distinct()
+                                                    .Get<Attend>();
+            db.Connection.Close();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+        //api/AttendanceTeacher/EditStudentAttendance
+        [HttpPost]
+        public HttpResponseMessage EditStudentAttendance(AddAttendanceVM data)
+        {
+            string EmpName = data.EmpName;
+            string SectionName = data.SectionName;
+            Int32.TryParse(data.CourseID, out int CourseID);
+            DateTime AttendanceDate = data.AttendanceDate;
+
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<Student> response;
+
+            response = db.Query("TeacherAttendanceDetails").Where("AttendanceDate", AttendanceDate)
+                                                    .Where("EmpName", EmpName)
+                                                    .Where("CourseID", CourseID)
+                                                    .Where("SectionName", SectionName)
+                                                    .Select("StudentID", "SName", "RollNumber", "EnrollmentID", "AttendanceStatus", "ClassDuration", "AttendanceDate")
+                                                    .Get<Student>();
+            db.Connection.Close();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
+        }
+
+        [HttpPost]
+        //api/AttendanceTeacher/UpdateStudentAttendance
+        public HttpResponseMessage UpdateStudentAttendance(AddAttendanceVM data) //List<Attend> data
+        {
+            string EmpName = data.EmpName;
+            string SectionName = data.SectionName;
+            //int CourseID = 7;
+            Int32.TryParse(data.CourseID, out int CourseID);
+            DateTime AttendanceDate = data.AttendanceDate;
+            DateTime oldAttendanceDate = data.oldAttendanceDate;
+
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<int> enrollmentID = db.Query("TeacherAttendanceDetails").Where("AttendanceDate", oldAttendanceDate)
+                                                    .Where("EmpName", EmpName)
+                                                    .Where("CourseID", CourseID)
+                                                    .Where("SectionName", SectionName)
+                                                    .Select("EnrollmentID").Distinct().Get<int>();
+
+            foreach (int i in enrollmentID)
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    foreach (var item in data.attendances)
+                    {
+                        db.Query("Attendance").Where("EnrollmentID", i)
+                                                .Where("AttendanceDate", oldAttendanceDate).Update(new
+                                                {
+                                                    AttendanceDate = item.AttendanceDate,
+                                                    AttendanceStatus = item.AttendanceStatus,
+                                                    ClassDuration = item.ClassDuration,
+                                                });
+                    }
+
+                    scope.Complete();
+                }
+            }
+
+            IEnumerable<Attend> response;
+            response = db.Query("TeacherAttendanceDetails").Where("EmpName", EmpName)
+                                                    .Where("CourseID", CourseID)
+                                                    .Where("SectionName", SectionName)
+                                                    .Select("AttendanceDate", "ClassDuration")
+                                                    .Distinct()
+                                                    .Get<Attend>();
+            db.Connection.Close();
+            return Request.CreateResponse(HttpStatusCode.OK, response);
         }
     }
 }
