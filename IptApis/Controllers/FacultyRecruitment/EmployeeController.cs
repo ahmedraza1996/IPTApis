@@ -83,6 +83,16 @@ namespace IptApis.Controllers.FacultyRecruitment
                        DepartmentID = _DepartmentID,
                        RefID = _RefID
                     });
+                    var Alluser_id = db.Query("AllUsers").InsertGetId<int>(new
+                    {
+                        UserName = _EMail
+                    });
+
+                    var UserRole_id = db.Query("UserRole").InsertGetId<int>(new
+                    {
+                        UserId = Alluser_id,
+                        Role = db.Query("Department").Where("DepartmentID", _DepartmentID).Select("DepartmentName").Get<String>()
+                    });
                     scope.Complete();  // if record is entered successfully , transaction will be committed
                     db.Connection.Close();
                     return Request.CreateResponse(HttpStatusCode.Created, EmpID);//, new Dictionary<string, object>() { { "LastInsertedId", res } });
@@ -96,6 +106,7 @@ namespace IptApis.Controllers.FacultyRecruitment
         }
 
         [HttpDelete]
+        [HttpGet]
         public HttpResponseMessage DeleteEmployee(int id)
         {
             var db = DbUtils.GetDBConnection();
