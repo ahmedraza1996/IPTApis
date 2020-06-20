@@ -56,10 +56,10 @@ namespace IptApis.Controllers
             .Select("FbID", "isSubmitted", "CourseName", "CourseCode", "Course.CourseID")
             .Get().Cast<IDictionary<string, object>>();
 
-            List<Course> courses = new List<Course>();
+            List<IptApis.Models.CouseFeedbackModels.Course> courses = new List<IptApis.Models.CouseFeedbackModels.Course>();
             foreach (var res in response)
             {
-                Course course = new Course();
+                IptApis.Models.CouseFeedbackModels.Course course = new IptApis.Models.CouseFeedbackModels.Course();
                 course.CourseName = res["CourseName"].ToString();
                 course.CourseCode = res["CourseCode"].ToString();
                 course.CourseID = res["CourseID"].ToString();
