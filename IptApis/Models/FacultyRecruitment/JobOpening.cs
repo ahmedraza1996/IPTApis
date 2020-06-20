@@ -13,5 +13,7 @@ namespace IptApis.Models.FacultyRecruitment
         public string DatePosted { get; set; }
         public string ExpectedStartDate { get; set; }
         public int DesignationID { get; set; }
+
+        public int DepartmentID { get; set; }
     }
 }

@@ -16,5 +16,7 @@ namespace IptApis.Models.FacultyRecruitment
         public int DesignationID { get; set; }
         public int DepartmentID { get; set; }
         public int RefID { get; set; }
+
+        public string EPassword { get; set; }
     }
 }

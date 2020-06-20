@@ -151,6 +151,9 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminPanel\admincontroller.cs" />
+    <Compile Include="Controllers\AdminPanel\facultyController.cs" />
+    <Compile Include="Controllers\AdminPanel\studentController.cs" />
     <Compile Include="Controllers\Attendance\AttendanceStudentController.cs" />
     <Compile Include="Controllers\Attendance\AttendanceTeacherController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
@@ -203,6 +206,12 @@
     <Compile Include="Controllers\CourseRegistration\CourseRegistrationController.cs" />
     <Compile Include="Controllers\Course\CourseController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
+    <Compile Include="Controllers\FacultyRecruitment\CandidateController.cs" />
+    <Compile Include="Controllers\FacultyRecruitment\EcandidateApplicationController.cs" />
+    <Compile Include="Controllers\FacultyRecruitment\EmployeeController.cs" />
+    <Compile Include="Controllers\FacultyRecruitment\NucesJobAccoutController.cs" />
+    <Compile Include="Controllers\FacultyRecruitment\NucesJobController.cs" />
+    <Compile Include="Controllers\FacultyRecruitment\RecruitmentExamController.cs" />
     <Compile Include="Controllers\FYP\Fyp1GetController.cs" />
     <Compile Include="Controllers\FYP\Fyp1PostController.cs" />
     <Compile Include="Controllers\FYP\Fyp2GetController.cs" />
@@ -227,6 +236,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminPanel\admin.cs" />
+    <Compile Include="Models\AdminPanel\faculties.cs" />
+    <Compile Include="Models\AdminPanel\students.cs" />
     <Compile Include="Models\Attendance\AddAttendanceVM.cs" />
     <Compile Include="Models\Attendance\AllStudentCourses.cs" />
     <Compile Include="Models\Attendance\Attend.cs" />
@@ -251,6 +263,7 @@
     <Compile Include="Models\CourseRegistrationModel.cs" />
     <Compile Include="Models\FacultyBasic.cs" />
     <Compile Include="Models\FacultyCourseAssign.cs" />
+    <Compile Include="Models\FacultyRecruitment\AllUsers.cs" />
     <Compile Include="Models\FacultyRecruitment\CandidateEmployee.cs" />
     <Compile Include="Models\FacultyRecruitment\Choice.cs" />
     <Compile Include="Models\FacultyRecruitment\Department.cs" />
@@ -261,6 +274,7 @@
     <Compile Include="Models\FacultyRecruitment\RecruitmentExam.cs" />
     <Compile Include="Models\FacultyRecruitment\RecruitmentQuestion.cs" />
     <Compile Include="Models\FacultyRecruitment\Result.cs" />
+    <Compile Include="Models\FacultyRecruitment\UserRole.cs" />
     <Compile Include="Models\FacultySectionDetails.cs" />
     <Compile Include="Models\JobPortal\AppliedFor.cs" />
     <Compile Include="Models\JobPortal\CV.cs" />
