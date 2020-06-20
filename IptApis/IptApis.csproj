@@ -152,8 +152,8 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminPanel\admincontroller.cs" />
-    <Compile Include="Controllers\AdminPanel\facultyController.cs" />
-    <Compile Include="Controllers\AdminPanel\studentController.cs" />
+    <Compile Include="Controllers\AdminPanel\admin_facultyController.cs" />
+    <Compile Include="Controllers\AdminPanel\admin_studentController.cs" />
     <Compile Include="Controllers\Attendance\AttendanceStudentController.cs" />
     <Compile Include="Controllers\Attendance\AttendanceTeacherController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />

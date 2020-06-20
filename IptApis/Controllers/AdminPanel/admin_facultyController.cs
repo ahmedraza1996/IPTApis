@@ -16,7 +16,7 @@ namespace IptApis.Controllers.AdminPanel
 
     [System.Web.Http.RoutePrefix("api")]
 
-    public class facultyController : ApiController
+    public class admin_facultyController : ApiController
     {
 
         private static string CONNSTRING = ConfigurationManager.AppSettings["SqlDBConn"];
@@ -26,6 +26,8 @@ namespace IptApis.Controllers.AdminPanel
         {
             return View();
         }*/
+
+
 
         [System.Web.Http.HttpPost]
         //[ValidateAntiForgeryToken]
@@ -68,6 +70,51 @@ namespace IptApis.Controllers.AdminPanel
         }
 
 
+        [System.Web.Http.HttpPost]
+        //[ValidateAntiForgeryToken]
+        [System.Web.Http.Route("admin_faculty/Login")]
+        public HttpResponseMessage Login(Object User)
+        {
+            HttpStatusCode statusCode = HttpStatusCode.Unauthorized;
+            var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(User));
+            object Cred;
+            test.TryGetValue("Cred", out Cred);
+            object Password;
+            test.TryGetValue("SPassword", out Password);
+            string _Password = Password.ToString();
+
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
+
+            IEnumerable<IDictionary<string, object>> response;
+            response = db.Query("Employee").Where("Email", Cred).Get().Cast<IDictionary<string, object>>();
+            var strResponse = response.ElementAt(0).ToString().Replace("DapperRow,", "").Replace("=", ":");
+            Dictionary<string, string> temp = JsonConvert.DeserializeObject<Dictionary<string, string>>(strResponse);
+            bool hasData = (response != null) ? true : false;
+
+            if (hasData)
+            {
+                string pass;
+                temp.TryGetValue("EPassword", out pass);
+
+                if (pass.Equals(_Password))
+                {
+                    statusCode = HttpStatusCode.OK;
+                    return Request.CreateResponse(statusCode, response.ElementAt(0));
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(statusCode, "Invalid Password");
+                }
+
+            }
+            else
+            {
+                statusCode = HttpStatusCode.NotFound;
+                return Request.CreateErrorResponse(statusCode, "User not found");
+            }
+
+        }
 
 
 

@@ -300,61 +300,51 @@ namespace IptApis.Controllers.Cafeteria
 
 
 
-        //public HttpResponseMessage Login(Object CafeteriaStaff)
-        //{
-        //    HttpStatusCode statusCode = HttpStatusCode.Unauthorized;
-        //    var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(CafeteriaStaff));
-        //    object Cred;
-        //    test.TryGetValue("Cred", out Cred);
-        //    object Password;
-        //    test.TryGetValue("Password", out Password);
-        //    string _Password = Password.ToString();
+        public HttpResponseMessage Login(Object CafeteriaStaff)
+        {
+            HttpStatusCode statusCode = HttpStatusCode.Unauthorized;
+            var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(CafeteriaStaff));
+            object Cred;
+            test.TryGetValue("Cred", out Cred);
+            object Password;
+            test.TryGetValue("SPassword", out Password);
+            string _Password = Password.ToString();
 
-        //    var db = DbUtils.GetDBConnection();
-        //    db.Connection.Open();
+            var db = DbUtils.GetDBConnection();
+            db.Connection.Open();
 
-        //    IEnumerable<IDictionary<string, object>> response;
-        //    response = db.Query("CafeteriaStaff").Where("Username", Cred).Get().Cast<IDictionary<string, object>>();
-        //    var strResponse = response.ElementAt(0).ToString().Replace("DapperRow,", "").Replace("=", ":");
-        //    Dictionary<string, string> temp = JsonConvert.DeserializeObject<Dictionary<string, string>>(strResponse);
-        //    bool hasData = (response != null) ? true : false;
+            IEnumerable<IDictionary<string, object>> response;
+            response = db.Query("CafeteriaStaff").Where("Username", Cred).Get().Cast<IDictionary<string, object>>();
+            var strResponse = response.ElementAt(0).ToString().Replace("DapperRow,", "").Replace("=", ":");
+            Dictionary<string, string> temp = JsonConvert.DeserializeObject<Dictionary<string, string>>(strResponse);
+            bool hasData = (response != null) ? true : false;
 
-        //    if (hasData)
-        //    {
-        //        string pass;
-        //        temp.TryGetValue("SPassword", out pass);
-        //        string hashed = Crypto.Hash(_Password);
-        //        if (pass.Equals(hashed))
-        //        {
-        //            statusCode = HttpStatusCode.OK;
-        //            return Request.CreateResponse(statusCode, response.ElementAt(0));
-        //        }
-        //        else
-        //        {
+            if (hasData)
+            {
+                string pass;
+                temp.TryGetValue("SPassword", out pass);
+                
+                if (pass.Equals(_Password))
+                {
+                    statusCode = HttpStatusCode.OK;
+                    return Request.CreateResponse(statusCode, response.ElementAt(0));
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(statusCode, "Invalid Password");
+                }
 
-        //            return Request.CreateErrorResponse(statusCode, "Invalid Password");
-        //        }
-        //        //if (pass.Equals(_Password))
-        //        //{
-        //        //    statusCode = HttpStatusCode.OK;
-        //        //    return Request.CreateResponse(statusCode, response.ElementAt(0));
-        //        //}
-        //        //else
-        //        //{
-        //        //    return Request.CreateErrorResponse(statusCode, "Invalid Password");
-        //        //}
+            }
+            else
+            {
+                statusCode = HttpStatusCode.NotFound;
+                return Request.CreateErrorResponse(statusCode, "User not found");
+            }
 
-        //    }
-        //    else
-        //    {
-        //        statusCode = HttpStatusCode.NotFound;
-        //        return Request.CreateErrorResponse(statusCode, "User not found");
-        //    }
+        }
 
-        //}
 
-      //  [HttpPost]
-      //  [HttpPost]
+        //[HttpPost]
         //public HttpResponseMessage AddStaffMember(Object Staff)
         //{
         //    var test = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(Convert.ToString(Staff));
