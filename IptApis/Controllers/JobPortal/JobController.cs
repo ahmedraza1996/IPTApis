@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using IptApis.Models.JobPortal;
 using IptApis.Shared;
 using Newtonsoft.Json.Linq;
@@ -12,6 +13,7 @@ using SqlKata;
 using SqlKata.Execution;
 namespace IptApis.Controllers.JobPortal
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class JobController : ApiController
     {
         

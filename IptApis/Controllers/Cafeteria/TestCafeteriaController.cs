@@ -12,9 +12,11 @@ using System.Threading.Tasks;
 using System.Transactions;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace IptApis.Controllers.Cafeteria
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TestCafeteriaController : ApiController
     {
         public string Get()

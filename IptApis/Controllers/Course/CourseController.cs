@@ -9,9 +9,11 @@ using SqlKata.Execution;
 using IptApis.Models;
 using IptApis.Shared.Constants;
 using System.Linq.Expressions;
+using System.Web.Http.Cors;
 
 namespace IptApis.Controllers.Course
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CourseController : ApiController
     {
         QueryFactory db = DbUtils.GetDBConnection();   //GetDBConnection will return a DBFactory type object, which have establish sql connection

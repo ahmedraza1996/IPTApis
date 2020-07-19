@@ -9,9 +9,11 @@ using SqlKata.Compilers;
 using SqlKata.Execution;
 using System.Transactions;
 using IptApis.Shared;
+using System.Web.Http.Cors;
 
 namespace IptApis.Controllers.Clearance
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class GetClearanceRequestController : ApiController
     {
         //Method to get Clearance Requests where Status column of clearance request is Null.

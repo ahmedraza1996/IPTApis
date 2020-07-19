@@ -10,12 +10,13 @@ using System.Web.Http;
 using System.Data.SqlClient;
 using System.Configuration;
 using Newtonsoft.Json;
+using System.Web.Http.Cors;
 
 namespace IptApis.Controllers.AdminPanel
 {
 
     [System.Web.Http.RoutePrefix("api")]
-
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class admin_studentController : ApiController
     {
 

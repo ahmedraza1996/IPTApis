@@ -10,9 +10,11 @@ using SqlKata.Compilers;
 using SqlKata.Execution;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web.Http.Cors;
 
 namespace IptApis.Controllers.Clearance
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ProgDepartController : ApiController
     {
         //Method to get Programme by ID

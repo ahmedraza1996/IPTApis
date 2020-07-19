@@ -13,9 +13,11 @@ using System.Net;
 using System.Net.Http;
 using System.Transactions;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace IptApis.Controllers.JobPortal
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class StudentProfileController : ApiController
     {
         [HttpPost]
@@ -111,6 +113,7 @@ namespace IptApis.Controllers.JobPortal
         [AllowAnonymous]
         public HttpResponseMessage AddProject(Project test)
         {
+            test.Status = "Completed";
             var db = DbUtils.GetDBConnection();
             db.Connection.Open();
             int _frameworkID;

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using IptApis.Models.PointRegistration.PointDataAccess;
 namespace IptApis.Controllers.PointRegistration
 {
     [Route("api/PointApp/Point")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PointController : ApiController
     {
         public IEnumerable<Point> Get()

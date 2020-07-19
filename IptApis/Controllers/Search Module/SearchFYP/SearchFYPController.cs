@@ -21,7 +21,7 @@ using System.Xml.Serialization;
 namespace IptApis.Controllers.Search_Module.SearchFYP
 {
     
-    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
 
     public class SearchFYPController : ApiController
     {

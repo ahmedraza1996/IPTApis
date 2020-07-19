@@ -29,12 +29,18 @@ namespace IptApis.Controllers.Cafeteria
 
             IEnumerable<IDictionary<string, object>> response;
             response = db.Query("fooditem").Get().Cast<IDictionary<string, object>>();   // gets all food items from table and cast it to list of dictionary
-            //you can use model instead of dictionary
-           
-            foreach( var item in response)
-            { 
-                
-                item["base64image"] =fileToBase64(item["filepath"]) ; 
+                                                                                         //you can use model instead of dictionary
+
+            foreach (var item in response)
+            {
+                string path = "";
+                Object itemPath = item["filepath"];
+
+                if (itemPath != null)
+                {
+                    path = HttpContext.Current.Server.MapPath(item["filepath"].ToString());
+                    item["base64image"] = fileToBase64(path);
+                }
             }
 
             //var strResponse = response.ElementAt(0).ToString().Replace("DapperRow,", "").Replace("=", ":");
@@ -47,9 +53,9 @@ namespace IptApis.Controllers.Cafeteria
            
             string base64string = "";
             if (!(relativePath is null)) {
-                var filePath = HttpContext.Current.Server.MapPath(relativePath.ToString());
+//                var filePath = HttpContext.Current.Server.MapPath(relativePath.ToString());
 
-                byte[] contents = System.IO.File.ReadAllBytes(filePath);
+                byte[] contents = System.IO.File.ReadAllBytes(relativePath.ToString());
 
                 base64string = Convert.ToBase64String(contents);
             }

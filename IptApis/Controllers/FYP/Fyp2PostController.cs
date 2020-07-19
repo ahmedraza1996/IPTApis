@@ -10,9 +10,11 @@ using IptApis.Shared;
 using SqlKata;
 using SqlKata.Compilers;
 using System.Linq;
+using System.Web.Http.Cors;
 
 namespace IptApis.Controllers.FYP
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Fyp2PostController : ApiController
     {
         [HttpPost]

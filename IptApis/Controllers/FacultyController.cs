@@ -4,12 +4,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using IptApis.Models;
 using IptApis.Shared;
 using SqlKata.Execution;
 
 namespace IptApis.Controllers
 {
+
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class FacultyController : ApiController
     {
 

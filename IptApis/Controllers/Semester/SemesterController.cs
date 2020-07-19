@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Security.AccessControl;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using IptApis.Models;
 using IptApis.Shared;
 using IptApis.Shared.Constants;
@@ -13,6 +14,7 @@ using SqlKata.Execution;
 
 namespace IptApis.Controllers.Semester2
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SemesterController : ApiController
     {
         QueryFactory db = DbUtils.GetDBConnection();   //GetDBConnection will return a DBFactory type object, which have establish sql connection

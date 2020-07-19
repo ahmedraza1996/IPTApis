@@ -14,9 +14,11 @@ using IptApis.Shared;
 using System.Threading.Tasks;
 using System.Web;
 using System.IO;
+using System.Web.Http.Cors;
 
 namespace IptApis.Controllers.Cafeteria
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CafeteriaStaffController : ApiController
     {
         [HttpPost]

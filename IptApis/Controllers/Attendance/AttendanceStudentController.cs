@@ -9,9 +9,12 @@ using System.Web.Http;
 using SqlKata.Execution;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web.Http.Cors;
 
 namespace IptApis.Controllers.Attendance
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     public class AttendanceStudentController : ApiController
     {
         //return student data given student id

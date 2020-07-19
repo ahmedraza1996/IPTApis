@@ -10,10 +10,11 @@ using System.Data.SqlClient;
 using System.Web.Script.Serialization;
 using System.IO;
 using IptApis.MarksModels;
+using System.Web.Http.Cors;
 
 namespace IptApis.Controllers.Marks_Manage
 {
-
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MarksController : ApiController
     {
         /*

@@ -4,12 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using IptApis.Models;
 using IptApis.Shared;
 using SqlKata.Execution;
 namespace IptApis.Controllers.CourseRegistration
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CourseRegistrationController : ApiController
     {
 
@@ -53,13 +55,21 @@ namespace IptApis.Controllers.CourseRegistration
             value.fsID = fsID;
             value.courseStatus = "ENROLLED";
 
-            int affected=db.Query("CourseEnrollment").Insert(new { 
-            courseStatus=value.courseStatus,
-            fsID=value.fsID,
-            courseID=value.courseOfferedID,
-            studentID=value.studentID
+            int courseEnrollmentId=db.Query("CourseEnrollment").InsertGetId<int>(new { 
+                courseStatus=value.courseStatus,
+                fsID=value.fsID,
+                courseID=value.courseOfferedID,
+                studentID=value.studentID
             });
-            return Ok(affected);
+
+            db.Query("CourseFeedback").Insert(new
+            {
+                StudentId = value.studentID,
+                EnrollmentId = courseEnrollmentId,
+                isSubmitted = 0
+            });
+
+            return Ok(0);
         }
 
         // PUT: api/CourseRegistration/5

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using IptApis.Models.PointRegistration.PointDataAccess;
 
 namespace IptApis.Controllers.PointRegistration
 {
     [Route("api/PointApp/Driver")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class DriverController : ApiController
     {
         public IEnumerable<Driver> Get()
